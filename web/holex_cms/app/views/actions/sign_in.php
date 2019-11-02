@@ -85,10 +85,10 @@ var auth = function(token) {
 				</div>
 			</form>
 
-			<div class="social-auth-links text-center" data-ulogin="display=buttons;fields=first_name,last_name,email,photo;providers=vkontakte,odnoklassniki,facebook,googleplus;hidden=;redirect_uri=;callback=auth">
-				<a class="btn btn-block btn-social btn-facebook" data-uloginbutton="facebook"><i class="fa fa-facebook"></i> <?=CMS::t('login_social_facebook');?></a>
-				<a class="btn btn-block btn-social btn-google" data-uloginbutton="googleplus"><i class="fa fa-google-plus"></i> <?=CMS::t('login_social_googleplus');?></a>
-			</div>
+<!--			<div class="social-auth-links text-center" data-ulogin="display=buttons;fields=first_name,last_name,email,photo;providers=vkontakte,odnoklassniki,facebook,googleplus;hidden=;redirect_uri=;callback=auth">-->
+<!--				<a class="btn btn-block btn-social btn-facebook" data-uloginbutton="facebook"><i class="fa fa-facebook"></i> --><?//=CMS::t('login_social_facebook');?><!--</a>-->
+<!--				<a class="btn btn-block btn-social btn-google" data-uloginbutton="googleplus"><i class="fa fa-google-plus"></i> --><?//=CMS::t('login_social_googleplus');?><!--</a>-->
+<!--			</div>-->
 
 			<a href="?controller=base&amp;action=password_recovery"><?=CMS::t('login_password_recovery');?></a>
 			<!-- <br />

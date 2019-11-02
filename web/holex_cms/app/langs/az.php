@@ -177,12 +177,7 @@ return [
 	'menu_item_articles_list' => 'Məqalələr',
 	'menu_item_articles_add' => 'Məqaləni əlavə et',
 	'menu_item_articles_edit' => 'Məqaləni redaktə et',
-	'menu_item_gallery_list' => 'Albomların siyahısı',
-	'menu_item_gallery_add' => 'Albom əlavə et',
-	'menu_item_gallery_edit' => 'Albomu redaktə et',
-	'menu_item_gallery_photos' => 'Albomun şəkilləri',
-	'menu_item_gallery_add_photo' => 'Alboma şəkilləri əlavə et',
-	'menu_item_gallery_edit_photo' => 'Şəkli redaktə et',
+	'menu_item_news_list' => 'Xəbərlər',
 	'menu_item_complaints' => 'Əks əlaqə',
 	'menu_item_edit_admin_user_cats' => 'İstifadəçinin nəzarətində olan bölmələr',
 	'menu_item_edit_admin_user_privilegies' => 'İstifadəçinin səlahiyyətləri',
@@ -315,6 +310,11 @@ return [
 	'article_edit_err_not_found' => 'Məqalə tapılmayıb',
 	'article_edit_err_sef_empty' => 'Məqalənin SEF URL boş ola bilməz',
 	'articles_assignment' => 'Təyinat',
+
+
+    // News Content
+    'news_list_details' => '{count} xəbər tapılıb',
+    'news_add' => 'Xəbər əlavə et',
 
 	// Navigation
 
