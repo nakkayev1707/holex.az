@@ -70,6 +70,7 @@ return [
 	'update_no_data_affected' => 'Dəyişikliklər olmayıb',
 	'update_suc' => 'Dəyişikliklər müvəffəqiyyətlə yerinə yetirildi',
 	'view' => 'Baxış',
+    'multi_image_select_possible' => 'Bir-neçə şəkil seçə bilərsiniz',
 
 	// Password Generator
 
@@ -177,7 +178,6 @@ return [
 	'menu_item_articles_list' => 'Məqalələr',
 	'menu_item_articles_add' => 'Məqaləni əlavə et',
 	'menu_item_articles_edit' => 'Məqaləni redaktə et',
-	'menu_item_news_list' => 'Xəbərlər',
 	'menu_item_complaints' => 'Əks əlaqə',
 	'menu_item_edit_admin_user_cats' => 'İstifadəçinin nəzarətində olan bölmələr',
 	'menu_item_edit_admin_user_privilegies' => 'İstifadəçinin səlahiyyətləri',
@@ -313,8 +313,11 @@ return [
 
 
     // News Content
+    'menu_item_news_list' => 'Xəbərlər',
+    'menu_item_news_add' => 'Xəbər əlavə et',
     'news_list_details' => '{count} xəbər tapılıb',
     'news_add' => 'Xəbər əlavə et',
+    'news_image_descr' => '{types} formatlı faylların yüklənməsinə icazə verilir.',
 
 	// Navigation
 

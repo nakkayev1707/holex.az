@@ -3,6 +3,7 @@
 
 namespace app\controllers;
 
+use app\models\articles;
 use app\models\nav;
 use app\models\news;
 use profit_az\profit_cms\base\controller;
@@ -39,6 +40,26 @@ class news_controller extends controller {
     public static function action_add() {
         self::$layout = 'common_layout';
         view::$title = CMS::t('menu_item_news_add');
+        $news = new news();
+        $params = [];
+        $params['canWrite'] = CMS::hasAccessTo('news/add', 'write');
+        $params['link_back'] = (empty($_GET['return'])? '?controller=news&action=list': $_GET['return']);
+
+        if (ADMIN_TYPE!='admin') {
+            $allowed_cats = nav::getEditorAllowedCats(ADMIN_ID);
+        }
+        if (isset($_POST['add'])) {
+            $params['op'] = $news->addNews();
+            if ($params['op']['success']) {
+                utils::delayedRedirect($params['link_back']);
+            }
+        }
+        $params['langs'] = CMS::$site_langs;
+        $params['allowed_cats'] = @$allowed_cats;
+        $params['cats'] = nav::getCats();
+        $params['allowed_thumb_ext'] = $news->allowed_thumb_ext;
+
+        return self::render('news_add', $params);
     }
 
 }
