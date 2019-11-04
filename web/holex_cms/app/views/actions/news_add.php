@@ -83,11 +83,11 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label><?=CMS::t('image');?> (<?=CMS::t('multi_image_select_possible')?>)</label>
+                                        <label><?=CMS::t('image');?> (<?=CMS::t('multi_image_select_warn')?>)</label>
                                         <?=view::browse([
-                                            'name' => 'img',
+                                            'name' => 'img[]',
                                             'accept' => 'image/*',
-                                            'multiple' => 'true'
+                                            'multiple' => true
                                         ]);?>
                                         <p class="form-info-tip"><?=CMS::t('news_image_descr', [
                                                 '{types}' => implode(', ', $allowed_thumb_ext)

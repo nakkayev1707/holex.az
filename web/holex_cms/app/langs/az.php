@@ -70,7 +70,7 @@ return [
 	'update_no_data_affected' => 'Dəyişikliklər olmayıb',
 	'update_suc' => 'Dəyişikliklər müvəffəqiyyətlə yerinə yetirildi',
 	'view' => 'Baxış',
-    'multi_image_select_possible' => 'Bir-neçə şəkil seçə bilərsiniz',
+    'multi_image_select_warn' => 'bir yükləmədə 5-dən artıq şəkil olmamalıdır',
 
 	// Password Generator
 

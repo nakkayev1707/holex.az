@@ -4,6 +4,7 @@
 namespace app\controllers;
 
 use app\models\articles;
+use app\models\images;
 use app\models\nav;
 use app\models\news;
 use profit_az\profit_cms\base\controller;
@@ -57,7 +58,7 @@ class news_controller extends controller {
         $params['langs'] = CMS::$site_langs;
         $params['allowed_cats'] = @$allowed_cats;
         $params['cats'] = nav::getCats();
-        $params['allowed_thumb_ext'] = $news->allowed_thumb_ext;
+        $params['allowed_thumb_ext'] = images::$allowed_ext;
 
         return self::render('news_add', $params);
     }

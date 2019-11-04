@@ -16,7 +16,6 @@ class news
     public $pages_amount = 0;
     public $items_amount = 0;
     public $table = 'news';
-    public $allowed_thumb_ext = ['jpg', 'jpeg', 'png', 'bmp', 'gif'];
     public $tr_fields = ['title', 'full'];
 
 
@@ -52,49 +51,56 @@ class news
                 }
             }
         }
-        if (empty($response['errors'])) {
-            $news_id = CMS::$db->add($this->table, $news);
-            if ($news_id) {
-                // saving images
-                if (!empty($_FILES['img']['name'])) {
-                    $newsImages = new images('news_images');
-                    if (empty($_FILES['img']['error'])) {
-                        $images = $_FILES['img']['name'];
-                        $added = $newsImages->addImages($images, $news_id);
-                        if ($added) {
-                            $response['success'] = true;
-                            $response['message'] = 'insert_suc';
-                        } else {
-                            return $response;
-                        }
-                    }
-                } else {
+        $news_id = CMS::$db->add($this->table, $news);
+        if ($news_id) {
+            // saving images
+            if (!empty($_FILES['img']['name'])) {
+                $newsImages = new images('news_images', [0 => 'id', 1 => 'news_id', 2 => 'image'], 'news');
+                $images = $_FILES['img'];
+                if (count($_FILES['img']['name']) > 5) {
+                    $response['message'] = 'image_count_overflow';
+                    return $response;
+                }
+                $added = $newsImages->addImages($images, $news_id);
+                if ($added) {
                     $response['success'] = true;
                     $response['message'] = 'insert_suc';
+                } else {
+                    return $response;
                 }
-                // saving translates
-                foreach ($translates as $lang => $tr_data) {
-                    foreach ($tr_data as $fieldname => $text) {
-                        tr::store([
-                            'ref_table' => $this->table,
-                            'ref_id' => $news_id,
-                            'lang' => $lang,
-                            'fieldname' => $fieldname,
-                            'text' => $text,
-                        ]);
-                    }
+            } else {
+                $response['success'] = true;
+                $response['message'] = 'insert_suc';
+            }
+            // saving translates
+            foreach ($translates as $lang => $tr_data) {
+                foreach ($tr_data as $fieldname => $text) {
+                    tr::store([
+                        'ref_table' => $this->table,
+                        'ref_id' => $news_id,
+                        'lang' => $lang,
+                        'fieldname' => $fieldname,
+                        'text' => $text,
+                    ]);
                 }
+            }
+            // everything is OK, lets set news visible
+            if ($this->enableNews($news_id)) {
+                $response['success'] = true;
+                $response['message'] = 'insert_suc';
+                return $response;
             }
         }
         return $response;
     }
 
 
-    private function enableNews($newsId) {
+    private function enableNews($newsId)
+    {
         $upd = [
             'is_hidden' => '0'
         ];
-        return CMS::$db->mod($this->table.'#'.(int)$newsId, $upd);
+        return CMS::$db->mod($this->table . '#' . (int)$newsId, $upd);
     }
 
 
