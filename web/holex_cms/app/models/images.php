@@ -44,4 +44,17 @@ class images
         }
         return ($total == $saved);
     }
+
+    public function getImagesById($id, $ref_field){
+        $id = (int) $id;
+        if (!is_int($id) || $id < 0) return [];
+        $sql = "SELECT * FROM " . $this->table . " WHERE " . $ref_field . " =:ref_id ";
+        return CMS::$db->getAll($sql, [
+            ':ref_id' => $id
+        ]);
+    }
+
+    public function deleteImageById($id){
+
+    }
 }

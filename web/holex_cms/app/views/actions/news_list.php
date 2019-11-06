@@ -106,13 +106,41 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
                 });
             }
         });
+
+        $('.ajax-set-status').on('click', function(e) {
+            var $el = $(this);
+            var data = JSON.parse($(this).attr('data-ajax_post'));
+            $.ajax({
+                url: this.href,
+                data: data,
+                async: true,
+                cache: false,
+                type: 'post',
+                dataType: 'json',
+                success: function(response, status, xhr) {
+                    if (response.success) {
+                        if (response.data && response.data.action) {
+                            var new_status = response.data.action;
+                            var old_status = ((new_status==='on')? 'off': 'on');
+                            $('i', $el).removeClass('fa-toggle-'+old_status+' btn-toggle-'+old_status).addClass('fa-toggle-'+new_status+' btn-toggle-'+new_status);
+                            var title = new_status === 'on' ? 'Click to hide' : 'Click to show';
+                            $('i', $el).attr('title', title);
+                            data.turn = old_status;
+                            $el.attr('data-ajax_post', JSON.stringify(data));
+                        }
+                    }
+                },
+                error: function(xhr, err, descr) {}
+            });
+            return false;
+        });
     });
     // ]]>
 </script>
 
 
 <!-- Deleting hidden form -->
-<form action="?controller=articles&amp;action=delete&amp;return=<?=$link_return;?>" method="post" id="formDeleteItem">
+<form action="?controller=news&amp;action=delete&amp;return=<?=$link_return;?>" method="post" id="formDeleteItem">
     <input type="hidden" name="CSRF_token" value="<?=$CSRF_token;?>" />
     <input type="hidden" name="delete" value="0" />
 </form>
@@ -146,7 +174,6 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
 
     <!-- Info boxes -->
 
-    <!-- <pre><?php /*var_export($articles);*/ ?></pre> -->
 
     <div class="box">
         <div class="box-header with-border">
@@ -181,8 +208,9 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
                     <thead>
                     <tr>
                         <th><?=CMS::t('news_title');?></th>
-                        <th><?=CMS::t('news_content');?></th>
+                        <th><?=CMS::t('news_is_hidden');?></th>
                         <th><?=CMS::t('news_date');?></th>
+                        <th><?=CMS::t('image');?></th>
                         <th><?=CMS::t('controls');?></th>
                     </tr>
                     </thead>
@@ -190,59 +218,48 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
                     <?php
                     foreach ($news as $n) {
                         ?>
-                        <tr data-id="<?=$n['id'];?>" data-ordering="<?=$n['ordering'];?>">
+                        <tr data-id="<?=$n['id'];?>">
                             <td>
-                                <?php if (!empty($n['img'])) {
-                                    $uploadUrl = SITE.utils::dirCanonicalPath(CMS_DIR.UPLOADS_DIR);
-                                    $previewUrl = $uploadUrl.'articles/square/'.$n['img'];
-                                    ?>
-                                    <img src="<?=$previewUrl;?>" alt="" class="article-thumb img-circle img-bordered-sm" />
-                                <?php } ?>
-
-                                <?=(empty($n['title'])? $n['sef']: $n['title']);?>
+                                <?=($n['title']);?>
                             </td>
                             <td>
-                                <?php
-                                if (CMS::hasAccessTo('cms_users/edit')) {
-                                ?><a href="?controller=cms_users&amp;action=edit&amp;id=<?=$a['add_by'];?>"><i class="fa fa-user" aria-hidden="true"></i> <?php
-                                    }
-
-                                    utils::safeEcho($a['author_name']);
-
-                                    if (CMS::hasAccessTo('cms_users/edit')) {
-                                    ?></a><?php
-                            } ?>, <?=utils::formatMySQLDate('d.m.Y H:i:s', $n['add_datetime']);?>
+                                <a href="?controller=news&amp;action=ajax_set_status" title="" class="ajax-set-status btn-toggle" data-ajax_post="<?=utils::safeEcho(json_encode([
+                                    'CSRF_token' => $CSRF_token,
+                                    'id' => $n['id'],
+                                    'turn' => ($n['is_hidden']? 'on': 'off')
+                                ]), 1);?>">
+                                    <i class="fa fa-toggle-<?=($n['is_hidden']? 'off': 'on');?> btn-toggle-<?=($n['is_hidden']? 'off': 'on');?>"  aria-hidden="true"></i>
+                                </a>
                             </td>
-
+                            <td>
+                               <?=utils::formatMySQLDate('d.m.Y H:i:s', $n['created_at']);?>
+                            </td>
+                            <td>
+                                <a href="?controller=news&action=images&id=<?=$n['id']?>"><i class="fa fa-image"></i></a>
+                            </td>
                             <td style="white-space: nowrap;">
-                                <?php if (CMS::hasAccessTo('articles/edit', 'write')) { ?>
-                                    <a href="?controller=articles&amp;action=edit&amp;id=<?=$a['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('edit');?>">
+                                <?php if (CMS::hasAccessTo('news/edit', 'write')) { ?>
+                                    <a href="?controller=news&amp;action=edit&amp;id=<?=$a['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('edit');?>">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     </a>
-                                <?php } else if (CMS::hasAccessTo('articles/edit', 'read')) { ?>
-                                    <a href="?controller=articles&amp;action=edit&amp;id=<?=$a['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('view');?>">
+                                <?php } else if (CMS::hasAccessTo('news/edit', 'read')) { ?>
+                                    <a href="?controller=news&amp;action=edit&amp;id=<?=$a['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('view');?>">
                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                     </a>
                                 <?php } ?>
 
-                                <?php if ($a['comments_num'] && CMS::hasAccessTo('comments/list')) { ?>
-                                    <a href="?controller=comments&amp;action=list&amp;filter[ref_table]=articles&amp;filter[ref_id]=<?=$a['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('menu_item_comments_list');?> (<?=$a['comments_num'];?>)">
-                                        <i class="fa fa-comments" aria-hidden="true"></i>
-                                    </a>
-                                <?php } ?>
-
-                                <?php if (CMS::hasAccessTo('articles/delete', 'write')) { ?>
-                                    <a href="#" title="<?=CMS::t('delete');?>" class="text-red" style="margin-left: 15px;" id="aDeleteItem_<?=$a['id'];?>" data-item-id="<?=$a['id'];?>">
+                                <?php if (CMS::hasAccessTo('news/delete', 'write')) { ?>
+                                    <a href="#" title="<?=CMS::t('delete');?>" class="text-red" style="margin-left: 15px;" id="aDeleteItem_<?=$n['id'];?>" data-item-id="<?=$n['id'];?>">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </a>
                                     <script type="text/javascript">
-                                        $('#aDeleteItem_<?=$a['id'];?>').on('click', function() {
+                                        $('#aDeleteItem_<?=$n['id'];?>').on('click', function() {
                                             bootbox.confirm({
                                                 message: '<?=CMS::t('delete_confirmation');?>',
                                                 callback: function(ok) {
                                                     if (ok) {
                                                         var $form = $('#formDeleteItem');
-                                                        $('[name="delete"]', $form).val('<?=$a['id'];?>');
+                                                        $('[name="delete"]', $form).val('<?=$n['id'];?>');
                                                         $form.submit();
                                                     }
                                                 }

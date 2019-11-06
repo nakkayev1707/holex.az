@@ -315,9 +315,11 @@ return [
     // News Content
     'menu_item_news_list' => 'Xəbərlər',
     'menu_item_news_add' => 'Xəbər əlavə et',
+    'menu_item_news_images' => 'Bu xəbərə aid şəkillər',
     'news_list_details' => '{count} xəbər tapılıb',
     'news_add' => 'Xəbər əlavə et',
     'news_image_descr' => '{types} formatlı faylların yüklənməsinə icazə verilir.',
+    'news_images_not_found' => 'Bu xəbərə aid heç bir şəkil tapılmadı.',
 
 	// Navigation
 

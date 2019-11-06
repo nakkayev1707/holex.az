@@ -32,10 +32,10 @@ class menu_widget_controller extends widget
         [
             'name' => 'menu_block_content',
             'icon' => 'files-o',
-            'selected' => ['news/list', 'news/add', 'articles/list', 'articles/add', 'articles/edit', 'articles/delete', 'gallery/list', 'gallery/add', 'gallery/edit', 'gallery/delete', 'gallery/photos'],
+            'selected' => ['news/list', 'news/add', 'news/images', 'news/delete_image'],
             'subs' => [
                 'news/list' => [
-                    'selected' => ['news/list', 'news/add', 'news/edit', 'news/delete']
+                    'selected' => ['news/list', 'news/add', 'news/edit', 'news/delete', 'news/images', 'news/delete_image']
                 ],
                 'articles/list' => [
                     'selected' => ['articles/list', 'articles/add', 'articles/edit', 'articles/delete']
