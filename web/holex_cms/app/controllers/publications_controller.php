@@ -39,6 +39,7 @@ class publications_controller extends controller
         $params['link_sc'] = utils::trueLink(['controller', 'action', 'q', 'filter']);
         $params['link_return'] = urlencode(SITE . CMS_DIR . utils::trueLink(['controller', 'action', 'q', 'filter', 'page']));
         $params['cats'] = nav::getCats();
+        $params['publicationTypes'] = $publicationsModel->publicationTypes;
 
         return self::render('publications_list', $params);
     }

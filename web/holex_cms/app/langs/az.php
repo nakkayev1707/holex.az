@@ -320,8 +320,16 @@ return [
     'publication_add' => 'Nəşr əlavə et',
     'publication_image_descr' => '{types} formatlı faylların yüklənməsinə icazə verilir.',
     'publications_images_not_found' => 'Bu xəbərə aid heç bir şəkil tapılmadı.',
+    'publication_news' => 'Xəbər',
+    'publication_blog' => 'Blog',
+    'publication_event' => 'Tədbir',
+    'filter_publication_type' => 'Nəşr növü',
+    'filter_publication_visibility' => 'Saytda görülməsi',
+    'filter_publication_date' => 'Tarix',
+    'filter_visible' => 'Görülən',
+    'filter_hidden' => 'Gizlədilmiş',
 
-	// Navigation
+    // Navigation
 
 	'nav_menu' => 'Menyu',
 	'nav_menu_structure' => 'Bəndlərin strukturu',

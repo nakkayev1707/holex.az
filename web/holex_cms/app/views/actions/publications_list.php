@@ -14,97 +14,16 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
 <script type="text/javascript">
     // <![CDATA[
     $(document).ready(function() {
-        var sortable_is_out = false;
-        $('.tablesorter tbody').sortable({
-            cursor: 'move',
-            //containment: 'parent',
-            out: function() {
-                //console.log('out');
-                sortable_is_out = true;
-            },
-            over: function() {
-                //console.log('over');
-                sortable_is_out = false;
-            },
-            start: function(e, ui) {
-                ui.item.attr('data-sort-start-pos', ui.item.index());
-            },
-            beforeStop: function() {
-                //console.log('beforeStop');
-                if (sortable_is_out) {
-                    $('.tablesorter tbody').sortable('cancel');
-                }
-            },
-            stop: function(e, ui) {
-                var from = ui.item.attr('data-sort-start-pos');
-                var to = ui.item.index();
-                if (from==to) {return;}
-                var direction = ((to>from)? 'down': 'up');
-                console.log('Dragged '+direction+' from position '+from+' to '+to);
-                var start_id = ui.item.attr('data-id');
-                var end_pos = (to+((direction=='up')? +1: -1));
-                var end_id = $('.tablesorter tbody tr').eq(end_pos).attr('data-id');
-                $.ajax({
-                    url: '?controller=publications&action=ajax_sort',
-                    async: false,
-                    cache: false,
-                    method: 'POST',
-                    data: {
-                        CSRF_token: '<?=$CSRF_token;?>',
-                        start_id: start_id,
-                        end_id: end_id
-                    },
-                    dataType: 'json',
-                    success: function(response, status, xhr) {
-                        if (response.success) {
-                            // reserved
-                        } else {
-                            $('.tablesorter tbody').sortable('cancel');
-                        }
-                    },
-                    error: function(xhr, err, descr) {
-                        $('.tablesorter tbody').sortable('cancel');
-                    }
-                });
-            },
-            items: "tr",
-            placeholder: '.place-holder',
-            scroll: true
-        }).disableSelection();
 
-        $('.pagination a.number').droppable({
-            tolerance: 'pointer',
-            hoverClass: 'page-drop-hover',
-            drop: function(event, ui) {
-                //console.log(ui.draggable.prop('tagName')+'#'+ui.draggable.attr('data-id'));
-                var item_id = ui.draggable.attr('data-id');
-                var target_page = $(this).text();
-                $.ajax({
-                    url: '?<?=utils::safeJsEcho(utils::array2url([
-                        'controller' => 'publications',
-                        'action' => 'ajax_paged_sort',
-                        'q' => @$_GET['q'],
-                        'filter' => @$_GET['filter']
-                    ]), 1);?>',
-                    async: false,
-                    cache: false,
-                    method: 'POST',
-                    data: {
-                        CSRF_token: '<?=$CSRF_token;?>',
-                        item_id: item_id,
-                        target_page: target_page
-                    },
-                    dataType: 'json',
-                    success: function(response, status, xhr) {
-                        if (response.success) {
-                            location.href = location.href;
-                        } else {
-                            // no action
-                        }
-                    },
-                    error: function(xhr, err, descr) {}
-                });
-            }
+        $('#filter-button').on('click', function() {
+            $.fancybox.open({
+                href: '#popupFilter'
+            });
+        });
+
+        $('#popupFilterClose').on('click', function() {
+            $.fancybox.close();
+            return false;
         });
 
         $('.ajax-set-status').on('click', function(e) {
@@ -190,6 +109,9 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
                     <input type="hidden" name="<?=time();?>" value="" />
 
                     <div class="input-group has-feedback">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-<?=(utils::isEmptyArrayRecursive(@$_GET['filter'])? 'success': 'warning');?>" id="filter-button"><i class="fa fa-filter" aria-hidden="true"></i> <?=CMS::t('filter');?></button>
+                        </div>
                         <input type="text" name="q" value="<?=utils::safeEcho(@$_GET['q'], 1);?>" placeholder="<?=CMS::t('search_query');?>" class="form-control input-md" onfocus="this.value='';" />
                         <span class="input-group-btn">
 							<button type="submit" name="go" value="1" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> <?=CMS::t('search');?></button>
@@ -208,6 +130,7 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
                     <thead>
                     <tr>
                         <th><?=CMS::t('publication_title');?></th>
+                        <th><?=CMS::t('publication_type');?></th>
                         <th><?=CMS::t('publication_is_hidden');?></th>
                         <th><?=CMS::t('publication_date');?></th>
                         <th><?=CMS::t('image');?></th>
@@ -221,6 +144,9 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
                         <tr data-id="<?=$publication['id'];?>">
                             <td>
                                 <?=($publication['title']);?>
+                            </td>
+                            <td>
+                                <?=(CMS::t($publication['type']))?>
                             </td>
                             <td>
                                 <a href="?controller=publications&amp;action=ajax_set_status" title="" class="ajax-set-status btn-toggle" data-ajax_post="<?=utils::safeEcho(json_encode([
@@ -294,3 +220,45 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
     <!-- /.info boxes -->
 </section>
 <!-- /.content -->
+<div id="popupFilter" style="display: none; width: 420px;">
+    <h4 class="popupTitle"><?=CMS::t('filter_popup_title');?></h4>
+
+    <div class="popupForm">
+        <div class="popupFormFieldset">
+            <div class="popupFormInputsBlock">
+                <label for="selectType" class="form-label"><?=CMS::t('filter_publication_type');?></label>
+
+                <select name="filter[type]" id="selectType" class="form-control" form="formSearchAndFilter">
+                    <option value=""><?=CMS::t('filter_no_matter');?></option>
+                    <?php
+                    if (!empty($publicationTypes) && is_array($publicationTypes)) {
+                        foreach ($publicationTypes as $type) {
+                            ?><option value="<?=$type['id'];?>"<?=((@$_GET['filter']['author']==$type['id'])? ' selected="selected"': '');?>><?=CMS::t($type['translate_key'])?></option><?php
+                        }
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="popupFormInputsBlock">
+                <label for="selectType" class="form-label"><?=CMS::t('filter_publication_visibility');?></label>
+                <select name="filter[visibility]" id="selectType" class="form-control" form="formSearchAndFilter">
+                    <option value=""><?=CMS::t('filter_no_matter');?></option>
+                    <option value="visible"><?=CMS::t('filter_visible')?></option>
+                    <option value="hidden"><?=CMS::t('filter_hidden')?></option>
+                </select>
+            </div>
+            <div class="popupFormInputsBlock">
+                <label for="selectType" class="form-label"><?=CMS::t('filter_publication_visibility');?></label>
+                <select name="filter[visibility]" id="selectType" class="form-control" form="formSearchAndFilter">
+                    <option value=""><?=CMS::t('filter_no_matter');?></option>
+                    <option value="visible"><?=CMS::t('filter_visible')?></option>
+                    <option value="hidden"><?=CMS::t('filter_hidden')?></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="popupControls">
+            <button type="submit" name="go" value="1" form="formSearchAndFilter" class="btn btn-primary center-block"><i class="fa fa-filter" aria-hidden="true"></i> <?=CMS::t('filter');?></button>
+        </div>
+    </div>
+</div>
