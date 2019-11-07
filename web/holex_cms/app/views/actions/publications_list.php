@@ -45,7 +45,7 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
                 var end_pos = (to+((direction=='up')? +1: -1));
                 var end_id = $('.tablesorter tbody tr').eq(end_pos).attr('data-id');
                 $.ajax({
-                    url: '?controller=news&action=ajax_sort',
+                    url: '?controller=publications&action=ajax_sort',
                     async: false,
                     cache: false,
                     method: 'POST',
@@ -81,7 +81,7 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
                 var target_page = $(this).text();
                 $.ajax({
                     url: '?<?=utils::safeJsEcho(utils::array2url([
-                        'controller' => 'news',
+                        'controller' => 'publications',
                         'action' => 'ajax_paged_sort',
                         'q' => @$_GET['q'],
                         'filter' => @$_GET['filter']
@@ -140,7 +140,7 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
 
 
 <!-- Deleting hidden form -->
-<form action="?controller=news&amp;action=delete&amp;return=<?=$link_return;?>" method="post" id="formDeleteItem">
+<form action="?controller=publications&amp;action=delete&amp;return=<?=$link_return;?>" method="post" id="formDeleteItem">
     <input type="hidden" name="CSRF_token" value="<?=$CSRF_token;?>" />
     <input type="hidden" name="delete" value="0" />
 </form>
@@ -149,7 +149,7 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <?=CMS::t('menu_item_news_list');?>
+        <?=CMS::t('menu_item_publications_list');?>
     </h1>
 
     <!-- <ol class="breadcrumb">
@@ -162,8 +162,8 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
 <!-- Content Header (Page header) -->
 <section class="contextual-navigation">
     <nav>
-        <?php if (CMS::hasAccessTo('news/add', 'write')) { ?>
-            <a href="?controller=news&amp;action=add&amp;return=<?=$link_return;?>&amp;<?=time();?>" class="btn btn-default"><i class="fa fa-plus-circle" aria-hidden="true"></i> <?=CMS::t('news_add');?></a>
+        <?php if (CMS::hasAccessTo('publications/add', 'write')) { ?>
+            <a href="?controller=publications&amp;action=add&amp;return=<?=$link_return;?>&amp;<?=time();?>" class="btn btn-default"><i class="fa fa-plus-circle" aria-hidden="true"></i> <?=CMS::t('publication_add');?></a>
         <?php } ?>
     </nav>
 </section>
@@ -177,7 +177,7 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
 
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title"><?=CMS::t('news_list_details', [
+            <h3 class="box-title"><?=CMS::t('publications_list_details', [
                     '{count}' => $count,
                     '{ru:u1}' => utils::getRussianWordEndingByNumber($count, 'а', 'ы', 'о'),
                     '{ru:u2}' => utils::getRussianWordEndingByNumber($count, 'я', 'и', 'ий')
@@ -202,53 +202,53 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
 
         <div class="box-body">
             <?php
-            if (!empty($news) && is_array($news)) {
+            if (!empty($publications) && is_array($publications)) {
                 ?>
                 <table class="table table-bordered table-striped tablesorter">
                     <thead>
                     <tr>
-                        <th><?=CMS::t('news_title');?></th>
-                        <th><?=CMS::t('news_is_hidden');?></th>
-                        <th><?=CMS::t('news_date');?></th>
+                        <th><?=CMS::t('publication_title');?></th>
+                        <th><?=CMS::t('publication_is_hidden');?></th>
+                        <th><?=CMS::t('publication_date');?></th>
                         <th><?=CMS::t('image');?></th>
                         <th><?=CMS::t('controls');?></th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
-                    foreach ($news as $n) {
+                    foreach ($publications as $publication) {
                         ?>
-                        <tr data-id="<?=$n['id'];?>">
+                        <tr data-id="<?=$publication['id'];?>">
                             <td>
-                                <?=($n['title']);?>
+                                <?=($publication['title']);?>
                             </td>
                             <td>
-                                <a href="?controller=news&amp;action=ajax_set_status" title="" class="ajax-set-status btn-toggle" data-ajax_post="<?=utils::safeEcho(json_encode([
+                                <a href="?controller=publications&amp;action=ajax_set_status" title="" class="ajax-set-status btn-toggle" data-ajax_post="<?=utils::safeEcho(json_encode([
                                     'CSRF_token' => $CSRF_token,
-                                    'id' => $n['id'],
-                                    'turn' => ($n['is_hidden']? 'on': 'off')
+                                    'id' => $publication['id'],
+                                    'turn' => ($publication['is_hidden']? 'on': 'off')
                                 ]), 1);?>">
-                                    <i class="fa fa-toggle-<?=($n['is_hidden']? 'off': 'on');?> btn-toggle-<?=($n['is_hidden']? 'off': 'on');?>"  aria-hidden="true"></i>
+                                    <i class="fa fa-toggle-<?=($publication['is_hidden']? 'off': 'on');?> btn-toggle-<?=($publication['is_hidden']? 'off': 'on');?>"  aria-hidden="true"></i>
                                 </a>
                             </td>
                             <td>
-                               <?=utils::formatMySQLDate('d.m.Y H:i:s', $n['created_at']);?>
+                               <?=utils::formatMySQLDate('d.m.Y H:i:s', $publication['created_at']);?>
                             </td>
                             <td>
-                                <a href="?controller=news&action=images&id=<?=$n['id']?>"><i class="fa fa-image"></i></a>
+                                <a href="?controller=publications&action=images&id=<?=$publication['id']?>"><i class="fa fa-image"></i></a>
                             </td>
                             <td style="white-space: nowrap;">
-                                <?php if (CMS::hasAccessTo('news/edit', 'write')) { ?>
-                                    <a href="?controller=news&amp;action=edit&amp;id=<?=$a['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('edit');?>">
+                                <?php if (CMS::hasAccessTo('publications/edit', 'write')) { ?>
+                                    <a href="?controller=publications&amp;action=edit&amp;id=<?=$publication['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('edit');?>">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     </a>
-                                <?php } else if (CMS::hasAccessTo('news/edit', 'read')) { ?>
-                                    <a href="?controller=news&amp;action=edit&amp;id=<?=$a['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('view');?>">
+                                <?php } else if (CMS::hasAccessTo('publications/edit', 'read')) { ?>
+                                    <a href="?controller=publications&amp;action=edit&amp;id=<?=$publication['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('view');?>">
                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                     </a>
                                 <?php } ?>
 
-                                <?php if (CMS::hasAccessTo('news/delete', 'write')) { ?>
+                                <?php if (CMS::hasAccessTo('publications/delete', 'write')) { ?>
                                     <a href="#" title="<?=CMS::t('delete');?>" class="text-red" style="margin-left: 15px;" id="aDeleteItem_<?=$n['id'];?>" data-item-id="<?=$n['id'];?>">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </a>

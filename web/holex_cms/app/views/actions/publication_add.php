@@ -35,7 +35,7 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <?=CMS::t('menu_item_news_add');?>
+        <?=CMS::t('menu_item_publication_add');?>
         <!-- <small>Subtitile</small> -->
     </h1>
 </section>
@@ -89,7 +89,7 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
                                             'accept' => 'image/*',
                                             'multiple' => true
                                         ]);?>
-                                        <p class="form-info-tip"><?=CMS::t('news_image_descr', [
+                                        <p class="form-info-tip"><?=CMS::t('publication_image_descr', [
                                                 '{types}' => implode(', ', $allowed_thumb_ext)
                                             ]);?></p>
                                     </div>

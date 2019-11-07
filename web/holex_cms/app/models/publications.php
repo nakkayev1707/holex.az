@@ -4,24 +4,23 @@
 namespace app\models;
 
 
-use phpDocumentor\Reflection\Types\This;
 use profit_az\profit_cms\CMS;
 use profit_az\profit_cms\helpers\tr;
 use profit_az\profit_cms\helpers\utils;
 
-class news
+class publications
 {
     public $curr_page = 1;
     public $per_page = 20;
     public $pages_amount = 0;
     public $items_amount = 0;
-    public $table = 'news';
+    public $table = 'publications';
     public $tr_fields = ['title', 'full'];
 
 
-    public function getNewsList()
+    public function getPublicationsList()
     {
-        $news_list = [];
+        $publications_list = [];
         $joins = [];
         $joins['tr'] = "LEFT JOIN translates tr ON tr.ref_table='".$this->table."' AND tr.ref_id=n.id AND tr.lang=:default_site_lang AND tr.fieldname='title'";
         $filter = [];
@@ -42,20 +41,20 @@ class news
             $this->curr_page = (($this->curr_page>$this->pages_amount)? $this->pages_amount: $this->curr_page);
             $start_from = ($this->curr_page-1)*$this->per_page;
 
-            $sqlGetNews = "SELECT n.*, tr.text AS title FROM `".$this->table."` n ".implode("\n", $joins)."
+            $sqlGetPublication = "SELECT n.*, tr.text AS title FROM `".$this->table."` n ".implode("\n", $joins)."
 				{$where} ORDER BY id DESC
 				LIMIT ".(($start_from>0)? ($start_from.', '): '').$this->per_page;
-            $news_list = CMS::$db->getAll($sqlGetNews, [
+            $publications_list = CMS::$db->getAll($sqlGetPublication, [
                 ':default_site_lang' => CMS::$default_site_lang
             ]);
         }
-        return $news_list;
+        return $publications_list;
     }
 
-    public function addNews()
+    public function addPublication()
     {
         $response = ['success' => false, 'message' => 'insert_err'];
-        $news = [
+        $publications = [
             'is_hidden' => '1', // hide till save all relations //
             'created_at' => date('Y-m-d H:i:s'),
         ];
@@ -68,17 +67,17 @@ class news
                 }
             }
         }
-        $news_id = CMS::$db->add($this->table, $news);
-        if ($news_id) {
+        $publication_id = CMS::$db->add($this->table, $publications);
+        if ($publication_id) {
             // saving images
             if (!empty($_FILES['img']['name']) && !($_FILES['img']['size'][0] == 0)) {
-                $newsImages = new images('news_images', [0 => 'id', 1 => 'news_id', 2 => 'image'], 'news');
+                $publicationImages = new images('publications_images', [0 => 'id', 1 => 'publication_id', 2 => 'image'], 'publications');
                 $images = $_FILES['img'];
                 if (count($_FILES['img']['name']) > 5) {
                     $response['message'] = 'image_count_overflow';
                     return $response;
                 }
-                $added = $newsImages->addImages($images, $news_id);
+                $added = $publicationImages->addImages($images, $publication_id);
                 if (!$added) {
                     return $response;
                 }
@@ -88,15 +87,15 @@ class news
                 foreach ($tr_data as $fieldname => $text) {
                     tr::store([
                         'ref_table' => $this->table,
-                        'ref_id' => $news_id,
+                        'ref_id' => $publication_id,
                         'lang' => $lang,
                         'fieldname' => $fieldname,
                         'text' => $text,
                     ]);
                 }
             }
-            // everything is OK, lets set news visible
-            if ($this->enableNews($news_id)) {
+            // everything is OK, lets set publication visible
+            if ($this->enablePublication($publication_id)) {
                 $response['success'] = true;
                 $response['message'] = 'insert_suc';
                 return $response;
@@ -113,12 +112,12 @@ class news
         return CMS::$db->mod($this->table . '#' . (int)$id, $upd);
     }
 
-    private function enableNews($newsId)
+    private function enablePublication($publicationId)
     {
         $upd = [
             'is_hidden' => '0'
         ];
-        return CMS::$db->mod($this->table . '#' . (int)$newsId, $upd);
+        return CMS::$db->mod($this->table . '#' . (int)$publicationId, $upd);
     }
 
 

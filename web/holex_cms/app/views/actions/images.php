@@ -37,7 +37,7 @@ view::appendJs(SITE . CMS_DIR . JS_DIR . 'jquery-ui-1.12.1/jquery-ui.min.js');
 
 
 <!-- Deleting hidden form -->
-<form action="?controller=news&amp;action=delete_image" method="post"
+<form action="?controller=publications&amp;action=delete_image" method="post"
       id="formDeleteItem">
     <input type="hidden" name="CSRF_token" value="<?= $CSRF_token; ?>"/>
     <input type="hidden" name="delete" value="0"/>
@@ -47,7 +47,7 @@ view::appendJs(SITE . CMS_DIR . JS_DIR . 'jquery-ui-1.12.1/jquery-ui.min.js');
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <?= CMS::t('menu_item_news_images'); ?>
+        <?= CMS::t('menu_item_publications_images'); ?>
     </h1>
 </section>
 
@@ -74,28 +74,28 @@ view::appendJs(SITE . CMS_DIR . JS_DIR . 'jquery-ui-1.12.1/jquery-ui.min.js');
                             if (!empty($images)) {
                             foreach ($images as $image) {
                                 $uploadUrl = SITE . utils::dirCanonicalPath(CMS_DIR . UPLOADS_DIR);
-                                $previewUrl = $uploadUrl . 'news/' . $image['image']; ?>
+                                $previewUrl = $uploadUrl . 'publications/' . $image['image']; ?>
                                 <div class="item">
                                     <div class="mod_buttons">
-                                        <?php if (CMS::hasAccessTo('news/edit', 'write')) { ?>
-                                            <a href="?controller=news&amp;action=edit&amp;id=<?= $image['news_id']; ?>&amp;return=<?= $link_back; ?>&amp;<?= time(); ?>"
+                                        <?php if (CMS::hasAccessTo('publications/edit', 'write')) { ?>
+                                            <a href="?controller=publications&amp;action=edit&amp;id=<?= $image['publication_id']; ?>&amp;return=<?= $link_back; ?>&amp;<?= time(); ?>"
                                                title="<?= CMS::t('edit'); ?>">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
-                                        <?php } else if (CMS::hasAccessTo('news/edit', 'read')) { ?>
-                                            <a href="?controller=news&amp;action=edit&amp;id=<?= $image['news_id']; ?>&amp;return=<?= $link_back; ?>&amp;<?= time(); ?>"
+                                        <?php } else if (CMS::hasAccessTo('publications/edit', 'read')) { ?>
+                                            <a href="?controller=publications&amp;action=edit&amp;id=<?= $image['publication_id']; ?>&amp;return=<?= $link_back; ?>&amp;<?= time(); ?>"
                                                title="<?= CMS::t('view'); ?>">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
                                         <?php } ?>
-                                        <?php if (CMS::hasAccessTo('news/delete', 'write')) { ?>
+                                        <?php if (CMS::hasAccessTo('publications/delete', 'write')) { ?>
                                             <a href="#" title="<?= CMS::t('delete'); ?>" class="text-red"
-                                               style="margin-left: 84%;" id="newsImageDeleteItem_<?= $image['id']; ?>"
+                                               style="margin-left: 84%;" id="publicationImageDeleteItem_<?= $image['id']; ?>"
                                                data-item-id="<?= $image['id']; ?>">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                             </a>
                                             <script type="text/javascript">
-                                                $('#newsImageDeleteItem_<?=$image['id'];?>').on('click', function () {
+                                                $('#publicationImageDeleteItem_<?=$image['id'];?>').on('click', function () {
                                                     bootbox.confirm({
                                                         message: '<?=CMS::t('delete_confirmation');?>',
                                                         callback: function (ok) {
@@ -121,7 +121,7 @@ view::appendJs(SITE . CMS_DIR . JS_DIR . 'jquery-ui-1.12.1/jquery-ui.min.js');
                     </div>
                     <?php } else { ?>
                         <div>
-                            <p style="color: #ff7904; font-size: 18px;"><?=CMS::t('news_images_not_found')?></p>
+                            <p style="color: #ff7904; font-size: 18px;"><?=CMS::t('publications_images_not_found')?></p>
                         </div>
                     <?php } ?>
                 </div>
