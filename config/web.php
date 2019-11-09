@@ -7,6 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'az',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
@@ -47,9 +48,9 @@ $config = [
             'useFileTransport' => true,
             'transport' => [
                 'class' => Swift_SmtpTransport::class,
-                'host' => 'mail.profit.az',
+                'host' => '',
                 'username' => 'no-reply@holex.az',
-                'password' => 'a123456z',
+                'password' => '',
                 'port' => '465',
                 'encryption' => 'ssl',
             ],
@@ -83,6 +84,10 @@ $config = [
             'enableLanguagePersistence' => false,
             'rules' => [
                 '/' => '/site/index',
+                '/contact_me' => '/site/contact_me',
+                '/about' => '/site/about',
+                '/error' => '/site/error',
+                '/blog' => '/site/blog',
             ],
         ],
 

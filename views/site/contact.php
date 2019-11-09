@@ -9,60 +9,81 @@ use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
 $this->title = 'Contact';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-contact">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
-
-        <div class="alert alert-success">
-            Thank you for contacting us. We will respond to you as soon as possible.
-        </div>
-
-        <p>
-            Note that if you turn on the Yii debugger, you should be able
-            to view the mail message on the mail panel of the debugger.
-            <?php if (Yii::$app->mailer->useFileTransport): ?>
-                Because the application is in development mode, the email is not sent but saved as
-                a file under <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
-                Please configure the <code>useFileTransport</code> property of the <code>mail</code>
-                application component to be false to enable email sending.
-            <?php endif; ?>
-        </p>
-
-    <?php else: ?>
-
-        <p>
-            If you have business inquiries or other questions, please fill out the following form to contact us.
-            Thank you.
-        </p>
-
+<div class="contentPadding">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-5">
+            <div class="col-xs-12">
+                <div class="contentTitle normall">
+                    <h2 class="h2 as">Get in touch</h2>
+                    <p>Lorem Ipsum is simply text of the Lorem Ipsum is  simply my text of the printing and Ipsum is simply text of the Ipsum is simply text of thetypesetting Ipsum is simply text of the stry simply dummy text of the printing and typesetting industry.</p>
+                </div>
+                <div class="emptySpace50 emptySpace-xs30"></div>
+            </div>
+            <div class="col-sm-6 col-md-8">
 
-                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-
-                    <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-
-                    <?= $form->field($model, 'email') ?>
-
-                    <?= $form->field($model, 'subject') ?>
-
-                    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
-
-                    <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                        'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                    ]) ?>
-
-                    <div class="form-group">
-                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                <form action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                    <input class="simple-input" id="name" name="name" type="text" value="" placeholder="Name" />
+                    <div class="emptySpace20"></div>
+                    <input class="simple-input" id="email" name="email" type="email" value="" placeholder="Email" />
+                    <div class="emptySpace20"></div>
+                    <input class="simple-input" id="subject" name="subject" type="text" value="" placeholder="Subject" />
+                    <div class="emptySpace20"></div>
+                    <textarea class="simple-input" id="message" name="message" placeholder="Message"></textarea>
+                    <div class="emptySpace50 emptySpace-xs30"></div>
+                    <button type="submit" class="button">Submit Now</button>
+                </form>
+                <div class="emptySpace-xs30"></div>
+                <div id="success">
+                    <p>Your text message sent successfully!</p>
+                </div>
+                <div id="error">
+                    <p>Sorry! Message not sent. Something went wrong!!</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="contactDetails normall">
+                    <!-- 	Contacts1-START 	-->
+                    <div class="contactAddres">
+                        <div class="imgWrapper">
+                            <img src="img/location-icon-white.png" alt="">
+                        </div>
+                        <div class="simple-article light">
+                            <p>Phychology, 562, Mallin StreetNew Youk,</p>
+                            <p> NY 100 254</p>
+                        </div>
                     </div>
+                    <!-- 	Contacts1-END 	-->
 
-                <?php ActiveForm::end(); ?>
+                    <!-- 	Contacts2-START 	-->
+                    <div class="contactAddres">
+                        <div class="imgWrapper">
+                            <i class="fa fa-envelope-o"></i>
+                        </div>
+                        <a href="mailto:info@phycologycare.com">info@phycologycare.com</a>
+                        <a href="mailto:support@phycology.com">support@phycology.com</a>
+                    </div>
+                    <!-- 	Contacts2-END 	-->
 
+                    <!-- 	Contacts3-START 	-->
+                    <div class="contactAddres large">
+                        <div class="imgWrapper">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <a href="tel:18005622487">+ 1800 562 2487</a>
+                    </div>
+                    <!-- 	Contacts3-END 	-->
+                </div>
             </div>
         </div>
-
-    <?php endif; ?>
+    </div>
 </div>
+<div class="emptySpace20"></div>
+<!-- 	Map-START 	-->
+<div id="map-canvas" data-lat="34.0151244" data-lng="-118.4729871" data-zoom="15"></div>
+<div class="addresses-block">
+    <a class="marker" data-lat="34.0151244" data-lng="-118.4729871" data-string="1. Here is some address or email or phone or something else..."></a>
+    <a class="marker" data-lat="34.0051244" data-lng="-118.4729871" data-string="1. Here is some address or email or phone or something else..."></a>
+</div>
+<!-- 	Map-END 	-->
+

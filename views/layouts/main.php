@@ -23,12 +23,12 @@ $params = Yii::$app->params;
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7COpen+Sans:300,400,600,700%7CRaleway:400,700,800"
           rel="stylesheet">
     <link rel="shortcut icon" href="../../web/favicon.ico"/>
-    <link rel="stylesheet" href="../../web/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../web/css/swiper.css" type="text/css" />
+    <link rel="stylesheet" href="../../web/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="../../web/css/swiper.css" type="text/css"/>
     <link rel="stylesheet" href="../../web/css/sumoselect.css">
-    <link rel="stylesheet" href="../../web/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../web/css/font-awesome.min.css" type="text/css"/>
     <link rel="stylesheet" href="../../web/css/flaticon.css">
-    <link rel="stylesheet" href="../../web/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../web/css/style.css" type="text/css"/>
     <title><?= Html::encode($this->title) ?></title>
     <style>
         #loader-wrapper {
@@ -55,18 +55,15 @@ $params = Yii::$app->params;
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <!-- 	Header more info-START 	-->
                     <div class="headerMoreInfo">
-                        <!--  	Phone block-START 	-->
                         <div class="phoneBlock">
                             <i class="flatIcon Fphone2 flaticon-technology"></i>
                             <p>Call Us now</p>
                             <h5 class="h5 as"><a href="tel:">1800 456 7890</a></h5>
                         </div>
-                        <!--  	Phone block-END 	-->
-                        <a href="#" class="button btnSize1">Book Appointment</a>
+                        <a href="<?= Url::toRoute('site/appointment') ?>"
+                           class="button btnSize1"><?= Yii::t('app', 'appointment') ?></a>
                     </div>
-                    <!-- 	Header more info-END 	-->
 
                     <div class="responsiveSrollWrapper">
                         <!-- 	Header top-START 	-->
@@ -74,7 +71,7 @@ $params = Yii::$app->params;
                             <div class="headerTopInfoContaner">
                                 <!-- 	Logo-START 	-->
                                 <a href="<?= Url::toRoute('site/index') ?>" class="logo">
-                                    <img src="img/logo.png" alt="">
+                                    <img src="<?=$params['siteUrl']?>/img/logo.png" alt="">
                                 </a>
                                 <!-- 	Logo-END 	-->
 
@@ -88,67 +85,47 @@ $params = Yii::$app->params;
                                 <!-- 	Responsive menu-END 	-->
                             </div>
                         </div>
-                        <!-- 	Header top-END 	-->
 
-                        <!-- 	 Menu-START 	-->
                         <div class="responsiveWrapper">
                             <div class="navScroll">
                                 <nav>
                                     <ul>
-                                        <li class="active"><a href="index.html">home</a>
+                                        <?php $route = Yii::$app->controller->route;?>
+                                        <li class="<?=$route == 'site/index' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/index') ?>"><?= Yii::t('app', 'menu_home') ?></a></li>
+                                        <li class="<?=$route == 'site/service' ? 'active': '' ?>"><a href="#"><?= Yii::t('app', 'menu_services') ?></a>
                                             <i class="fa fa-angle-down"></i>
                                             <ul>
-                                                <li><a href="<?=Url::toRoute('site/index') ?>">Home Page 2</a></li>
+                                                <li><a href="<?= Url::toRoute('service/index') ?>"><?= Yii::t('app', 'menu_all_services') ?></a></li>
+                                                <li><a href="<?= Url::toRoute('service/gestalt') ?>"><?= Yii::t('app', 'menu_gestalt_service') ?></a></li>
+                                                <li><a href="<?= Url::toRoute('service/rpt') ?>"><?= Yii::t('app', 'menu_rpt_service') ?></a></li>
+                                                <li><a href="<?= Url::toRoute('service/retreats') ?>"><?= Yii::t('app', 'menu_retreats_service') ?></a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="services.html">services</a>
+                                        <li class="<?=$route == 'site/blog' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/blog') ?>"><?= Yii::t('app', 'menu_blog') ?></a></li>
+                                        <li class="<?=$route == 'site/about' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/about') ?>"><?= Yii::t('app', 'menu_about') ?></a></li>
+                                        <li class="<?=$route == 'site/contact' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/contact') ?>"><?= Yii::t('app', 'menu_contact_me') ?></a></li>
+                                        <li><a href="#"><?= Yii::$app->language ?></a>
                                             <i class="fa fa-angle-down"></i>
                                             <ul>
-                                                <li><a href="services.html">All Service</a></li>
-                                                <li><a href="stress-management.html">Stress Management </a></li>
-                                                <li><a href="depression-treatment.html">Depression Therapy</a></li>
-                                                <li><a href="couple-counselling.html">Couple Counselling</a></li>
-                                                <li><a href="anxiety-treatment.html">Anxiety Treatment</a></li>
-                                                <li><a href="elderly-issues.html">Elderly Couple Issues</a></li>
-                                                <li><a href="therapy-for-children.html">Therapy for Children</a></li>
-                                                <li><a href="family-psycology.html">Family Psycology</a></li>
-                                                <li><a href="gruop-therapy.html">Group Therapy</a></li>
+                                                <li><a href="<?= Url::to([Yii::$app->controller->route, 'language' => 'az']) ?>">AZ</a></li>
+                                                <li><a href="<?= Url::to([Yii::$app->controller->route, 'language' => 'en']) ?>">EN</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="about-us.html">about us</a>
-                                            <i class="fa fa-angle-down"></i>
-                                            <ul>
-                                                <li><a href="#">Our Introduction</a></li>
-                                                <li><a href="counsellors.html">Counsellors</a></li>
-                                                <li><a href="#">Doctor Profile</a></li>
-                                                <li>
-                                                    <a href="gallery.html">Gallery</a>
-                                                    <i class="fa fa-angle-right"></i>
-                                                    <ul>
-                                                        <li><a href="gallery.html">Gallery Classic</a></li>
-                                                        <li><a href="gallery-fluid.html">Gallery Full Screen</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="404.html">pages</a>
-                                            <i class="fa fa-angle-down"></i>
-                                            <ul>
-                                                <li><a href="404.html">404 Page</a></li>
-                                                <li><a href="faq.html">Faq</a></li>
-                                                <li><a href="comming-soon.html">Comming Soon Page</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="testimonials.html">tesmonials</a></li>
-                                        <li><a href="blog.html">blog</a>
-                                            <i class="fa fa-angle-down"></i>
-                                            <ul>
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="blog-details.html">Blog Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contacts.html">contact us</a></li>
                                     </ul>
+                                    <div class="nav-search pull-right text-right">
+                                        <div class="widget-t widget-t-search">
+                                            <div class="widget-t-inner">
+                                                <form action="<?=Url::toRoute('site/index') ?>" method="get" class="search-form">
+                                                    <div class="input-group">
+                                                        <input type="search" name="q" placeholder="<?=Yii::t('app', 'search') ?>"
+                                                               class="form-control"><span class="input-group-addon">
+                                                            <button type="submit"><i
+                                                                        class="icon icon-Search"></i></button></span>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </nav>
                             </div>
                         </div>

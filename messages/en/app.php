@@ -7,4 +7,17 @@
  */
 return [
 
+    // common //
+    'search' => 'Search',
+
+    // menu //
+    'menu_home' => 'Home',
+    'menu_services' => 'Services',
+    'menu_all_services' => 'All services',
+    'menu_gestalt_service' => 'Gestalt therapy',
+    'menu_rpt_service' => 'RPT',
+    'menu_retreats_service' => 'Retreats',
+    'menu_blog' => 'Blog',
+    'menu_about' => 'About me',
+    'menu_contact_me' => 'Contact me'
 ];

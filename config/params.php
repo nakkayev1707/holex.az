@@ -5,7 +5,6 @@ return [
     'senderEmail' => 'noreply@example.com',
     'senderName' => 'Example.com mailer',
     'uploadsUrl' => '/uploads',
-    'lawyersFolderUrl' => '/lawyers/',
     'siteUrl' => 'http://holex.loc',
     'og_title' => ['property' => 'og:title', 'content' => 'title'],
     'og_description' => ['property' => 'og:description', 'content' => 'description'],
