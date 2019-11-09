@@ -329,6 +329,7 @@ return [
     'filter_visible' => 'Görülən',
     'filter_hidden' => 'Gizlədilmiş',
 
+
     // Navigation
 
 	'nav_menu' => 'Menyu',

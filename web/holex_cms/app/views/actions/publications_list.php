@@ -8,7 +8,10 @@ if (!defined("_VALID_PHP")) {die('Direct access to this location is not allowed.
 
 <?php
 view::appendCss(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.css');
+view::appendCss(SITE.CMS_DIR.JS_DIR.'bootstrap-datepicker/css/bootstrap-datepicker3.css');
 view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
+view::appendJs(SITE.CMS_DIR.JS_DIR.'bootstrap-datepicker/js/bootstrap-datepicker.min.js');
+view::appendJs(SITE.CMS_DIR.JS_DIR.'bootstrap-datepicker/locales/bootstrap-datepicker.'.$_SESSION[CMS::$sess_hash]['ses_adm_lang'].'.min.js');
 ?>
 
 <script type="text/javascript">
@@ -233,7 +236,7 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
                     <?php
                     if (!empty($publicationTypes) && is_array($publicationTypes)) {
                         foreach ($publicationTypes as $type) {
-                            ?><option value="<?=$type['id'];?>"<?=((@$_GET['filter']['author']==$type['id'])? ' selected="selected"': '');?>><?=CMS::t($type['translate_key'])?></option><?php
+                            ?><option value="<?=$type['type'];?>"><?=CMS::t($type['translate_key'])?></option><?php
                         }
                     }
                     ?>
@@ -247,13 +250,26 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'jquery-ui-1.12.1/jquery-ui.min.js');
                     <option value="hidden"><?=CMS::t('filter_hidden')?></option>
                 </select>
             </div>
+
             <div class="popupFormInputsBlock">
-                <label for="selectType" class="form-label"><?=CMS::t('filter_publication_visibility');?></label>
-                <select name="filter[visibility]" id="selectType" class="form-control" form="formSearchAndFilter">
-                    <option value=""><?=CMS::t('filter_no_matter');?></option>
-                    <option value="visible"><?=CMS::t('filter_visible')?></option>
-                    <option value="hidden"><?=CMS::t('filter_hidden')?></option>
-                </select>
+                <label for="selectType" class="form-label"><?=CMS::t('filter_publication_date');?></label>
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                    <input type="text" name="filter[publish_date]"
+                           value="<?= utils::safePostValue('publish_date', date('d.m.Y')); ?>"
+                           placeholder="Date select"
+                           class="form-control datepicker"/>
+                </div>
+
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('[name="filter[publish_date]"]').datepicker({
+                            format: 'dd.mm.yyyy',
+                            clearBtn: true,
+                            language: '<?=utils::safeJsEcho($_SESSION[CMS::$sess_hash]['ses_adm_lang'], 1);?>'
+                        });
+                    });
+                </script>
             </div>
         </div>
 

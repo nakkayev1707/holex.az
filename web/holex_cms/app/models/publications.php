@@ -38,15 +38,31 @@ class publications
     {
         $publications_list = [];
         $joins = [];
-        $joins['tr'] = "LEFT JOIN translates tr ON tr.ref_table='" . $this->table . "' AND tr.ref_id=n.id AND tr.lang=:default_site_lang AND tr.fieldname='title'";
+        $joins['tr'] = "LEFT JOIN translates tr ON tr.ref_table='" . $this->table . "' AND tr.ref_id=p.id AND tr.lang=:default_site_lang AND tr.fieldname='title'";
         $filter = [];
 
         // search //
         if (!empty($_GET['q'])) {
             $filter[] = "tr.text LIKE '%" . utils::makeSearchable($_GET['q']) . "%'";
         }
+        // start filter //
+        if (!empty($_GET['filter']['type'])) {
+            $filter[] = " p.type=" . CMS::$db->escape($_GET['filter']['type'] . "");
+        }
+        if (!empty($_GET['filter']['visibility'])) {
+            $selectedVisibility = $_GET['filter']['visibility'];
+            if ($selectedVisibility == "visible" || $selectedVisibility == "hidden") {
+                $is_hidden = $selectedVisibility == "visible" ? 0 : 1;
+                $filter[] = " p.is_hidden='" . $is_hidden . "' ";
+            }
+        }
+        if (!empty($_GET['filter']['publish_date'])) {
+            $selectedDate = $_GET['filter']['publish_date'];
+            var_dump($selectedDate);die;
+        }
+        // end filter //
         $where = (empty($filter) ? '' : (' WHERE ' . implode(" AND ", $filter)));
-        $sqlCount = "SELECT COUNT(n.id) FROM `" . $this->table . "` n " . implode("\n", $joins) . "{$where}";
+        $sqlCount = "SELECT COUNT(p.id) FROM `" . $this->table . "` p " . implode("\n", $joins) . "{$where}";
         $c = CMS::$db->get($sqlCount, [
             ':default_site_lang' => CMS::$default_site_lang
         ]);
@@ -57,7 +73,7 @@ class publications
             $this->curr_page = (($this->curr_page > $this->pages_amount) ? $this->pages_amount : $this->curr_page);
             $start_from = ($this->curr_page - 1) * $this->per_page;
 
-            $sqlGetPublication = "SELECT n.*, tr.text AS title FROM `" . $this->table . "` n " . implode("\n", $joins) . "
+            $sqlGetPublication = "SELECT p.*, tr.text AS title FROM `" . $this->table . "` p " . implode("\n", $joins) . "
 				{$where} ORDER BY id DESC
 				LIMIT " . (($start_from > 0) ? ($start_from . ', ') : '') . $this->per_page;
             $publications_list = CMS::$db->getAll($sqlGetPublication, [

@@ -1,0 +1,58 @@
+
+
+@media (max-width: 767px){
+
+.button.btnStyle6, .profile {
+       text-align: center!important;
+}
+.button.btnSize7 {
+       padding-left: 15px!important;
+    padding-right: 15px!important;
+}
+
+.profile a span {
+    position: relative!important;
+    top: 0!important;
+    left: 0!important;
+    max-width: 46px!important;
+    max-height: 46px!important;
+    margin: 0 auto!important;
+    -webkit-transform: translate(0)!important;
+    transform: translate(0)!important;
+    display: block!important;
+    margin-bottom: 15px!important;
+}
+.contentPadding {
+    padding: 30px 0!important;
+}
+.imgWrapper img {
+    margin: 0 auto;
+}
+.contactUsBlock .as {
+    margin-bottom: 30px;
+	font-size: 22px;
+    line-height: 24px;
+}
+.titleShortcode .as{
+	
+		font-size: 22px;
+    line-height: 24px;
+}
+.year > span {
+       display: block;
+    position: relative!important;
+    top: 0!important;
+    left: 0!important;
+    margin-bottom: 5px;
+}
+.year {
+    text-align: center;
+}
+.year .yearContent {
+    padding: 0!important;
+}
+.yearContent h5{
+	    font-size: 18px;
+    line-height: 20px;
+}
+}

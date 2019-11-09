@@ -9,12 +9,25 @@ $config = [
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'G8uNuEqD4rziea2Eh-VCSwpmM7VDtZ5D',
+            'baseUrl' => ''
+        ],
+        'assetManager' => [
+            'class' => 'yii\web\AssetManager',
+            'forceCopy' => YII_DEBUG,
+            'appendTimestamp' => YII_DEBUG,
+            'bundles' => [
+                // we want to use our own jquery file
+                'yii\web\JqueryAsset' => [
+                    'sourcePath' => null,
+                    'js' => []
+                ],
+            ],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -32,6 +45,14 @@ $config = [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => true,
+            'transport' => [
+                'class' => Swift_SmtpTransport::class,
+                'host' => 'mail.profit.az',
+                'username' => 'no-reply@holex.az',
+                'password' => 'a123456z',
+                'port' => '465',
+                'encryption' => 'ssl',
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -42,15 +63,29 @@ $config = [
                 ],
             ],
         ],
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    //'basePath' => '@app/messages',
+                ],
+            ],
+        ],
         'db' => $db,
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'class' => 'codemix\localeurls\UrlManager',
+            'languages' => ['az', 'en'],
+            'enableLanguageDetection' => false,
+            // this option (enableLanguagePersistence) disables storing selected language in cookie //
+            'enableLanguagePersistence' => false,
             'rules' => [
+                '/' => '/site/index',
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];

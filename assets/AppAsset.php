@@ -20,12 +20,22 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        'css/bootstrap.min.css',
+        'css/swiper.css',
+        'css/sumoselect.css',
+        'css/font-awesome.min.css',
+        'css/flaticon.css',
+        'css/style.css'
     ];
     public $js = [
+        'js/jquery.min.js',
+        'js/swiper.jquery.min.js',
+        'js/SmoothScroll.js',
+        'js/jquery.sumoselect.min.js',
+        'js/simple-lightbox.min.js',
+        'js/global.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
     ];
 }

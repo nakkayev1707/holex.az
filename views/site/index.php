@@ -2,52 +2,79 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'MY HOLEX';
 ?>
-<div class="site-index">
-
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+<!-- 	Main banner swiper-START 	-->
+<div class="swiperMainWrapper mainSwiperbanner">
+    <!-- 	Swiper slider buttons-START 	-->
+    <div class="swipert-black-button swiper-button-prev"></div>
+    <div class="swipert-black-button swiper-button-next"></div>
+    <!-- 	Swiper slider buttons-END 	-->
+    <div class="swiper-container" data-auto-height="1" data-effect="fadde" data-speed="600" data-autoplay="5000" data-loop="1">
+        <div class="swiper-wrapper">
+            <!-- 	Slide1-START 	-->
+            <div class="swiper-slide mainBanner bgShadow">
+                <div class="sliderBg" style="background-image: url(img/main-banner.jpg)"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-10 col-md-offset-1">
+                            <div class="cell-view">
+                                <div class="bannerTitle">
+                                    <h1 class="h1 light as">Solving problems <br> That Are Beyound your Control</h1>
+                                </div>
+                                <div class="bannerBtnWrapper">
+                                    <a href="#" class="button btnSize1">View all Services</a>
+                                    <a href="#" class="button btnStyle3 btnSize1">Get Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <!-- 	Slide1-END 	-->
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+            <!-- 	Slide2-START 	-->
+            <div class="swiper-slide mainBanner bgShadow">
+                <div class="sliderBg" style="background-image: url(img/main-banner2.jpg)"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-10 col-md-offset-1">
+                            <div class="cell-view">
+                                <div class="bannerTitle">
+                                    <h2 class="h1 light as">The Best Counseling Clinic</h2>
+                                    <p>The Counseling Clinic provides professional counseling and psychotherapy services <br> for individuals, couples, and families.</p>
+                                </div>
+                                <div class="bannerBtnWrapper">
+                                    <a href="#" class="button btnSize1">View all Services</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <!-- 	Slide2-END 	-->
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+            <!-- 	Slide3-START 	-->
+            <div class="swiper-slide mainBanner bgShadow">
+                <div class="sliderBg" style="background-image: url(img/main-banner3.jpg)"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-10 col-md-offset-1">
+                            <div class="cell-view">
+                                <div class="bannerTitle">
+                                    <h2 class="h1 light as">We served individuals, families and <br> couples for over 23 years. </h2>
+                                </div>
+                                <div class="bannerBtnWrapper">
+                                    <a href="#" class="button btnSize1">View all Services</a>
+                                    <a href="#" class="button btnStyle3 btnSize1">Get Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- 	Slide3-END 	-->
         </div>
-
     </div>
 </div>
+<!-- 	Main banner swiper-END 	-->
