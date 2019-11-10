@@ -315,6 +315,7 @@ return [
     // Start publications Content
     'menu_item_publications_list' => 'Nəşrlər',
     'menu_item_publication_add' => 'Nəşr əlavə et',
+    'menu_item_publication_edit' => 'Nəşr redaktə et',
     'menu_item_publications_images' => 'Bu nəşrə aid şəkillər',
     'validate_err' => 'Müvafiq xanaları doldurun',
     'publications_list_details' => '{count} nəşr tapılıb',

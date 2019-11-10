@@ -3,8 +3,6 @@
 
 namespace app\controllers;
 
-use app\models\articles;
-use app\models\gallery;
 use app\models\images;
 use app\models\nav;
 use app\models\publications;
@@ -69,6 +67,37 @@ class publications_controller extends controller
         $params['publicationTypes'] = $publications->publicationTypes;
 
         return self::render('publication_add', $params);
+    }
+
+    public static function action_edit() {
+        self::$layout = 'common_layout';
+        view::$title = CMS::t('menu_item_publication_edit');
+
+        $publications = new publications();
+        $images = new images('publications_images', [], 'publications');
+
+        $params = [];
+        $params['canWrite'] = CMS::hasAccessTo('publications/edit', 'write');
+        $params['link_back'] = (empty($_GET['return'])? '?controller=publications&action=list': $_GET['return']);
+
+        $id = @(int)$_GET['id'];
+        $params['publication'] = $publications->getPublicationById($id);
+        $params['images'] = $images->getImagesById($id, 'publication_id');
+        if (empty($params['publication']['id'])) {
+            return CMS::resolve('base/404');
+        }
+        $params['langs'] = CMS::$site_langs;
+        $params['allowed_thumb_ext'] = images::$allowed_ext;
+
+        if (isset($_POST['save']) || isset($_POST['apply']) || isset($_POST['is_published'])) {
+            if (!$params['canWrite']) {CMS::logout();}
+            $params['op'] = $publications->editPublication($id);
+            $params['publication'] = $publications->getPublicationById($id);
+            if ($params['op']['success'] && isset($_POST['save'])) {
+                utils::delayedRedirect($params['link_back']);
+            }
+        }
+        return self::render('publication_edit', $params);
     }
 
     public static function action_delete() {
