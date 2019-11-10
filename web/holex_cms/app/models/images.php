@@ -54,7 +54,30 @@ class images
         ]);
     }
 
-    public function deleteImageById($id){
-
+    public function deleteImages($id, $ref_field){
+        $result = false;
+        $images = $this->getImagesById($id, $ref_field);
+        if (!empty($images)) {
+            $sql = "DELETE FROM " . $this->table . " WHERE " . $ref_field. "=:id";
+            $deletedRow = CMS::$db->exec($sql, [
+                ":id" => $id
+            ]);
+            if ($deletedRow) {
+                if (empty($images)) return true;
+                $dirPath = '../uploads/' . $this->upload_dir;
+                if (is_writable($dirPath)) {
+                    foreach ($images as $image) {
+                        $imagePath = '../uploads/' . $this->upload_dir . '/' . $image['image'];
+                        if (file_exists($imagePath)) {
+                            @unlink($imagePath);
+                        }
+                    }
+                    $result = true;
+                }
+            }
+        } else {
+            $result = true;
+        }
+        return $result;
     }
 }

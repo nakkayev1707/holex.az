@@ -47,7 +47,7 @@ class publications_controller extends controller
     public static function action_add()
     {
         self::$layout = 'common_layout';
-        view::$title = CMS::t('menu_item_publications_add');
+        view::$title = CMS::t('menu_item_publication_add');
         $publications = new publications();
         $params = [];
         $params['canWrite'] = CMS::hasAccessTo('publications/add', 'write');
@@ -66,8 +66,25 @@ class publications_controller extends controller
         $params['allowed_cats'] = @$allowed_cats;
         $params['cats'] = nav::getCats();
         $params['allowed_thumb_ext'] = images::$allowed_ext;
+        $params['publicationTypes'] = $publications->publicationTypes;
 
         return self::render('publication_add', $params);
+    }
+
+    public static function action_delete() {
+        self::$layout = 'common_layout';
+        view::$title = CMS::t('delete');
+        $publications = new publications();
+        $params = [];
+        $params['canWrite'] = CMS::hasAccessTo('publications/delete', 'write');
+        $params['link_back'] =  (empty($_GET['return'])? '?controller=publications&action=list': $_GET['return']);
+        $deleted = false;
+        if ($params['canWrite']) {
+            $deleted = $publications->deletePublication(@$_POST['delete']);
+        }
+        $params['op']['success'] = $deleted;
+        $params['op']['message'] = 'del_'.($deleted ? 'suc' : 'err');
+        return self::render('cms_user_delete', $params);
     }
 
     public static function action_images()

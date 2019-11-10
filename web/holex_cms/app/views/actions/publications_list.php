@@ -178,17 +178,17 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'bootstrap-datepicker/locales/bootstrap-datep
                                 <?php } ?>
 
                                 <?php if (CMS::hasAccessTo('publications/delete', 'write')) { ?>
-                                    <a href="#" title="<?=CMS::t('delete');?>" class="text-red" style="margin-left: 15px;" id="aDeleteItem_<?=$n['id'];?>" data-item-id="<?=$n['id'];?>">
+                                    <a href="#" title="<?=CMS::t('delete');?>" class="text-red" style="margin-left: 15px;" id="pDeleteItem_<?=$publication['id'];?>" data-item-id="<?=$publication['id'];?>">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </a>
                                     <script type="text/javascript">
-                                        $('#aDeleteItem_<?=$n['id'];?>').on('click', function() {
+                                        $('#pDeleteItem_<?=$publication['id'];?>').on('click', function() {
                                             bootbox.confirm({
                                                 message: '<?=CMS::t('delete_confirmation');?>',
                                                 callback: function(ok) {
                                                     if (ok) {
                                                         var $form = $('#formDeleteItem');
-                                                        $('[name="delete"]', $form).val('<?=$n['id'];?>');
+                                                        $('[name="delete"]', $form).val('<?=$publication['id'];?>');
                                                         $form.submit();
                                                     }
                                                 }
@@ -251,26 +251,6 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'bootstrap-datepicker/locales/bootstrap-datep
                 </select>
             </div>
 
-            <div class="popupFormInputsBlock">
-                <label for="selectType" class="form-label"><?=CMS::t('filter_publication_date');?></label>
-                <div class="input-group">
-                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                    <input type="text" name="filter[publish_date]"
-                           value="<?= utils::safePostValue('publish_date', date('d.m.Y')); ?>"
-                           placeholder="Date select"
-                           class="form-control datepicker"/>
-                </div>
-
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        $('[name="filter[publish_date]"]').datepicker({
-                            format: 'dd.mm.yyyy',
-                            clearBtn: true,
-                            language: '<?=utils::safeJsEcho($_SESSION[CMS::$sess_hash]['ses_adm_lang'], 1);?>'
-                        });
-                    });
-                </script>
-            </div>
         </div>
 
         <div class="popupControls">

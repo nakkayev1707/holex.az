@@ -83,6 +83,18 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label for="selectType" class="form-label"><?=CMS::t('filter_publication_type');?> *</label>
+                                        <select name="type" id="selectType" class="form-control">
+                                            <?php
+                                            if (!empty($publicationTypes) && is_array($publicationTypes)) {
+                                                foreach ($publicationTypes as $type) {
+                                                    ?><option value="<?=$type['type'];?>"><?=CMS::t($type['translate_key'])?></option><?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label><?=CMS::t('image');?> (<?=CMS::t('multi_image_select_warn')?>)</label>
                                         <?=view::browse([
                                             'name' => 'img[]',
@@ -106,13 +118,13 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label><?=CMS::t('article_title');?></label>
+                                            <label><?=CMS::t('article_title');?> *</label>
 
                                             <input type="text" name="title[<?=$lng['language_dir'];?>]" value="<?php utils::safeEcho(@$_POST['title'][$lng['language_dir']]); ?>" class="form-control" />
                                         </div>
 
                                         <div class="form-group">
-                                            <label><?=CMS::t('article_full');?></label>
+                                            <label><?=CMS::t('article_full');?> *</label>
 
                                             <textarea name="full[<?=$lng['language_dir'];?>]" rows="4" cols="32" class="form-input-std" id="wysiwyg_full_<?=$lng['language_dir'];?>"><?php utils::safeEcho(@$_POST['full'][$lng['language_dir']]); ?></textarea>
                                             <script type="text/javascript">

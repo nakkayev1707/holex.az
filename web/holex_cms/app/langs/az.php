@@ -312,10 +312,11 @@ return [
 	'articles_assignment' => 'Təyinat',
 
 
-    // Publications Content
+    // Start publications Content
     'menu_item_publications_list' => 'Nəşrlər',
     'menu_item_publication_add' => 'Nəşr əlavə et',
     'menu_item_publications_images' => 'Bu nəşrə aid şəkillər',
+    'validate_err' => 'Müvafiq xanaları doldurun',
     'publications_list_details' => '{count} nəşr tapılıb',
     'publication_add' => 'Nəşr əlavə et',
     'publication_image_descr' => '{types} formatlı faylların yüklənməsinə icazə verilir.',
@@ -323,12 +324,16 @@ return [
     'publication_news' => 'Xəbər',
     'publication_blog' => 'Blog',
     'publication_event' => 'Tədbir',
+    'publication_title' => 'Başlıq',
+    'publication_type' => 'Növ',
+    'publication_is_hidden' => 'Saytda görülməsi',
+    'publication_date' => 'Tarix',
     'filter_publication_type' => 'Nəşr növü',
     'filter_publication_visibility' => 'Saytda görülməsi',
     'filter_publication_date' => 'Tarix',
     'filter_visible' => 'Görülən',
     'filter_hidden' => 'Gizlədilmiş',
-
+    // End publications content //
 
     // Navigation
 

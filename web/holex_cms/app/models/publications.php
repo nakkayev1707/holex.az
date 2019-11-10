@@ -56,10 +56,6 @@ class publications
                 $filter[] = " p.is_hidden='" . $is_hidden . "' ";
             }
         }
-        if (!empty($_GET['filter']['publish_date'])) {
-            $selectedDate = $_GET['filter']['publish_date'];
-            var_dump($selectedDate);die;
-        }
         // end filter //
         $where = (empty($filter) ? '' : (' WHERE ' . implode(" AND ", $filter)));
         $sqlCount = "SELECT COUNT(p.id) FROM `" . $this->table . "` p " . implode("\n", $joins) . "{$where}";
@@ -88,8 +84,15 @@ class publications
     public function addPublication()
     {
         $response = ['success' => false, 'message' => 'insert_err'];
+
+        if (!$this->validate(@$_POST)) {
+            $response['message'] = 'validate_err';
+            return $response;
+        }
+        $type = $_POST['type'];
         $publications = [
             'is_hidden' => '1', // hide till save all relations //
+            'type' => $type,
             'created_at' => date('Y-m-d H:i:s'),
         ];
         $translates = [];
@@ -129,7 +132,7 @@ class publications
                 }
             }
             // everything is OK, lets set publication visible
-            if ($this->enablePublication($publication_id)) {
+            if ($this->setIsHidden($publication_id, 0)) {
                 $response['success'] = true;
                 $response['message'] = 'insert_suc';
                 return $response;
@@ -138,6 +141,42 @@ class publications
         return $response;
     }
 
+    public function editPublication($id){
+        $response = ['success' => false, 'message' => 'update_err'];
+        $publication = $this->getPublicationById($id);
+        if (empty($publication['id'])) {
+            $response['message'] = 'publication_not_found_err';
+            return $response;
+        }
+        $upd = [];
+        $translates = [];
+
+
+    }
+
+    public function deletePublication($id){
+        $sqlPublicationDelete = "DELETE FROM " . $this->table . " WHERE id=:id";
+        $publicationDeleted = CMS::$db->exec($sqlPublicationDelete, [
+            ':id' => (int)$id
+        ]);
+        $images = new images('publications_images', [], 'publications');
+        if ($publicationDeleted) {
+            if (tr::del($this->table, (int)$id)) {
+                return $images->deleteImages($id, 'publication_id');
+            }
+        }
+        return false;
+    }
+
+    public function getPublicationById($id){
+        $id = (int)$id;
+        $sql = "SELECT * FROM " . $this->table ." WHERE id=:publication_id LIMIT 1";
+        $publication = CMS::$db->getRow($sql, [
+           ':publication_id' => $id
+        ]);
+        if (!empty($publication['id']))  {$publication['translates'] = tr::get($this->table, $id);}
+        return $publication;
+    }
 
     public function setIsHidden($id, $is_hidden)
     {
@@ -147,12 +186,12 @@ class publications
         return CMS::$db->mod($this->table . '#' . (int)$id, $upd);
     }
 
-    private function enablePublication($publicationId)
-    {
-        $upd = [
-            'is_hidden' => '0'
-        ];
-        return CMS::$db->mod($this->table . '#' . (int)$publicationId, $upd);
+    private function validate($post) {
+        if (empty($post['CSRF_token']) || empty($post['type']) || (empty($post['title']['az'])
+                || empty($post['title']['en'])) || (empty($post['full']['az']) || empty($post['full']['en']))) {
+            return false;
+        }
+        return true;
     }
 
     private function replacePublicationTypeWithTranslationKey($publications_list){

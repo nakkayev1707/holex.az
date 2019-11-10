@@ -23,7 +23,7 @@ class Publication
     }
 
 
-    public function getPublications($count = 10)
+    public function getPublications()
     {
         $request = Yii::$app->request;
         $searchQuery = $request->get("q");
@@ -35,6 +35,7 @@ class Publication
 
         // only visible ones //
         $where[] = 'p.is_hidden = 0';
+        $where[] = 'p.type=:type';
 
         // search //
         if ($searchQuery) {
@@ -60,6 +61,7 @@ class Publication
         $params[":table"] = $this->table;
         $searchQuery = "%$searchQuery%";
         $params[":query"] = $searchQuery;
+        $params[":type"] = $this->type;
 
         // get count
         $sqlCount = "SELECT $columns FROM " . $this->table . " p $joins $where ";
