@@ -54,6 +54,34 @@ class images
         ]);
     }
 
+    public function getImageById($id){
+        $id = (int) $id;
+        $sql = "SELECT * FROM " . $this->table . " WHERE  id=:id";
+        return CMS::$db->getRow($sql, [
+            ':id' => $id
+        ]);
+    }
+
+    public function deleteImageById($id, $ref_field){
+        $result = false;
+        $image = $this->getImageById($id);
+        $sql = "DELETE FROM " . $this->table . " WHERE id=:id";
+        $deleted = CMS::$db->exec($sql, [
+            ':id' => (int)$id
+        ]);
+        if ($deleted) {
+            $path = UPLOADS_DIR.$this->upload_dir;
+            if (is_writable($path)) {
+                $imagePath = $path.'/'.$image['image'];
+                if (file_exists($imagePath)) {
+                    @unlink($imagePath);
+                }
+                $result = true;
+            }
+        }
+        return $result;
+    }
+
     public function deleteImages($id, $ref_field){
         $result = false;
         $images = $this->getImagesById($id, $ref_field);

@@ -78,13 +78,17 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
     // ]]>
 </script>
 
+<form action="?controller=publications&amp;action=delete_image" method="post" id="formDeleteItem">
+    <input type="hidden" name="CSRF_token" value="<?=$CSRF_token;?>" />
+    <input type="hidden" name="image_id" value="0" />
+    <input type="hidden" name="delete" value="0" />
+</form>
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
         <?=CMS::t('menu_item_publication_edit');?>
     </h1>
-
 </section>
 
 <!-- Content Header (Page header) -->
@@ -127,9 +131,9 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label><?=CMS::t('image');?></label>
+                                        <label><?=CMS::t('image');?> (<?=CMS::t('multi_image_select_warn')?>)</label>
                                         <?=view::browse([
-                                            'name' => 'img',
+                                            'name' => 'img[]',
                                             'accept' => 'image/*',
                                             'multiple' => true,
                                         ]);?>
@@ -138,10 +142,22 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
                                             ]);?></p>
                                     </div>
                                     <div class="form-group">
+                                        <label for="selectType" class="form-label"><?=CMS::t('filter_publication_type');?> *</label>
+                                        <select name="type" id="selectType" class="form-control">
+                                            <?php
+                                            if (!empty($publicationTypes) && is_array($publicationTypes)) {
+                                                foreach ($publicationTypes as $type) {
+                                                    ?><option <?= $publication['type']==$type['type'] ? "selected='selected'" : '' ?> value="<?=$type['type'];?>"><?=CMS::t($type['translate_key'])?></option><?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <?php
                                         $is_hidden = $publication['is_hidden'];
                                         ?>
-                                        <input type="checkbox" name="is_hidden" value="1"<?=(!$is_hidden? ' checked="checked"': '');?> id="triggerArticleStatus" /><label for="triggerArticleStatus" style="display: inline; font-weight: normal;"> <?=CMS::t('publication_is_hidden');?></label>
+                                        <input type="checkbox" name="visibility" value="1"<?=(!$is_hidden? ' checked="checked"': '');?> id="triggerArticleStatus" /><label for="triggerArticleStatus" style="display: inline; font-weight: normal;"> <?=CMS::t('publication_is_hidden');?></label>
                                     </div>
                                 </div>
                             </div>
@@ -155,17 +171,17 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
                                                 $previewUrl = $uploadUrl . 'publications/' . $image['image']; ?>
                                                 <div class="item">
                                                     <div class="mod_buttons">
-                                                        <?php if (CMS::hasAccessTo('publications/edit', 'write')) { ?>
-                                                            <a href="?controller=publications&amp;action=edit&amp;id=<?=$image['id']?>&amp;publication_id=<?=$publication['id']?>&amp;return=<?=""?>&amp;<?=time();?>" title="<?=CMS::t('edit');?>">
-                                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                            </a>
-                                                        <?php } else if (CMS::hasAccessTo('publications/edit', 'read')) { ?>
-                                                            <a href="?controller=publications&amp;action=edit&amp;id=<?=$image['id'];?>&amp;return=<?=$link_back;?>&amp;<?=time();?>" title="<?=CMS::t('view');?>">
-                                                                <i class="fa fa-eye" aria-hidden="true"></i>
-                                                            </a>
-                                                        <?php } ?>
+<!--                                                        --><?php //if (CMS::hasAccessTo('publications/edit', 'write')) { ?>
+<!--                                                            <a href="?controller=publications&amp;action=edit&amp;id=--><?//=$image['id']?><!--&amp;publication_id=--><?//=$publication['id']?><!--&amp;return=--><?//=""?><!--&amp;--><?//=time();?><!--" title="--><?//=CMS::t('edit');?><!--">-->
+<!--                                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>-->
+<!--                                                            </a>-->
+<!--                                                        --><?php //} else if (CMS::hasAccessTo('publications/edit', 'read')) { ?>
+<!--                                                            <a href="?controller=publications&amp;action=edit&amp;id=--><?//=$image['id'];?><!--&amp;return=--><?//=$link_back;?><!--&amp;--><?//=time();?><!--" title="--><?//=CMS::t('view');?><!--">-->
+<!--                                                                <i class="fa fa-eye" aria-hidden="true"></i>-->
+<!--                                                            </a>-->
+<!--                                                        --><?php //} ?>
                                                         <?php if (CMS::hasAccessTo('publications/delete', 'write')) { ?>
-                                                            <a href="#" title="<?=CMS::t('delete');?>" class="text-red" style="margin-left: 15px;" id="imageDeleteItem_<?=$image['id'];?>" data-item-id="<?=$image['id'];?>">
+                                                            <a href="#" title="<?=CMS::t('delete');?>" class="text-red"  id="imageDeleteItem_<?=$image['id'];?>" data-item-id="<?=$image['id'];?>">
                                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                                             </a>
                                                             <script type="text/javascript">

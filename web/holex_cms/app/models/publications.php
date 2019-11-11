@@ -142,6 +142,7 @@ class publications
     }
 
     public function editPublication($id){
+//        echo "<pre/>"; var_dump($_POST); die;
         $response = ['success' => false, 'message' => 'update_err'];
         $publication = $this->getPublicationById($id);
         if (empty($publication['id'])) {
@@ -151,7 +152,48 @@ class publications
         $upd = [];
         $translates = [];
 
+        // let's save images //
+        if (!empty($_FILES['img']['name']) && !($_FILES['img']['size'][0] == 0)) {
+            $publicationImages = new images('publications_images', [0 => 'id', 1 => 'publication_id', 2 => 'image'], 'publications');
+            $images = $_FILES['img'];
+            if (count($_FILES['img']['name']) > 5) {
+                $response['message'] = 'image_count_overflow';
+                return $response;
+            }
+            $added = $publicationImages->addImages($images, $id);
+            if (!$added) {
+                return $response;
+            }
+        }
 
+        // processing translates
+        foreach (CMS::$site_langs as $lng) {
+            foreach ($this->tr_fields as $f) {
+                if (in_array($f, ['title', 'full'])) {
+                    $translates[$lng['language_dir']][$f] = trim(@$_POST[$f][$lng['language_dir']]);
+                }
+            }
+        }
+        $upd['is_hidden'] = (int)@$_POST['visibility'] == 1 ? 0 : 1;
+        $upd['type'] = $_POST['type'];
+
+        CMS::$db->mod($this->table . '#' . (int)$id, $upd);
+        // saving translates
+        foreach ($translates as $lang => $tr_data) {
+            foreach ($tr_data as $fieldname => $text) {
+                tr::store([
+                    'ref_table' => $this->table,
+                    'ref_id' => $id,
+                    'lang' => $lang,
+                    'fieldname' => $fieldname,
+                    'text' => $text,
+                ]);
+            }
+        }
+        $response['success'] = true;
+        $response['message'] = 'update_suc';
+
+        return $response;
     }
 
     public function deletePublication($id){

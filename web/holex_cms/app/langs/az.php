@@ -318,6 +318,7 @@ return [
     'menu_item_publication_edit' => 'Nəşr redaktə et',
     'menu_item_publications_images' => 'Bu nəşrə aid şəkillər',
     'validate_err' => 'Müvafiq xanaları doldurun',
+    'image_count_overflow' => 'Şəkillərin sayı 5 dən çoxdur',
     'publications_list_details' => '{count} nəşr tapılıb',
     'publication_add' => 'Nəşr əlavə et',
     'publication_image_descr' => '{types} formatlı faylların yüklənməsinə icazə verilir.',

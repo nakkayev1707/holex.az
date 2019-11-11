@@ -83,6 +83,7 @@ class publications_controller extends controller
         $id = @(int)$_GET['id'];
         $params['publication'] = $publications->getPublicationById($id);
         $params['images'] = $images->getImagesById($id, 'publication_id');
+        $params['publicationTypes'] = $publications->publicationTypes;
         if (empty($params['publication']['id'])) {
             return CMS::resolve('base/404');
         }
@@ -135,10 +136,11 @@ class publications_controller extends controller
         view::$title = CMS::t('delete');
         $params = [];
         $params['canWrite'] = CMS::hasAccessTo('publications/delete', 'write');
-        $images = new images('publications', '', 'publications');
+        $params['link_back'] = (empty($_GET['return']) ? '?controller=publications&action=list' : $_GET['return']);
+        $images = new images('publications_images', '', 'publications');
         $deleted = false;
         if ($params['canWrite']) {
-            $deleted = $images->deleteImageById(@$_POST);
+            $deleted = $images->deleteImageById(@$_POST['image_id'], 'publication_id');
         }
         $params['op']['success'] = $deleted;
         $params['op']['message'] = 'del_'.($deleted? 'suc': 'err');
