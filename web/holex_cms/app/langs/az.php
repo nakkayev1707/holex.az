@@ -326,6 +326,7 @@ return [
     'publication_news' => 'Xəbər',
     'publication_blog' => 'Blog',
     'publication_event' => 'Tədbir',
+    'publication_aphorism' => 'Aforizm',
     'publication_title' => 'Başlıq',
     'publication_type' => 'Növ',
     'publication_is_hidden' => 'Saytda görülməsi',

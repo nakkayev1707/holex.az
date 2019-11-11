@@ -22,26 +22,31 @@ class Publication
         $this->type = $type;
     }
 
-
-    public function getPublications()
+    /**
+     * @param int $amount
+     * @param string $searchQuery
+     * @param string $order , values 'DESC' or 'ASC'
+     * @return array of publications
+     * @throws Exception
+     */
+    public function getPublications($amount = 0, $searchQuery = '', $order = '')
     {
-        $request = Yii::$app->request;
-        $searchQuery = $request->get("q");
-
         $where = [];
         $joins = [];
         $params = [];
         $columns = [];
 
         // only visible ones //
-        $where[] = 'p.is_hidden = 0';
+        $where[] = "p.is_hidden = '0'";
         $where[] = 'p.type=:type';
-
+        $joins[] = " LEFT JOIN publications_images p_img ON p_img.publication_id=p.id ";
+        $columns[] = "p_img.image";
+        $columns[] = "p.id";
+        $columns[] = "p.created_at";
         // search //
         if ($searchQuery) {
             $where[] = "(title.text LIKE :query)";
         }
-
         // translating //
         foreach ($this->translateFields as $field){
             $joins[] = "
@@ -63,33 +68,26 @@ class Publication
         $params[":query"] = $searchQuery;
         $params[":type"] = $this->type;
 
-        // get count
-        $sqlCount = "SELECT $columns FROM " . $this->table . " p $joins $where ";
-        try {
-            $count = Yii::$app->db->createCommand($sqlCount, $params)->queryAll();
-        } catch (Exception $e) {
-            return [];
-        }
-        $this->itemsAmount = $count;
-        $pagesAmount = ceil($count / $this->perPage);
+        // get count && pagination //
+        $sqlCount = "SELECT COUNT('p.id') AS count FROM " . $this->table . " p $joins $where ";
+        $count = Yii::$app->db->createCommand($sqlCount, $params)->queryOne();
+        $this->itemsAmount = $count['count'];
+        $pagesAmount = ceil($count['count'] / $this->perPage);
         $this->pagesAmount = $pagesAmount;
         $this->currentPage = (($this->currentPage > $this->pagesAmount) ? $this->pagesAmount : $this->currentPage);
         $startFrom = ($this->currentPage - 1) * $this->perPage;
-        $limit = "LIMIT " . (($startFrom > 0) ? ($startFrom . ', ') : '') . $this->perPage;
-
-        $sqlQetList = "SELECT $columns FROM " . $this->table . " p $joins $where $limit";
-        try {
-            $publications = Yii::$app->db->createCommand($sqlQetList, $params)->queryAll();
-        } catch (Exception $e) {
-            return [];
+        // limit //
+        if ($amount > 0 && $amount < 9999999999) {
+            $limit = "LIMIT " . $amount;
+        } else {
+            $limit = "LIMIT " . (($startFrom > 0) ? ($startFrom . ', ') : '') . $this->perPage;
         }
-        $pagination = new Pagination([
-            'totalCount' => $this->itemsAmount,
-            'pageSize' => $this->perPage
-        ]);
-        $result['publications'] = $publications;
-        $result['pagination'] = $pagination;
-        return $result;
+        // order //
+        ($order && ($order == 'DESC' || $order == 'ASC')) ? $order = "ORDER BY p.id $order" : $order = "";
+        $sqlGetList = "SELECT $columns FROM " . $this->table . " p $joins $where $order $limit ";
+        // result //
+        $publications = Yii::$app->db->createCommand($sqlGetList, $params)->queryAll();
+        return $publications;
     }
 
 

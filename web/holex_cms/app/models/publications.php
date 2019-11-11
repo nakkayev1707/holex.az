@@ -32,6 +32,11 @@ class publications
             'type' => 'event',
             'translate_key' => 'publication_event'
         ],
+        [
+            'id' => 4,
+            'type' => 'aphorism',
+            'translate_key' => 'publication_aphorism'
+        ],
     ];
 
     public function getPublicationsList()

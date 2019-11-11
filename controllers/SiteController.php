@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Publication;
+use app\models\Service;
 use Yii;
+use yii\db\Exception;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -51,8 +54,25 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        // models //
+        $aphorismModel = new Publication('aphorism');
+        $newsModel = new Publication('news');
+        $serviceModel = new Service();
 
-        return $this->render('index');
+        // data //
+        $aphorisms = [];
+        $news = [];
+        try {
+            $aphorisms = $aphorismModel->getPublications(4, '', 'DESC');
+            $news = $newsModel->getPublications(3, '', 'DESC');
+        } catch (Exception $e) {
+            $this->render('index');
+        }
+
+        return $this->render('index', [
+            'aphorisms' => $aphorisms,
+            'news' => $news,
+        ]);
     }
 
     public function actionServices(){

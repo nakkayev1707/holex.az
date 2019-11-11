@@ -19,5 +19,10 @@ return [
     'menu_retreats_service' => 'Retreats',
     'menu_blog' => 'Blog',
     'menu_about' => 'About me',
-    'menu_contact_me' => 'Contact me'
+    'menu_contact_me' => 'Contact me',
+
+    // publications //
+    'read_more' => 'Read more',
+    'latest_news' => 'Latest news',
+
 ];

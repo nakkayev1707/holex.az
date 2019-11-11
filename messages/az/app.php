@@ -20,7 +20,10 @@ return [
     'menu_retreats_service' => 'Retreats',
     'menu_blog' => 'Blog',
     'menu_about' => 'Haqqımda',
-    'menu_contact_me' => 'Mənimlə əlaqə'
+    'menu_contact_me' => 'Mənimlə əlaqə',
 
+    // publications //
+    'read_more' => 'Ətraflı',
+    'latest_news' => 'Son xəbərlər',
 
 ];

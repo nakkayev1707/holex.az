@@ -246,7 +246,7 @@ $params = Yii::$app->params;
                 <div class="bottomInfo small">
                     <div class="col-xs-12 col-sm-8">
                         <div class="copy">
-                            <p>Copyright © Psychologycare 2017. All rights reserved.</p>
+                            <p>Copyright © MYHOLEX <?= date('Y')?>. All rights reserved.</p>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-4">
