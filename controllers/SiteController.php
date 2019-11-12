@@ -13,7 +13,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
-class SiteController extends Controller
+class SiteController extends BaseController
 {
 
     public function behaviors()
@@ -75,9 +75,6 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionServices(){
-        return $this->render('services');
-    }
 
     public function actionContact()
     {
@@ -99,5 +96,9 @@ class SiteController extends Controller
 
     public function actionError() {
         return $this->render('error');
+    }
+
+    public function actionUnderconstruction() {
+        return $this->render('underconstruction');
     }
 }

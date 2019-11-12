@@ -102,6 +102,7 @@ $params = Yii::$app->params;
                                             </ul>
                                         </li>
                                         <li class="<?=$route == 'site/blog' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/blog') ?>"><?= Yii::t('app', 'menu_blog') ?></a></li>
+                                        <li class="<?=$route == 'site/news' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/news') ?>"><?= Yii::t('app', 'menu_news') ?></a></li>
                                         <li class="<?=$route == 'site/about' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/about') ?>"><?= Yii::t('app', 'menu_about') ?></a></li>
                                         <li class="<?=$route == 'site/contact' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/contact') ?>"><?= Yii::t('app', 'menu_contact_me') ?></a></li>
                                         <li><a href="#"><?= Yii::$app->language ?></a>
@@ -109,10 +110,11 @@ $params = Yii::$app->params;
                                             <ul>
                                                 <li><a href="<?= Url::to([Yii::$app->controller->route, 'language' => 'az']) ?>">AZ</a></li>
                                                 <li><a href="<?= Url::to([Yii::$app->controller->route, 'language' => 'en']) ?>">EN</a></li>
+<!--                                                <li><a href="--><?//= Url::to([Yii::$app->controller->route, 'language' => 'ru']) ?><!--">RU</a></li>-->
                                             </ul>
                                         </li>
                                     </ul>
-                                    <div class="nav-search pull-right text-right">
+                                    <div class="nav-search pull-right text-right" style="right: -4%;">
                                         <div class="widget-t widget-t-search">
                                             <div class="widget-t-inner">
                                                 <form action="<?=Url::toRoute('site/index') ?>" method="get" class="search-form">

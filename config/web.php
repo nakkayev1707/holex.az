@@ -78,16 +78,19 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'class' => 'codemix\localeurls\UrlManager',
-            'languages' => ['az', 'en'],
+            'languages' => ['az', 'en', 'ru'],
             'enableLanguageDetection' => false,
             // this option (enableLanguagePersistence) disables storing selected language in cookie //
             'enableLanguagePersistence' => false,
             'rules' => [
                 '/' => '/site/index',
-                '/contact_me' => '/site/contact_me',
+                '/contact' => '/site/contact',
                 '/about' => '/site/about',
                 '/error' => '/site/error',
                 '/blog' => '/site/blog',
+                '/news' => '/site/news',
+                '/underconstruction' => 'site/underconstruction',
+                '/service/index' => '/service/'
             ],
         ],
 

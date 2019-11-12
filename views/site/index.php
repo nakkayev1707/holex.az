@@ -30,10 +30,9 @@ use yii\helpers\Url; ?>
                                             <p><?= $aphorism['full']?></p>
                                         </div>
                                         <div class="bannerBtnWrapper">
-                                            <a href="<?= Url::toRoute('service/index') ?>" class="button btnSize1">View
-                                                all Services</a>
+                                            <a href="<?= Url::toRoute('service/index') ?>" class="button btnSize1"><?= Yii::t('app', 'view_all_services')?></a>
                                             <a href="<?= Url::toRoute('site/contact') ?>"
-                                               class="button btnStyle3 btnSize1">Get Appointment</a>
+                                               class="button btnStyle3 btnSize1"><?=Yii::t('app', 'get_appointment') ?></a>
                                         </div>
                                     </div>
                                 </div>
@@ -60,26 +59,30 @@ use yii\helpers\Url; ?>
             </div>
         </div>
         <div class="row clearFix">
-            <!-- 	Tumb1-START 	-->
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <div class="tumbWrapper">
-                    <a href="stress-management.html" class="imgWrapper imgTumb bgShadow light">
-                        <img src="img/tumb-img1.jpg" alt="">
-                    </a>
-                    <h6 class="h6 as"><a href="stress-management.html">Stress Management</a></h6>
-                    <div class="tumbContent small">
-                        <p>simply my text of the printing and Ips um is simply text of the Ipsum is simply text of thetypesetting</p>
+            <?php if (isset($services)) {
+                foreach ($services as $service) {
+                    $imagePath = Yii::$app->params['siteUrl'].Yii::$app->params['uploadsUrl']."/services/".$service['image'];
+                    ?>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="tumbWrapper">
+                            <a href="<?=Url::toRoute('service/index?id=') . $service['id']?>" class="imgWrapper imgTumb bgShadow light">
+                                <img src="<?=$imagePath?>" alt="">
+                            </a>
+                            <h6 class="h6 as"><a href="<?=Url::toRoute('services/index?id=').$service['id'] ?>"><?=$service['title'] ?></a></h6>
+                            <div class="tumbContent small">
+                                <p><?=$service['full']?></p>
+                            </div>
+                        </div>
+                        <div class="emptySpace-sm30"></div>
                     </div>
-                </div>
-                <div class="emptySpace-sm30"></div>
-            </div>
-            <!-- 	Tumb1-END 	-->
+                <?php }
+            } ?>
 
             <!-- 	Button-START 	-->
             <div class="col-xs-12">
                 <div class="btnWrapper">
                     <div class="emptySpace50 emptySpace-xs20"></div>
-                    <a href="services.html" class="button">View all Services</a>
+                    <a href="<?=Url::toRoute('service/index') ?>" class="button"><?=Yii::t('app', 'view_all_services') ?></a>
                 </div>
             </div>
             <!-- 	Button-END 	-->
