@@ -11,7 +11,7 @@ use profit_az\profit_cms\helpers\utils;
 class publications
 {
     public $curr_page = 1;
-    public $per_page = 20;
+    public $per_page = 10;
     public $pages_amount = 0;
     public $items_amount = 0;
     public $table = 'publications';

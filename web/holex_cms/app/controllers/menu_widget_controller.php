@@ -32,17 +32,18 @@ class menu_widget_controller extends widget
         [
             'name' => 'menu_block_content',
             'icon' => 'files-o',
-            'selected' => ['publications/list', 'publications/add', 'publications/edit', 'publications/images', 'publications/delete_image'],
+            'selected' =>
+                [
+                    'publications/list', 'publications/add', 'publications/edit', 'publications/images', 'publications/delete_image',
+                    'services/list', 'services/add', 'services/edit', 'services/delete'
+                ],
             'subs' => [
                 'publications/list' => [
                     'selected' => ['publications/list', 'publications/add', 'publications/edit', 'publications/delete', 'publications/images', 'publications/delete_image']
                 ],
-                'articles/list' => [
-                    'selected' => ['articles/list', 'articles/add', 'articles/edit', 'articles/delete']
+                'services/list' => [
+                    'selected' => ['services/list', 'services/add', 'services/edit', 'services/delete']
                 ],
-                'gallery/list' => [
-                    'selected' => ['gallery/list', 'gallery/add', 'gallery/edit', 'gallery/delete', 'gallery/photos']
-                ]
             ]
         ],
 //		[

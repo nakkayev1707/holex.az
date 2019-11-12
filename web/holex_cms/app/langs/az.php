@@ -338,6 +338,15 @@ return [
     'filter_hidden' => 'Gizlədilmiş',
     // End publications content //
 
+    // Start services content //
+    'menu_item_services_list' => 'Servislər',
+    'menu_item_service_add' => 'Servis əlavə et',
+    'service_add' => 'Servis əlavə et',
+    'services_list_details' => '{count} servis tapılıb',
+    'filter_service_type' => 'Servis növü',
+
+    // End services content //
+
     // Navigation
 
 	'nav_menu' => 'Menyu',
