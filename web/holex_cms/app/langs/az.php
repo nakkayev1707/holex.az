@@ -344,8 +344,15 @@ return [
     'service_add' => 'Servis əlavə et',
     'services_list_details' => '{count} servis tapılıb',
     'filter_service_type' => 'Servis növü',
-
     // End services content //
+
+    // Start services types content //
+    'menu_item_services_types_list' => 'Servis növ siyahisi',
+    'menu_item_service_type_edit' => 'Servis növ redaktə et',
+    'service_type_add' => 'Servis növü əlavə et',
+    'services_types_list_details' => '{count} servis növ tapılıb',
+    'service_type_title' => 'Servis növü',
+    // End services types content //
 
     // Navigation
 

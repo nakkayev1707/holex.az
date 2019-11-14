@@ -147,7 +147,6 @@ class publications
     }
 
     public function editPublication($id){
-//        echo "<pre/>"; var_dump($_POST); die;
         $response = ['success' => false, 'message' => 'update_err'];
         $publication = $this->getPublicationById($id);
         if (empty($publication['id'])) {
