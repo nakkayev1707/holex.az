@@ -344,6 +344,8 @@ return [
     'service_add' => 'Servis əlavə et',
     'services_list_details' => '{count} servis tapılıb',
     'filter_service_type' => 'Servis növü',
+    'service_title' => 'Başlıq',
+    'service_type' => 'Növ',
     // End services content //
 
     // Start services types content //

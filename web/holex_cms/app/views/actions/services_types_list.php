@@ -65,7 +65,8 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'bootstrap-datepicker/locales/bootstrap-datep
                     '{count}' => $count,
                     '{ru:u1}' => utils::getRussianWordEndingByNumber($count, 'а', 'ы', 'о'),
                     '{ru:u2}' => utils::getRussianWordEndingByNumber($count, 'я', 'и', 'ий')
-                ]);?></h3>
+                ]);?>
+            </h3>
 
             <div class="box-tools pull-right col-sm-5 col-lg-6">
                 <form action="" method="get" id="formSearchAndFilter">

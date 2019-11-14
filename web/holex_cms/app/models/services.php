@@ -4,6 +4,7 @@
 namespace app\models;
 
 
+use abeautifulsite\simple_image\SimpleImage;
 use profit_az\profit_cms\CMS;
 use profit_az\profit_cms\helpers\tr;
 use profit_az\profit_cms\helpers\utils;
@@ -46,7 +47,7 @@ class services
             $this->curr_page = (($this->curr_page > $this->pages_amount) ? $this->pages_amount : $this->curr_page);
             $start_from = ($this->curr_page - 1) * $this->per_page;
 
-            $sqlGetServices = "SELECT s.*, tr.text AS title FROM `" . $this->table . "` p " . implode("\n", $joins) . "
+            $sqlGetServices = "SELECT s.*, tr.text AS title FROM `" . $this->table . "` s " . implode("\n", $joins) . "
 				{$where} ORDER BY id DESC
 				LIMIT " . (($start_from > 0) ? ($start_from . ', ') : '') . $this->per_page;
 
@@ -61,13 +62,13 @@ class services
     public function addService()
     {
         $response = ['success' => false, 'message' => 'insert_err'];
-        $service = [
-            'type_id' => CMS::$db->ex
-        ];
         if (!$this->validate(@$_POST)) {
             $response['message'] = 'validate_err';
             return $response;
         }
+        $service = [
+            'type_id' => $_POST['type']
+        ];
         $translates = [];
         // processing translates
         foreach (CMS::$site_langs as $lng) {
@@ -93,6 +94,10 @@ class services
         }
         // saving service //
         $ins_id = CMS::$db->add($this->table, $service);
+        if ($ins_id) {
+            $response['success'] = true;
+            $response['message'] = 'insert_suc';
+        }
         // saving translates
         foreach ($translates as $lang => $tr_data) {
             foreach ($tr_data as $fieldname => $text) {

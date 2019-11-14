@@ -114,15 +114,22 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'bootstrap-datepicker/locales/bootstrap-datep
                                 <?=(CMS::t($service['type']))?>
                             </td>
                             <td>
-                                <?=(CMS::t($service['image']))?>
+                                <?php if (!empty($service['image'])) {
+                                    $uploadUrl = SITE.utils::dirCanonicalPath(CMS_DIR.UPLOADS_DIR);
+                                    $previewUrl = $uploadUrl.'services/'.$service['image'];
+                                    ?>
+                                    <a target="_blank" class="fancybox" rel="group" data-target="fancy-box" href="<?=$previewUrl;?>">
+                                        <i class="fa fa-picture-o" aria-hidden="true"></i>
+                                    </a>
+                                <?php } ?>
                             </td>
                             <td style="white-space: nowrap;">
                                 <?php if (CMS::hasAccessTo('services/edit', 'write')) { ?>
-                                    <a href="?controller=publications&amp;action=edit&amp;id=<?=$service['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('edit');?>">
+                                    <a href="?controller=services&amp;action=edit&amp;id=<?=$service['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('edit');?>">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     </a>
                                 <?php } else if (CMS::hasAccessTo('services/edit', 'read')) { ?>
-                                    <a href="?controller=publications&amp;action=edit&amp;id=<?=$service['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('view');?>">
+                                    <a href="?controller=services&amp;action=edit&amp;id=<?=$service['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('view');?>">
                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                     </a>
                                 <?php } ?>
@@ -132,7 +139,7 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'bootstrap-datepicker/locales/bootstrap-datep
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </a>
                                     <script type="text/javascript">
-                                        $('#pDeleteItem_<?=$service['id'];?>').on('click', function() {
+                                        $('#sDeleteItem_<?=$service['id'];?>').on('click', function() {
                                             bootbox.confirm({
                                                 message: '<?=CMS::t('delete_confirmation');?>',
                                                 callback: function(ok) {

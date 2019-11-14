@@ -82,7 +82,7 @@ class services_types_controller extends controller
         return self::render('service_type_edit', $params);
     }
 
-    public function action_delete(){
+    public static function action_delete(){
         self::$layout = 'common_layout';
         view::$title = CMS::t('delete');
         $serviceTypeModel = new services_types();
