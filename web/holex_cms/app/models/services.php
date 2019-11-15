@@ -113,6 +113,82 @@ class services
         return $response;
     }
 
+    public function editService($id){
+        $response = ['success' => false, 'message' => 'update_err'];
+        $service = $this->getServiceById($id);
+        $upd = [];
+        $translates = [];
+
+        if (!empty($_FILES['img']['name'])) {
+            if (empty($_FILES['img']['error'])) {
+                $uploaded = utils::upload($_FILES['img']['name'], $_FILES['img']['tmp_name'], UPLOADS_DIR.'services/', images::$allowed_ext);
+                if (empty($uploaded)) {
+                    $response['errors'][] = 'upl_invalid_image_extension_err';
+                } else {
+                    $upd['image'] = $uploaded;
+                    @unlink(UPLOADS_DIR.'services/'.$service['image']);
+                }
+            } else {
+                $response['errors'][] = CMS::$upload_err[$_FILES['img']['error']];
+            }
+        }
+
+
+        // processing translates
+        foreach (CMS::$site_langs as $lng) {
+            foreach ($this->tr_fields as $f) {
+                if (in_array($f, ['title', 'full'])) {
+                    $translates[$lng['language_dir']][$f] = trim(@$_POST[$f][$lng['language_dir']]);
+                }
+            }
+        }
+        $upd['type'] = $_POST['type'];
+
+        CMS::$db->mod($this->table . '#' . (int)$id, $upd);
+        // saving translates
+        foreach ($translates as $lang => $tr_data) {
+            foreach ($tr_data as $fieldname => $text) {
+                tr::store([
+                    'ref_table' => $this->table,
+                    'ref_id' => $id,
+                    'lang' => $lang,
+                    'fieldname' => $fieldname,
+                    'text' => $text,
+                ]);
+            }
+        }
+        $response['success'] = true;
+        $response['message'] = 'update_suc';
+
+        return $response;
+    }
+
+    public function getServiceById($id){
+        $id = (int)$id;
+        $sql = "SELECT * FROM " . $this->table ." WHERE id=:service_id LIMIT 1";
+        $service = CMS::$db->getRow($sql, [
+            ':service_id' => $id
+        ]);
+        if (!empty($service['id']))  {$service['translates'] = tr::get($this->table, $id);}
+        return $service;
+    }
+
+    public function deleteService($id){
+        $sqlServiceDelete = "DELETE FROM " . $this->table . " WHERE id=:id";
+        $service = $this->getServiceById((int)$id);
+        $serviceDeleted = CMS::$db->exec($sqlServiceDelete, [
+            ':id' => (int)$id
+        ]);
+        if ($serviceDeleted && $service['id']) {
+            if (tr::del($this->table, (int)$id)) {
+                @unlink(UPLOADS_DIR.'services/'.$service['image']);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     private function validate($post)
     {
         if (empty($post['CSRF_token']) || empty($post['type']) || (empty($post['title']['az'])

@@ -341,6 +341,7 @@ return [
     // Start services content //
     'menu_item_services_list' => 'Servislər',
     'menu_item_service_add' => 'Servis əlavə et',
+    'menu_item_service_edit' => 'Servis redaktə et',
     'service_add' => 'Servis əlavə et',
     'services_list_details' => '{count} servis tapılıb',
     'filter_service_type' => 'Servis növü',

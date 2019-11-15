@@ -97,7 +97,6 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'bootstrap-datepicker/locales/bootstrap-datep
                     <thead>
                     <tr>
                         <th><?=CMS::t('service_title');?></th>
-                        <th><?=CMS::t('service_type');?></th>
                         <th><?=CMS::t('image');?></th>
                         <th><?=CMS::t('controls');?></th>
                     </tr>
@@ -109,9 +108,6 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'bootstrap-datepicker/locales/bootstrap-datep
                         <tr data-id="<?=$service['id'];?>">
                             <td>
                                 <?=($service['title']);?>
-                            </td>
-                            <td>
-                                <?=(CMS::t($service['type']))?>
                             </td>
                             <td>
                                 <?php if (!empty($service['image'])) {
@@ -135,7 +131,7 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'bootstrap-datepicker/locales/bootstrap-datep
                                 <?php } ?>
 
                                 <?php if (CMS::hasAccessTo('services/delete', 'write')) { ?>
-                                    <a href="#" title="<?=CMS::t('delete');?>" class="text-red" style="margin-left: 15px;" id="pDeleteItem_<?=$service['id'];?>" data-item-id="<?=$service['id'];?>">
+                                    <a href="#" title="<?=CMS::t('delete');?>" class="text-red" style="margin-left: 15px;" id="sDeleteItem_<?=$service['id'];?>" data-item-id="<?=$service['id'];?>">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </a>
                                     <script type="text/javascript">

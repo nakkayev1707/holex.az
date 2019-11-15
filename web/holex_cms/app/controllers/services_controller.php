@@ -62,4 +62,54 @@ class services_controller extends controller
         return self::render('service_add', $params);
     }
 
+    public static function action_edit(){
+        self::$layout = 'common_layout';
+        view::$title = CMS::t('menu_item_service_edit');
+
+        $serviceModel = new services();
+        $serviceTypesModel = new services_types();
+
+        $params = [];
+        $params['canWrite'] = CMS::hasAccessTo('publications/edit', 'write');
+        $params['link_back'] = (empty($_GET['return'])? '?controller=service&action=list': $_GET['return']);
+
+        $id = @(int)$_GET['id'];
+        $params['service'] = $serviceModel->getServiceById($id);
+        $params['serviceTypes'] = $serviceTypesModel->getTypesList();
+        if (empty($params['service']['id'])) {
+            return CMS::resolve('base/404');
+        }
+        $params['langs'] = CMS::$site_langs;
+        $params['allowed_thumb_ext'] = images::$allowed_ext;
+
+        if (isset($_POST['save']) || isset($_POST['apply']) || isset($_POST['is_published'])) {
+            if (!$params['canWrite']) {CMS::logout();}
+            $params['op'] = $serviceModel->editService($id);
+            $params['publication'] = $serviceModel->getServiceById($id);
+            if ($params['op']['success'] && isset($_POST['save'])) {
+                utils::delayedRedirect($params['link_back']);
+            }
+        }
+
+
+        return self::render('services_edit', $params);
+    }
+
+    public static function action_delete(){
+        self::$layout = 'common_layout';
+        view::$title = CMS::t('delete');
+        $serviceModel = new services();
+        $params = [];
+        $params['canWrite'] = CMS::hasAccessTo('services/delete', 'write');
+        $params['link_back'] =  (empty($_GET['return'])? '?controller=services&action=list': $_GET['return']);
+        $deleted = false;
+        if ($params['canWrite']) {
+            $deleted = $serviceModel->deleteService(@$_POST['delete']);
+        }
+        $params['op']['success'] = $deleted;
+        $params['op']['message'] = 'del_'.($deleted ? 'suc' : 'err');
+        return self::render('cms_user_delete', $params);
+    }
+
+
 }
