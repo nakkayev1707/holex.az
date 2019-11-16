@@ -171,15 +171,6 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
                                                 $previewUrl = $uploadUrl . 'publications/' . $image['image']; ?>
                                                 <div class="item">
                                                     <div class="mod_buttons">
-<!--                                                        --><?php //if (CMS::hasAccessTo('publications/edit', 'write')) { ?>
-<!--                                                            <a href="?controller=publications&amp;action=edit&amp;id=--><?//=$image['id']?><!--&amp;publication_id=--><?//=$publication['id']?><!--&amp;return=--><?//=""?><!--&amp;--><?//=time();?><!--" title="--><?//=CMS::t('edit');?><!--">-->
-<!--                                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>-->
-<!--                                                            </a>-->
-<!--                                                        --><?php //} else if (CMS::hasAccessTo('publications/edit', 'read')) { ?>
-<!--                                                            <a href="?controller=publications&amp;action=edit&amp;id=--><?//=$image['id'];?><!--&amp;return=--><?//=$link_back;?><!--&amp;--><?//=time();?><!--" title="--><?//=CMS::t('view');?><!--">-->
-<!--                                                                <i class="fa fa-eye" aria-hidden="true"></i>-->
-<!--                                                            </a>-->
-<!--                                                        --><?php //} ?>
                                                         <?php if (CMS::hasAccessTo('publications/delete', 'write')) { ?>
                                                             <a href="#" title="<?=CMS::t('delete');?>" class="text-red"  id="imageDeleteItem_<?=$image['id'];?>" data-item-id="<?=$image['id'];?>">
                                                                 <i class="fa fa-trash" aria-hidden="true"></i>

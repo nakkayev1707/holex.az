@@ -86,7 +86,7 @@ $(document).ready(function() {
 
 
 	<!-- Deleting hidden form -->
-	<form action="?controller=site_users&amp;action=delete" method="post" id="formDeleteItem">
+	<form action="?controller=users&amp;action=delete" method="post" id="formDeleteItem">
 		<input type="hidden" name="CSRF_token" value="<?=$CSRF_token;?>" />
 		<input type="hidden" name="delete" value="0" />
 	</form>
@@ -96,31 +96,11 @@ $(document).ready(function() {
 	<section class="content-header">
 		<h1>
 			<?=CMS::t('menu_item_site_users_list');?>
-			<!-- <small>Subtitile</small> -->
 		</h1>
-
-		<!-- <ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-			<li class="active">Dashboard</li>
-		</ol> -->
 	</section>
-
-	<!-- Content Header (Page header) -->
-	<!-- <section class="contextual-navigation">
-		<nav>
-			<?php if ($canWrite) { ?>
-			<a href="?controller=site_users&amp;action=add&amp;return=<?=$link_return;?>&amp;<?=time();?>" class="btn btn-default"><i class="fa fa-plus-circle" aria-hidden="true"></i> <?=CMS::t('menu_item_site_users_add');?></a>
-			<?php } ?>
-		</nav>
-	</section> -->
 
 	<!-- Main content -->
 	<section class="content">
-
-		<!-- Info boxes -->
-
-		<!-- <pre><?php /*var_export($users);*/ ?></pre> -->
-
 		<div class="box">
 			<div class="box-header with-border">
 				<h3 class="box-title"><?=CMS::t('site_users_list_details', [
@@ -135,15 +115,15 @@ $(document).ready(function() {
 						<input type="hidden" name="action" value="<?=utils::safeEcho(@$_GET['action'], 1);?>" />
 						<input type="hidden" name="<?=time();?>" value="" />
 
-						<div class="input-group has-feedback">
-							<div class="input-group-btn">
-								<button type="button" class="btn btn-<?=(utils::isEmptyArrayRecursive(@$_GET['filter'])? 'success': 'warning');?>" id="filter-button"><i class="fa fa-filter" aria-hidden="true"></i> <?=CMS::t('filter');?></button>
-							</div>
-							<input type="text" name="q" value="<?=utils::safeEcho(@$_GET['q'], 1);?>" placeholder="<?=CMS::t('cms_users_search');?>" class="form-control input-md" onfocus="this.value='';" />
-							<span class="input-group-btn">
-								<button type="submit" name="go" value="1" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> <?=CMS::t('search');?></button>
-							</span>
-						</div>
+<!--						<div class="input-group has-feedback">-->
+<!--							<div class="input-group-btn">-->
+<!--								<button type="button" class="btn btn---><?//=(utils::isEmptyArrayRecursive(@$_GET['filter'])? 'success': 'warning');?><!--" id="filter-button"><i class="fa fa-filter" aria-hidden="true"></i> --><?//=CMS::t('filter');?><!--</button>-->
+<!--							</div>-->
+<!--							<input type="text" name="q" value="--><?//=utils::safeEcho(@$_GET['q'], 1);?><!--" placeholder="--><?//=CMS::t('cms_users_search');?><!--" class="form-control input-md" onfocus="this.value='';" />-->
+<!--							<span class="input-group-btn">-->
+<!--								<button type="submit" name="go" value="1" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> --><?//=CMS::t('search');?><!--</button>-->
+<!--							</span>-->
+<!--						</div>-->
 					</form>
 				</div>
 			</div>
@@ -156,10 +136,13 @@ $(document).ready(function() {
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th><?=CMS::t('site_user_email');?></th>
-							<th><?=CMS::t('site_user_name');?></th>
-							<th><?=CMS::t('site_user_reg_date');?></th>
-							<th><?=CMS::t('access');?></th>
+							<th><?=CMS::t('user_fio');?></th>
+							<th><?=CMS::t('user_email');?></th>
+							<th><?=CMS::t('user_phone');?></th>
+                            <th><?=CMS::t('user_request_date');?></th>
+                            <th><?=CMS::t('user_ip');?></th>
+                            <th><?=CMS::t('access');?></th>
+<!--                            <th>--><?//=CMS::t('user_title');?><!--</th>-->
 							<th><?=CMS::t('controls');?></th>
 						</tr>
 					</thead>
@@ -169,46 +152,40 @@ $(document).ready(function() {
 						?>
 							<tr>
 								<td>
-									<?php if (empty($user['avatar'])) { ?>
-									<?=view::gravatar($user['email'], 40, ['class' => 'userpic img-circle img-bordered-sm']);?>
-									<?php } else { ?>
-									<img src="<?=UPLOADS_DIR;?>avatars/site_users/<?=$user['avatar'];?>" alt="" class="userpic img-circle img-bordered-sm" />
-									<?php } ?>
-									<?=utils::safeEcho($user['email'], 1);?>
+									<?=view::gravatar($user['fio'], 40, ['class' => 'userpic img-circle img-bordered-sm']);?>
+									<?=utils::safeEcho($user['fio'], 1);?>
 								</td>
 								<td>
-									<?php if (!empty($user['provider'])) { ?>
-									<a href="<?=$user['profile'];?>" target="_blank" title="<?=$user['provider'];?>" class="provider-link">
-										<img src="<?=IMAGE_DIR;?>providers/<?=$user['provider'];?>.png" alt="<?=$user['provider'];?>" class="provider" /> 
-									<?php } ?>
-										<?=utils::safeEcho($user['first_name'].' '.$user['last_name'], 1);?>
-									<?php if (!empty($user['provider'])) { ?>
-										<i class="fa fa-external-link" aria-hidden="true"></i>
-									</a>
-									<?php } ?>
+                                    <?=utils::safeEcho($user['email'], 1);?>
 								</td>
+                                <td>
+                                    <?=utils::safeEcho($user['phone'], 1);?>
+                                </td>
 								<td>
-									<time datetime="<?=utils::formatMySQLDate('c', $user['registration_datetime']);?>" title="<?=$user['registration_datetime'];?>"><?=utils::formatMySQLDate('d.m.Y H:i', $user['registration_datetime']);?></time>
+									<time datetime="<?=utils::formatMySQLDate('c', $user['request_date']);?>" title="<?=$user['request_date'];?>"><?=utils::formatMySQLDate('d.m.Y H:i', $user['request_date']);?></time>
 								</td>
+                                <td>
+                                    <?=utils::safeEcho($user['ip_address'], 1);?>
+                                </td>
+                                <td>
+                                    <?php if (CMS::hasAccessTo('users/ajax_set_ban', 'write')) { ?>
+                                        <a href="?controller=users&amp;action=ajax_set_ban" title="" class="aAjax btn-toggle" data-ajax_post="<?=utils::safeEcho(json_encode([
+                                            'CSRF_token' => $CSRF_token,
+                                            'user_id' => $user['id'],
+                                            'turn' => ($user['is_blocked']? 'on': 'off')
+                                        ]), 1);?>"><i class="fa fa-toggle-<?=($user['is_blocked']? 'off': 'on');?> btn-toggle-<?=($user['is_blocked']? 'off': 'on');?>" aria-hidden="true"></i></a>
+                                    <?php } else { ?>
+                                        <i class="fa fa-toggle-<?=($user['is_blocked']? 'off': 'on');?> btn-toggle-disabled" aria-hidden="true"></i>
+                                    <?php } ?>
+                                </td>
 								<td>
-									<?php if (CMS::hasAccessTo('site_users/ajax_set_ban', 'write')) { ?>
-										<a href="?controller=site_users&amp;action=ajax_set_ban" title="" class="aAjax btn-toggle" data-ajax_post="<?=utils::safeEcho(json_encode([
-											'CSRF_token' => $CSRF_token,
-											'user_id' => $user['id'],
-											'turn' => ($user['is_blocked']? 'on': 'off')
-										]), 1);?>"><i class="fa fa-toggle-<?=($user['is_blocked']? 'off': 'on');?> btn-toggle-<?=($user['is_blocked']? 'off': 'on');?>" aria-hidden="true"></i></a>
-									<?php } else { ?>
-										<i class="fa fa-toggle-<?=($user['is_blocked']? 'off': 'on');?> btn-toggle-disabled" aria-hidden="true"></i>
-									<?php } ?>
-								</td>
-								<td>
-									<?php if (CMS::hasAccessTo('site_users/view_info')) { ?>
-									<a href="?controller=site_users&amp;action=view_info&amp;id=<?=$user['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('view');?>">
+									<?php if (CMS::hasAccessTo('users/view_info')) { ?>
+									<a href="?controller=users&amp;action=view_info&amp;id=<?=$user['id'];?>&amp;return=<?=$link_return;?>&amp;<?=time();?>" title="<?=CMS::t('view');?>">
 										<i class="fa fa-eye" aria-hidden="true"></i>
 									</a>
 									<?php } ?>
 
-									<?php if (CMS::hasAccessTo('site_users/delete', 'write')) { ?>
+									<?php if (CMS::hasAccessTo('users/delete', 'write')) { ?>
 									<a href="#" title="<?=CMS::t('delete');?>" class="text-red" style="margin-left: 15px;" id="aDeleteItem_<?=$user['id'];?>" data-item-id="<?=$user['id'];?>">
 										<i class="fa fa-trash" aria-hidden="true"></i>
 									</a>

@@ -357,6 +357,15 @@ return [
     'service_type_title' => 'Servis növü',
     // End services types content //
 
+    // Start users content
+    'menu_item_users_list' => 'Sayt istifadəçilər',
+    'user_fio' => 'S.A.A',
+    'user_email' => 'Email',
+    'user_phone' => 'Mobil telefon',
+    'user_request_date' => 'Tarix',
+    'user_ip' => 'IP Adress',
+    // End users content
+
     // Navigation
 
 	'nav_menu' => 'Menyu',

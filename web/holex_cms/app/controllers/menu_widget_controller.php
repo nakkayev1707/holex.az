@@ -36,7 +36,7 @@ class menu_widget_controller extends widget
                 [
                     'publications/list', 'publications/add', 'publications/edit', 'publications/images', 'publications/delete_image',
                     'services/list', 'services/add', 'services/edit', 'services/delete', 'services_types/list', 'services_types/add',
-                    'services_types/edit', 'services_types/delete'
+                    'services_types/edit', 'services_types/delete', 'users/list', 'users/view_info',
                 ],
             'subs' => [
                 'publications/list' => [
@@ -47,6 +47,9 @@ class menu_widget_controller extends widget
                 ],
                 'services_types/list' => [
                     'selected' => ['services_types/list', 'services_types/add', 'services_types/edit', 'services_types/delete']
+                ],
+                'users/list' => [
+                    'selected' => ['users/list', 'users/view_info']
                 ],
             ]
         ],
