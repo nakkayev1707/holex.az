@@ -39,18 +39,6 @@ class SiteController extends BaseController
         ];
     }
 
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
-    }
 
     public function actionIndex()
     {
@@ -75,17 +63,16 @@ class SiteController extends BaseController
         ]);
     }
 
-
     public function actionContact()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+        $contactModel = new ContactForm();
+        if ($contactModel->load(Yii::$app->request->post()) && $contactModel->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
 
             return $this->refresh();
         }
         return $this->render('contact', [
-            'model' => $model,
+            'model' => $contactModel,
         ]);
     }
 
@@ -94,11 +81,13 @@ class SiteController extends BaseController
         return $this->render('about');
     }
 
-    public function actionError() {
+    public function actionError()
+    {
         return $this->render('error');
     }
 
-    public function actionUnderconstruction() {
+    public function actionUnderconstruction()
+    {
         return $this->render('underconstruction');
     }
 }

@@ -87,10 +87,10 @@ $config = [
                 '/contact' => '/site/contact',
                 '/about' => '/site/about',
                 '/error' => '/site/error',
-                '/blog' => '/site/blog',
-                '/news' => '/site/news',
+                '/blog' => '/blog',
+                '/news' => '/news',
                 '/underconstruction' => 'site/underconstruction',
-                '/service/index' => '/service/'
+                '/service/' => '/service/'
             ],
         ],
 

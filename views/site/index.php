@@ -30,7 +30,7 @@ use yii\helpers\Url; ?>
                                             <p><?= $aphorism['full']?></p>
                                         </div>
                                         <div class="bannerBtnWrapper">
-                                            <a href="<?= Url::toRoute('service/index') ?>" class="button btnSize1"><?= Yii::t('app', 'view_all_services')?></a>
+                                            <a href="<?= Url::toRoute('service/') ?>" class="button btnSize1"><?= Yii::t('app', 'view_all_services')?></a>
                                             <a href="<?= Url::toRoute('site/contact') ?>"
                                                class="button btnStyle3 btnSize1"><?=Yii::t('app', 'get_appointment') ?></a>
                                         </div>
@@ -65,10 +65,10 @@ use yii\helpers\Url; ?>
                     ?>
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="tumbWrapper">
-                            <a href="<?=Url::toRoute('service/index?id=') . $service['id']?>" class="imgWrapper imgTumb bgShadow light">
+                            <a href="<?=Yii::$app->params['siteUrl'] ?>/service/<?=$service['id']?>" class="imgWrapper imgTumb bgShadow light">
                                 <img src="<?=$imagePath?>" alt="">
                             </a>
-                            <h6 class="h6 as"><a href="<?=Url::toRoute('services/index?id=').$service['id'] ?>"><?=$service['title'] ?></a></h6>
+                            <h6 class="h6 as"><a href="<?= Yii::$app->params['siteUrl'] ?>/service/<?=$service['id']?>"><?=$service['title'] ?></a></h6>
                             <div class="tumbContent small">
                                 <p><?=$service['full']?></p>
                             </div>
@@ -82,7 +82,7 @@ use yii\helpers\Url; ?>
             <div class="col-xs-12">
                 <div class="btnWrapper">
                     <div class="emptySpace50 emptySpace-xs20"></div>
-                    <a href="<?=Url::toRoute('service/index') ?>" class="button"><?=Yii::t('app', 'view_all_services') ?></a>
+                    <a href="<?=Url::toRoute('service/') ?>" class="button"><?=Yii::t('app', 'view_all_services') ?></a>
                 </div>
             </div>
             <!-- 	Button-END 	-->
@@ -236,22 +236,22 @@ use yii\helpers\Url; ?>
 <!-- 	About us-END 	-->
 
 <!-- 	Banner-START STATIC INFORMATION -->
-<div class="contentPadding bg simpleBanner bgShadow strong" style="background-image: url(img/banner-img.jpg)">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-md-10 col-lg-9">
-                <div class="cell-view">
-                    <div class="titleShortocode big">
-                        <h2 class="h2 as light">The Best thing In Pshylogloy Treatment</h2>
-                        <div class="simple-article light">
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusanti um dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo invent ore veritatis et perspiciatis unde omnis iste natus.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="contentPadding bg simpleBanner bgShadow strong" style="background-image: url(img/banner-img.jpg)">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-xs-12 col-md-10 col-lg-9">-->
+<!--                <div class="cell-view">-->
+<!--                    <div class="titleShortocode big">-->
+<!--                        <h2 class="h2 as light">The Best thing In Pshylogloy Treatment</h2>-->
+<!--                        <div class="simple-article light">-->
+<!--                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusanti um dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo invent ore veritatis et perspiciatis unde omnis iste natus.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <!-- 	Banner-END-->
 
 <!-- 	Last news-START 	-->
@@ -273,11 +273,11 @@ use yii\helpers\Url; ?>
                                 <img src="<?=$imagePath?>" alt="">
                                 <div class="timeBlock"><?=date('Y-m-d', strtotime($n['created_at'])) ?></div>
                             </div>
-                            <h6 class="h6 as"><a href="<?=Url::toRoute('site/news') . "?news=". $n['id']?>"><?= $n['title']?></a></h6>
+                            <h6 class="h6 as"><a href="<?= Yii::$app->params['siteUrl'] ?>/news/<?=$n['id']?>"><?= $n['title']?></a></h6>
                             <div class="tumbContent small">
                                 <p><?= substr($n['full'], 0, 150) . "..."?></p>
                             </div>
-                            <a class="readMore" href="<?=Url::toRoute('site/news') . "?news=". $n['id']?>"><?=Yii::t('app', 'read_more')?></a>
+                            <a class="readMore" href="<?= Yii::$app->params['siteUrl'] ?>/news/<?=$n['id']?>"><?=Yii::t('app', 'read_more')?></a>
                         </div>
                         <div class="emptySpace-xs30"></div>
                     </div>

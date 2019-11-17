@@ -23,7 +23,7 @@ class Publication
     }
 
     /**
-     * @param int $amount
+     * @param int $amount, if value less or equal zero, get depends on pagination
      * @param string $searchQuery
      * @param string $order , values 'DESC' or 'ASC'
      * @return array of publications

@@ -95,14 +95,14 @@ $params = Yii::$app->params;
                                         <li class="<?=$route == 'site/service' ? 'active': '' ?>"><a href="#"><?= Yii::t('app', 'menu_services') ?></a>
                                             <i class="fa fa-angle-down"></i>
                                             <ul>
-                                                <li><a href="<?= Url::toRoute('service/index') ?>"><?= Yii::t('app', 'menu_all_services') ?></a></li>
+                                                <li><a href="<?= Url::toRoute('service/') ?>"><?= Yii::t('app', 'menu_all_services') ?></a></li>
                                                 <li><a href="<?= Url::toRoute('service/gestalt') ?>"><?= Yii::t('app', 'menu_gestalt_service') ?></a></li>
                                                 <li><a href="<?= Url::toRoute('service/rpt') ?>"><?= Yii::t('app', 'menu_rpt_service') ?></a></li>
                                                 <li><a href="<?= Url::toRoute('service/retreats') ?>"><?= Yii::t('app', 'menu_retreats_service') ?></a></li>
                                             </ul>
                                         </li>
-                                        <li class="<?=$route == 'site/blog' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/blog') ?>"><?= Yii::t('app', 'menu_blog') ?></a></li>
-                                        <li class="<?=$route == 'site/news' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/news') ?>"><?= Yii::t('app', 'menu_news') ?></a></li>
+                                        <li class="<?=$route == 'site/blog' ? 'active': '' ?>"><a href="<?= Url::toRoute('blog/') ?>"><?= Yii::t('app', 'menu_blog') ?></a></li>
+                                        <li class="<?=$route == 'site/news' ? 'active': '' ?>"><a href="<?= Url::toRoute('news/') ?>"><?= Yii::t('app', 'menu_news') ?></a></li>
                                         <li class="<?=$route == 'site/about' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/about') ?>"><?= Yii::t('app', 'menu_about') ?></a></li>
                                         <li class="<?=$route == 'site/contact' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/contact') ?>"><?= Yii::t('app', 'menu_contact_me') ?></a></li>
                                         <li><a href="#"><?= Yii::$app->language ?></a>
@@ -153,15 +153,13 @@ $params = Yii::$app->params;
                     <!-- 	Block1-START 	-->
                     <div class="footerBlock small">
                         <!-- 	Logo-START 	-->
-                        <a href="<?= Url::toRoute('site/index') ?>>" class="logo">
+                        <a href="<?= Url::toRoute('site/index') ?>" class="logo">
                             <img src="img/footer-logo.png" alt="">
                         </a>
                         <!-- 	Logo-END 	-->
                         <div class="simple-article">
-                            <p>Lorem ipsum dolor sit amet, consectet ur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et.</p>
+                            <p><?= Yii::t('app', 'footer_text') ?></p>
                         </div>
-                        <a class="readMore" href="#">Read More</a>
                         <!-- 	Social-START 	-->
                         <div class="socialWrapper light">
                             <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
@@ -178,17 +176,10 @@ $params = Yii::$app->params;
                 <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
                     <!-- 	Block2-END 	-->
                     <div class="footerBlock normall">
-                        <div class="footerTitle">
-                            <p>Extra Links</p>
-                        </div>
                         <div class="simple-article style2">
                             <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Faq’s</a></li>
-                                <li><a href="#">Price List</a></li>
-                                <li><a href="#">Career</a></li>
-                                <li><a href="#">Single counselor</a></li>
-                                <li><a href="#">Book Appointment</a></li>
+                                <li><a href="<?=Url::toRoute('site/about') ?>"><?=Yii::t('app', 'menu_about') ?></a></li>
+                                <li><a href="<?=Url::toRoute('site/appointment') ?>>"><?=Yii::t('app', 'menu_appointment') ?></a></li>
                             </ul>
                         </div>
                         <div class="emptySpace-md30"></div>
@@ -199,16 +190,16 @@ $params = Yii::$app->params;
                     <!-- 	Block3-END 	-->
                     <div class="footerBlock normall">
                         <div class="footerTitle">
-                            <p>Our Services</p>
+                            <p><?=Yii::t('app', 'menu_services') ?></p>
                         </div>
                         <div class="simple-article style2">
                             <ul>
-                                <li><a href="#">All Services</a></li>
-                                <li><a href="#">Couple Counselling</a></li>
-                                <li><a href="#">Depresson Treatment</a></li>
-                                <li><a href="#">Relationship counselling</a></li>
-                                <li><a href="#">Personal Problems</a></li>
-                                <li><a href="#">Anxiety Counselling</a></li>
+                                <li><a href="<?=Url::toRoute('service/index') ?>"><?=Yii::t('app', 'menu_all_services') ?></a></li>
+                                <?php if (!empty($lastFourServiceType)) {
+                                    foreach ($lastFourServiceType as $serviceType) { ?>
+                                        <li><a href="<?= Url::toRoute('service/?id=').$serviceType['id']?>"><?= $serviceType['title']?></a></li>
+                                    <?php }
+                                } ?>
                             </ul>
                         </div>
                     </div>
@@ -217,13 +208,9 @@ $params = Yii::$app->params;
                 <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
                     <!-- 	Block4-END 	-->
                     <div class="footerBlock normall">
-                        <div class="footerTitle">
-                            <p>Get in Touch</p>
-                        </div>
                         <div class="locationBlock">
                             <img src="img/location-icon.png" alt="">
                             <div class="locationContent">
-                                <p>The Psychlogy Clinic</p>
                                 <span>54B, Tailstoi Town 5238 MT, lowa city, IA 522364</span>
                             </div>
                         </div>
@@ -241,19 +228,14 @@ $params = Yii::$app->params;
             </div>
             <!-- 	Footer top info-END 	-->
 
-            <div class="emptySpace30"></div>
+            <div class="emptySpace10"></div>
 
             <!-- 	Footer bottom info-START 	-->
             <div class="row">
                 <div class="bottomInfo small">
                     <div class="col-xs-12 col-sm-8">
                         <div class="copy">
-                            <p>Copyright © MYHOLEX <?= date('Y')?>. All rights reserved.</p>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="created">
-                            <a href="#">Created by: <span>DesignArc</span></a>
+                            <p><?=Yii::t('app', 'copyright') ?> <?= date('Y')?>. <?=Yii::t('app', 'all_rights_reserved') ?>.</p>
                         </div>
                     </div>
                     <div class="clear"></div>

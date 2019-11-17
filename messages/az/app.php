@@ -7,10 +7,8 @@
  */
 
 return [
-
     // common //
     'search' => 'Axtar',
-
     // menu //
     'menu_home' => 'Əsas səhifə',
     'menu_services' => 'Servislər',
@@ -22,16 +20,14 @@ return [
     'menu_news' => 'Xəbərlər',
     'menu_about' => 'Haqqımda',
     'menu_contact_me' => 'Mənimlə əlaqə',
-
     // publications //
     'read_more' => 'Ətraflı',
     'latest_news' => 'Son xəbərlər',
+    'latest_publications' => 'Son nəşrlər',
     'view_all_services' => 'Bütün servislər',
     'get_appointment' => 'Görüş təyin etmək',
-
     // coming soon //
     'go_home' => 'Əsas səhifəyə qayıtmaq',
     'coming_soon' => 'Coming Soon',
     'coming_soon_text' => 'Coming Soon Text',
-
 ];
