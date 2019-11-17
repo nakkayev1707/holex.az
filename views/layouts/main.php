@@ -61,7 +61,7 @@ $params = Yii::$app->params;
                             <p>Call Us now</p>
                             <h5 class="h5 as"><a href="tel:">1800 456 7890</a></h5>
                         </div>
-                        <a href="<?= Url::toRoute('site/appointment') ?>"
+                        <a href="<?= Url::toRoute('site/contact') ?>"
                            class="button btnSize1"><?= Yii::t('app', 'get_appointment') ?></a>
                     </div>
 
@@ -91,8 +91,8 @@ $params = Yii::$app->params;
                                 <nav>
                                     <ul>
                                         <?php $route = Yii::$app->controller->route;?>
-                                        <li class="<?=$route == 'site/index' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/index') ?>"><?= Yii::t('app', 'menu_home') ?></a></li>
-                                        <li class="<?=$route == 'site/service' ? 'active': '' ?>"><a href="#"><?= Yii::t('app', 'menu_services') ?></a>
+                                        <li class="<?=$route == 'site/index' ? 'active': '' ?>"><a href="<?= Url::toRoute('/') ?>"><?= Yii::t('app', 'menu_home') ?></a></li>
+                                        <li class="<?=$route == '/service' ? 'active': '' ?>"><a href="#"><?= Yii::t('app', 'menu_services') ?></a>
                                             <i class="fa fa-angle-down"></i>
                                             <ul>
                                                 <li><a href="<?= Url::toRoute('service/') ?>"><?= Yii::t('app', 'menu_all_services') ?></a></li>
@@ -101,10 +101,10 @@ $params = Yii::$app->params;
                                                 <li><a href="<?= Url::toRoute('service/retreats') ?>"><?= Yii::t('app', 'menu_retreats_service') ?></a></li>
                                             </ul>
                                         </li>
-                                        <li class="<?=$route == 'site/blog' ? 'active': '' ?>"><a href="<?= Url::toRoute('blog/') ?>"><?= Yii::t('app', 'menu_blog') ?></a></li>
-                                        <li class="<?=$route == 'site/news' ? 'active': '' ?>"><a href="<?= Url::toRoute('news/') ?>"><?= Yii::t('app', 'menu_news') ?></a></li>
-                                        <li class="<?=$route == 'site/about' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/about') ?>"><?= Yii::t('app', 'menu_about') ?></a></li>
-                                        <li class="<?=$route == 'site/contact' ? 'active': '' ?>"><a href="<?= Url::toRoute('site/contact') ?>"><?= Yii::t('app', 'menu_contact_me') ?></a></li>
+                                        <li class="<?=$route == 'blog/index' || $route == 'blog/view' ? 'active': '' ?>"><a href="<?= Url::toRoute('/blog') ?>"><?= Yii::t('app', 'menu_blog') ?></a></li>
+                                        <li class="<?=$route == 'news/index' || $route == 'news/view' ? 'active': '' ?>"><a href="<?= Url::toRoute('/news') ?>"><?= Yii::t('app', 'menu_news') ?></a></li>
+                                        <li class="<?=$route == 'site/about' ? 'active': '' ?>"><a href="<?= Url::toRoute('/about') ?>"><?= Yii::t('app', 'menu_about') ?></a></li>
+                                        <li class="<?=$route == 'site/contact' ? 'active': '' ?>"><a href="<?= Url::toRoute('/contact') ?>"><?= Yii::t('app', 'menu_contact_me') ?></a></li>
                                         <li><a href="#"><?= Yii::$app->language ?></a>
                                             <i class="fa fa-angle-down"></i>
                                             <ul>
@@ -125,20 +125,20 @@ $params = Yii::$app->params;
                                             </ul>
                                         </li>
                                     </ul>
-                                    <div class="nav-search pull-right text-right" style="right: -4%;">
-                                        <div class="widget-t widget-t-search">
-                                            <div class="widget-t-inner">
-                                                <form action="<?=Url::toRoute('site/index') ?>" method="get" class="search-form">
-                                                    <div class="input-group">
-                                                        <input type="search" name="q" placeholder="<?=Yii::t('app', 'search') ?>"
-                                                               class="form-control"><span class="input-group-addon">
-                                                            <button type="submit"><i
-                                                                        class="icon icon-Search"></i></button></span>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                    <div class="nav-search pull-right text-right" style="right: -4%;">-->
+<!--                                        <div class="widget-t widget-t-search">-->
+<!--                                            <div class="widget-t-inner">-->
+<!--                                                <form action="--><?//=Url::toRoute('site/index') ?><!--" method="get" class="search-form">-->
+<!--                                                    <div class="input-group">-->
+<!--                                                        <input type="search" name="q" placeholder="--><?//=Yii::t('app', 'search') ?><!--"-->
+<!--                                                               class="form-control"><span class="input-group-addon">-->
+<!--                                                            <button type="submit"><i-->
+<!--                                                                        class="icon icon-Search"></i></button></span>-->
+<!--                                                    </div>-->
+<!--                                                </form>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                 </nav>
                             </div>
                         </div>

@@ -10,12 +10,12 @@ use yii\base\Model;
  */
 class ContactForm extends Model
 {
+    public $_csrf;
     public $name;
     public $email;
+    public $phone;
     public $subject;
-    public $body;
-    public $verifyCode;
-
+    public $message;
 
     /**
      * @return array the validation rules.
@@ -24,23 +24,12 @@ class ContactForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
+            [['_csrf', 'name', 'email', 'subject', 'message'], 'required'],
             // email has to be a valid email address
             ['email', 'email'],
-            // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
         ];
     }
 
-    /**
-     * @return array customized attribute labels
-     */
-    public function attributeLabels()
-    {
-        return [
-            'verifyCode' => 'Verification Code',
-        ];
-    }
 
     /**
      * Sends an email to the specified email address using the information collected by this model.
@@ -55,11 +44,15 @@ class ContactForm extends Model
                 ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
                 ->setReplyTo([$this->email => $this->name])
                 ->setSubject($this->subject)
-                ->setTextBody($this->body)
+                ->setTextBody($this->message)
                 ->send();
-
             return true;
         }
         return false;
+    }
+
+    public function formName()
+    {
+        return 'contactForm';
     }
 }

@@ -58,8 +58,7 @@ use yii\helpers\Url;
             </div>
             <div class="col-sm-12 col-md-9">
                 <div class="mainBlogContent">
-                    <!-- 	Blog1-START 	-->
-                    <?php if (isset($blogList)) {
+                    <?php if (isset($blogList) && !empty($blogList)) {
                         foreach ($blogList as $blog) {
                             $imagePath = Yii::$app->params['siteUrl'] . Yii::$app->params['uploadsUrl'] . "/publications/" . $blog['image']; ?>
                             <div class="blogWrapper">
@@ -68,11 +67,6 @@ use yii\helpers\Url;
                                     <img src="<?= $imagePath ?>" alt="">
                                     <span class="timeBlock"><?= date('d-m-Y', strtotime($blog['created_at'])) ?></span>
                                 </a>
-                                <div class="blogInfo">
-                                    <p><i class="fa fa-user"></i> by : michale John</p>
-                                    <p><i class="fa fa-tag"></i> depression / couple counselling / treatment</p>
-                                    <p><i class="fa fa-comments-o"></i> comments: <span>5</span></p>
-                                </div>
                                 <div class="blogContent">
                                     <h5 class="h5 as"><a href="<?= Yii::$app->params['siteUrl'] . "/" . Yii::$app->language ?>/blog/<?= $blog['id'] ?>"><?=$blog['title']?></a></h5>
                                     <div class="simple-article normall">
@@ -88,20 +82,34 @@ use yii\helpers\Url;
                         <div class="emptySpace90 emptySpace-xs30"></div>
                         <!-- 	Page pagination-START 	-->
                         <div class="paginationWrapper large">
-                            <a class="pagiPrev" href="#"><i class="fa fa-angle-left"></i></a>
+                            <?php
+                                $first_page = $currentPage <= 1 ? 'not-active' : '';
+                                $last_page = $currentPage >= $pagesAmount ? 'not-active' : '';
+                            ?>
+                            <a  class="pagiPrev <?=$first_page?>" href="<?= Yii::$app->params['siteUrl'] . "/" . Yii::$app->language ?>/blog?page=<?= ($currentPage - 1) ?>"><i class="fa fa-angle-left"></i></a>
                             <div class="nubmerPagination">
-                                <a class="numberPagi activePagi" href="#">1</a>
-                                <a class="numberPagi" href="#">2</a>
+                                <?php for ($i = 1; $i <= $pagesAmount; $i++) { ?>
+                                    <a class="numberPagi <?= $currentPage == $i ? 'activePagi': ''?>" href="<?=Yii::$app->params['siteUrl'] . "/" . Yii::$app->language ?>/blog?page=<?=$i?>"><?=$i?></a>
+                                <?php } ?>
                             </div>
-                            <a class="pagiNext" href="#"><i class="fa fa-angle-right"></i></a>
+                            <a class="pagiNext <?=$last_page?>" href="<?= Yii::$app->params['siteUrl'] . "/" . Yii::$app->language ?>/blog?page=<?= ($currentPage + 1) ?>"><i class="fa fa-angle-right"></i></a>
                         </div>
                         <!-- 	Page pagination-END 	-->
                     <?php } else { ?>
-
-
+                        <div class="blogContent">
+                            <h5 class="h5 as"><?=Yii::t('app', 'publication_not_found') ?></h5>
+                        </div>
                     <?php } ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .not-active {
+        pointer-events: none;
+        cursor: default;
+        text-decoration: none;
+    }
+</style>

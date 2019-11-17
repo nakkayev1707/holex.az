@@ -27,8 +27,18 @@ return [
     'view_all_services' => 'Bütün servislər',
     'get_appointment' => 'Görüş təyin etmək',
     'blog_details' => 'Nəşr haqqında ətraflı',
+    'publication_not_found' => 'Heç bir nəşr tapılmadı',
     // coming soon //
     'go_home' => 'Əsas səhifəyə qayıtmaq',
     'coming_soon' => 'Coming Soon',
     'coming_soon_text' => 'Coming Soon Text',
+    // contact //
+    'contact_head_text' => 'Lorem ipsum',
+    'name' => 'Ad, Soyad',
+    'email' => 'Email',
+    'phone' => 'Telefon nömrə',
+    'subject' => 'Başlıq',
+    'message' => 'Mətn',
+    'submit' => 'Göndər',
+
 ];

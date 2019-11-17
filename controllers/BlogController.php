@@ -25,7 +25,9 @@ class BlogController extends BaseController
         }
         return $this->render('blog', [
             'blogList' => $blogList,
-            'lastFiveBlog' => $lastFiveBlog
+            'lastFiveBlog' => $lastFiveBlog,
+            'currentPage' => $blogModel->currentPage,
+            'pagesAmount' => $blogModel->pagesAmount
         ]);
     }
 

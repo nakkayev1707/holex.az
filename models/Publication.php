@@ -11,8 +11,8 @@ class Publication
 {
     public $table = 'publications';
     public $type = '';
-    public $currentPage = 0;
-    public $pagesAmount = 0;
+    public $currentPage = 1;
+    public $pagesAmount = 1;
     public $itemsAmount = 0;
     public $perPage = 10;
     public $translateFields = ['title', 'full'];
@@ -69,12 +69,15 @@ class Publication
         $params[":type"] = $this->type;
 
         // get count && pagination //
+        $page = intval(Yii::$app->request->getQueryParam('page'));
+        if ($page <= 0) $page = 1;
+        $this->currentPage = $page;
         $sqlCount = "SELECT COUNT('p.id') AS count FROM " . $this->table . " p $joins $where ";
         $count = Yii::$app->db->createCommand($sqlCount, $params)->queryOne();
         $this->itemsAmount = $count['count'];
-        $pagesAmount = ceil($count['count'] / $this->perPage);
+        $pagesAmount = ceil($this->itemsAmount / $this->perPage);
         $this->pagesAmount = $pagesAmount;
-        $this->currentPage = (($this->currentPage > $this->pagesAmount) ? $this->pagesAmount : $this->currentPage);
+//        $this->currentPage = (($this->currentPage > $this->pagesAmount) ? $this->pagesAmount : $this->currentPage);
         $startFrom = ($this->currentPage - 1) * $this->perPage;
         // limit //
         if ($amount > 0 && $amount < 9999999999) {
@@ -109,8 +112,7 @@ class Publication
                 WHERE 
                     p.id=:id AND 
                     type=:type AND 
-                    is_hidden='0' AND 
-                    created_at<'".date('Y-m-d H:i:s')."'
+                    is_hidden='0'
                     LIMIT 1
         ";
         $command = Yii::$app->db->createCommand($sqlQuery);

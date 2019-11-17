@@ -26,8 +26,16 @@ return [
     'view_all_services' => 'View all services',
     'get_appointment' => 'Get appointment',
     'blog_details' => 'Blog details',
+    'publication_not_found' => 'No publication was found',
     // coming soon //
     'go_home' => 'Return to the main page',
     'coming_soon' => 'Coming Soon',
     'coming_soon_text' => 'Coming Soon Text',
+    'contact_head_text' => 'Lorem ipsum',
+    'name' => 'Name, Surname',
+    'email' => 'Email',
+    'phone' => 'Phone number',
+    'subject' => 'Subject',
+    'message' => 'Message',
+    'submit' => 'Submit',
 ];
