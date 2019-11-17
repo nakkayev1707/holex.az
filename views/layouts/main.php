@@ -62,7 +62,7 @@ $params = Yii::$app->params;
                             <h5 class="h5 as"><a href="tel:">1800 456 7890</a></h5>
                         </div>
                         <a href="<?= Url::toRoute('site/appointment') ?>"
-                           class="button btnSize1"><?= Yii::t('app', 'appointment') ?></a>
+                           class="button btnSize1"><?= Yii::t('app', 'get_appointment') ?></a>
                     </div>
 
                     <div class="responsiveSrollWrapper">
@@ -108,9 +108,20 @@ $params = Yii::$app->params;
                                         <li><a href="#"><?= Yii::$app->language ?></a>
                                             <i class="fa fa-angle-down"></i>
                                             <ul>
-                                                <li><a href="<?= Url::to([Yii::$app->controller->route, 'language' => 'az']) ?>">AZ</a></li>
-                                                <li><a href="<?= Url::to([Yii::$app->controller->route, 'language' => 'en']) ?>">EN</a></li>
-<!--                                                <li><a href="--><?//= Url::to([Yii::$app->controller->route, 'language' => 'ru']) ?><!--">RU</a></li>-->
+                                                <li>
+                                                    <?= Html::a('<span class="lt">AZ</span>', array_merge(
+                                                        Yii::$app->request->get(),
+                                                        [Yii::$app->controller->route, 'language' => 'az']
+                                                    ));
+                                                    ?>
+                                                </li>
+                                                <li>
+                                                    <?= Html::a('<span class="lt">EN</span>', array_merge(
+                                                        Yii::$app->request->get(),
+                                                        [Yii::$app->controller->route, 'language' => 'en']
+                                                    ));
+                                                    ?>
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -220,7 +231,7 @@ $params = Yii::$app->params;
                         </div>
                         <div class="footerContants">
                             <i class="fa fa-envelope-o"></i>
-                            <a href="mailto:info@psychologyclinic.com">info@psychologyclinic.com</a>
+                            <a href="mailto:info@psychologyclinic.com">info@myholex.az</a>
                         </div>
                     </div>
                     <!-- 	Block4-END 	-->

@@ -25,6 +25,7 @@ return [
     'latest_publications' => 'Latest publications',
     'view_all_services' => 'View all services',
     'get_appointment' => 'Get appointment',
+    'blog_details' => 'Blog details',
     // coming soon //
     'go_home' => 'Return to the main page',
     'coming_soon' => 'Coming Soon',

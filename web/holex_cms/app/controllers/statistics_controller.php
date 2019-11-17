@@ -30,9 +30,9 @@ class statistics_controller extends controller {
 
 		$params = [];
 
-		$params['latest_registered_users'] = site_users::getLastRegistered();
-		$params['new_members'] = site_users::getCountNewComers();
-		$params['total_members'] = site_users::countUsers();
+//		$params['latest_registered_users'] = site_users::getLastRegistered();
+//		$params['new_members'] = site_users::getCountNewComers();
+//		$params['total_members'] = site_users::countUsers();
 		$params['total_comments'] = comments::countComments();
 		$params['total_articles'] = articles::countArticles();
 		$params['total_cms_users'] = cms_users::countUsers();

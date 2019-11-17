@@ -90,5 +90,39 @@ class Publication
         return $publications;
     }
 
+    public function getOne($id){
+        $sqlQuery ="
+            SELECT p.*, pi.image, title.text AS title, full.text as full
+                FROM publications p
+                JOIN translates title
+                  ON title.ref_id=p.id AND 
+                     title.ref_table=:tablename AND 
+                     title.lang=:lang AND 
+                     title.fieldname='title'
+                JOIN translates full
+                  ON full.ref_id=p.id AND 
+                     full.ref_table=:tablename AND 
+                     full.lang=:lang AND 
+                     full.fieldname='full'
+                LEFT JOIN publications_images pi 
+                  ON publication_id=:id
+                WHERE 
+                    p.id=:id AND 
+                    type=:type AND 
+                    is_hidden='0' AND 
+                    created_at<'".date('Y-m-d H:i:s')."'
+                    LIMIT 1
+        ";
+        $command = Yii::$app->db->createCommand($sqlQuery);
+        $command->bindParam(':lang', Yii::$app->language);
+        $command->bindParam(':tablename', $this->table);
+        $command->bindParam(':type', $this->type);
+        $command->bindParam(':id', $id);
+        $command->bindParam(':publication_id', $id);
+        $view = $command->queryOne();
+        return $view;
+    }
+
+
 
 }

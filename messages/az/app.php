@@ -26,6 +26,7 @@ return [
     'latest_publications' => 'Son nəşrlər',
     'view_all_services' => 'Bütün servislər',
     'get_appointment' => 'Görüş təyin etmək',
+    'blog_details' => 'Nəşr haqqında ətraflı',
     // coming soon //
     'go_home' => 'Əsas səhifəyə qayıtmaq',
     'coming_soon' => 'Coming Soon',
