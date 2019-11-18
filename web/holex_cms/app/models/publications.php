@@ -29,13 +29,28 @@ class publications
         ],
         [
             'id' => 3,
-            'type' => 'event',
-            'translate_key' => 'publication_event'
+            'type' => 'media',
+            'translate_key' => 'publication_media'
         ],
         [
             'id' => 4,
             'type' => 'aphorism',
             'translate_key' => 'publication_aphorism'
+        ],
+        [
+            'id' => 5,
+            'type' => 'eco_bag',
+            'translate_key' => 'publication_eco_bag'
+        ],
+        [
+            'id' => 6,
+            'type' => 'corporate_offer',
+            'translate_key' => 'publication_corporate_offer'
+        ],
+        [
+            'id' => 7,
+            'type' => 'gift_card',
+            'translate_key' => 'publication_gift_card'
         ],
     ];
 

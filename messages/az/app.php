@@ -9,6 +9,8 @@
 return [
     // common //
     'search' => 'Axtar',
+    'general_questions' => 'Ümumi suallar',
+    'not_found_error' => 'Axtardiğınız səhifə tapılmadı',
     // menu //
     'menu_home' => 'Əsas səhifə',
     'menu_services' => 'Servislər',
@@ -18,8 +20,9 @@ return [
     'menu_retreats_service' => 'Retreats',
     'menu_blog' => 'Blog',
     'menu_news' => 'Xəbərlər',
-    'menu_about' => 'Haqqımda',
-    'menu_contact_me' => 'Mənimlə əlaqə',
+    'menu_media' => 'Media',
+    'menu_about' => 'Haqqımızda',
+    'menu_contact_me' => 'Bizimlə əlaqə',
     // publications //
     'read_more' => 'Ətraflı',
     'latest_news' => 'Son xəbərlər',

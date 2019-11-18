@@ -97,7 +97,7 @@ use yii\helpers\Url; ?>
         <div class="container">
             <div class="row verAlignResponsive">
                 <div class="imgWrapper personeImg">
-                    <img src="img/banner-persone.png" alt="">
+                    <img src="<?=Yii::$app->params['siteUrl']. '' ?>" alt="">
                 </div>
                 <div class="col-sm-6 col-sm-offset-6">
                     <div class="personeWrapper large">
@@ -133,7 +133,7 @@ use yii\helpers\Url; ?>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="titleShortocode">
-                                <h3 class="h3 as">About us</h3>
+                                <h3 class="h3 as"><?=Yii::t('app', 'menu_about') ?></h3>
                             </div>
                             <div class="emptySpace40 emptySpace-xs30"></div>
                         </div>
@@ -182,7 +182,7 @@ use yii\helpers\Url; ?>
             </div>
             <div class="col-sm-6">
                 <div class="titleShortocode">
-                    <h3 class="h3 as">General Questions</h3>
+                    <h3 class="h3 as"><?=Yii::t('app', 'general_questions') ?></h3>
                 </div>
                 <div class="emptySpace40 emptySpace-xs30"></div>
                 <!-- 	Accordeon-START 	-->

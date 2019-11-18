@@ -91,8 +91,9 @@ $params = Yii::$app->params;
                                 <nav>
                                     <ul>
                                         <?php $route = Yii::$app->controller->route;?>
-                                        <li class="<?=$route == 'site/index' ? 'active': '' ?>"><a href="<?= Url::toRoute('/') ?>"><?= Yii::t('app', 'menu_home') ?></a></li>
-                                        <li class="<?=$route == '/service' ? 'active': '' ?>"><a href="#"><?= Yii::t('app', 'menu_services') ?></a>
+<!--                                        <li class="--><?//=$route == 'site/index' ? 'active': '' ?><!--"><a href="--><?//= Url::toRoute('/') ?><!--">--><?//= Yii::t('app', 'menu_home') ?><!--</a></li>-->
+                                        <li class="<?=$route == 'site/about' ? 'active': '' ?>"><a href="<?= Url::toRoute('/about') ?>"><?= Yii::t('app', 'menu_about') ?></a></li>
+                                        <li class="<?=$route == 'service/index' ? 'active': '' ?>"><a href="#"><?= Yii::t('app', 'menu_services') ?></a>
                                             <i class="fa fa-angle-down"></i>
                                             <ul>
                                                 <li><a href="<?= Url::toRoute('service/') ?>"><?= Yii::t('app', 'menu_all_services') ?></a></li>
@@ -101,9 +102,9 @@ $params = Yii::$app->params;
                                                 <li><a href="<?= Url::toRoute('service/retreats') ?>"><?= Yii::t('app', 'menu_retreats_service') ?></a></li>
                                             </ul>
                                         </li>
-                                        <li class="<?=$route == 'blog/index' || $route == 'blog/view' ? 'active': '' ?>"><a href="<?= Url::toRoute('/blog') ?>"><?= Yii::t('app', 'menu_blog') ?></a></li>
                                         <li class="<?=$route == 'news/index' || $route == 'news/view' ? 'active': '' ?>"><a href="<?= Url::toRoute('/news') ?>"><?= Yii::t('app', 'menu_news') ?></a></li>
-                                        <li class="<?=$route == 'site/about' ? 'active': '' ?>"><a href="<?= Url::toRoute('/about') ?>"><?= Yii::t('app', 'menu_about') ?></a></li>
+                                        <li class="<?=$route == 'media/index' || $route == 'blog/media' ? 'active': '' ?>"><a href="<?= Url::toRoute('/media') ?>"><?= Yii::t('app', 'menu_media') ?></a></li>
+                                        <li class="<?=$route == 'blog/index' || $route == 'blog/view' ? 'active': '' ?>"><a href="<?= Url::toRoute('/blog') ?>"><?= Yii::t('app', 'menu_blog') ?></a></li>
                                         <li class="<?=$route == 'site/contact' ? 'active': '' ?>"><a href="<?= Url::toRoute('/contact') ?>"><?= Yii::t('app', 'menu_contact_me') ?></a></li>
                                         <li><a href="#"><?= Yii::$app->language ?></a>
                                             <i class="fa fa-angle-down"></i>
@@ -173,8 +174,8 @@ $params = Yii::$app->params;
                         </div>
                         <!-- 	Social-START 	-->
                         <div class="socialWrapper light">
-                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+                            <a href="https://www.instagram.com/myholex/?igshid=1871ml9ixf4dp" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
                             <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
                             <a href="#" target="_blank"><i class="fa fa-skype"></i></a>
                             <a href="#" target="_blank"><i class="fa fa-pinterest-square"></i></a>

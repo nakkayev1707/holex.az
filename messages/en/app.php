@@ -8,6 +8,8 @@
 return [
     // common //
     'search' => 'Search',
+    'general_questions' => 'General questions',
+    'not_found_error' => 'Oops! That page can’t be found',
     // menu //
     'menu_home' => 'Home',
     'menu_services' => 'Services',
@@ -16,12 +18,13 @@ return [
     'menu_rpt_service' => 'RPT',
     'menu_retreats_service' => 'Retreats',
     'menu_blog' => 'Blog',
-    'menu_news' => 'News',
-    'menu_about' => 'About me',
-    'menu_contact_me' => 'Contact me',
+    'menu_news' => 'News/Events',
+    'menu_media' => 'Media',
+    'menu_about' => 'About us',
+    'menu_contact_me' => 'Contact us',
     // publications //
     'read_more' => 'Read more',
-    'latest_news' => 'Latest news',
+    'latest_news' => 'Latest news/events',
     'latest_publications' => 'Latest publications',
     'view_all_services' => 'View all services',
     'get_appointment' => 'Get appointment',
