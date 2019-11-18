@@ -27,6 +27,18 @@ class ContactForm extends Model
             [['_csrf', 'name', 'email', 'subject', 'message'], 'required'],
             // email has to be a valid email address
             ['email', 'email'],
+            [['phone'], 'default', 'value' => null]
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'name' => Yii::t('app', 'contact_form_name'),
+            'email' => Yii::t('app', 'contact_form_email'),
+            'phone' => Yii::t('app', 'contact_form_phone'),
+            'subject' => Yii::t('app', 'contact_form_subject'),
+            'message' => Yii::t('app', 'contact_form_message')
         ];
     }
 
@@ -38,7 +50,17 @@ class ContactForm extends Model
      */
     public function contact($email)
     {
-        if ($this->validate()) {
+        $user = new User();
+        $userData = [
+            'fio' => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'ip_address' => Yii::$app->request->getUserIP(),
+            'request_date' => date('Y-m-d H:i:s'),
+            'title' => $this->subject,
+            'text' => $this->message
+        ];
+        if ($user->saveUser($userData)) {
             Yii::$app->mailer->compose()
                 ->setTo($email)
                 ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
@@ -49,10 +71,5 @@ class ContactForm extends Model
             return true;
         }
         return false;
-    }
-
-    public function formName()
-    {
-        return 'contactForm';
     }
 }

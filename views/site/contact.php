@@ -9,33 +9,37 @@ use yii\helpers\Url; ?>
             <div class="col-xs-12">
                 <div class="contentTitle normall">
                     <h2 class="h2 as"><?=Yii::t('app', 'menu_contact_me') ?></h2>
-                    <p><?=Yii::t('app', 'contact_head_text') ?></p>
+<!--                    <p>--><?//=Yii::t('app', 'contact_head_text') ?><!--</p>-->
                 </div>
                 <div class="emptySpace50 emptySpace-xs30"></div>
             </div>
             <div class="col-sm-6 col-md-8">
                 <form action="<?=Yii::$app->request->url?>" method="POST" id=""  enctype="multipart/form-data" name="contactForm">
                     <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>"/>
-                    <input class="simple-input" id="name" name="name" type="text" value="" placeholder="<?=Yii::t('app', 'name') ?>">
+                    <label class="<?=$errors['name'][0] ? 'label-danger' : '' ?>" style="color: white"><?=$errors['name'][0]?></label>
+                    <input class="simple-input <?=$errors['name'][0] ? 'invalid' : '' ?>" id="name" name="name" type="text" value="" placeholder="<?=Yii::t('app', 'name') ?>">
                     <div class="emptySpace20"></div>
-                    <input class="simple-input" id="email" name="email" type="email" value="" placeholder="<?=Yii::t('app', 'email') ?>" />
+                    <label class="<?=$errors['email'][0] ? 'label-danger' : '' ?>" style="color: white"><?=$errors['email'][0]?></label>
+                    <input class="simple-input <?=$errors['email'][0] ? 'invalid' : '' ?>" id="email" name="email" type="email" value="" placeholder="<?=Yii::t('app', 'email') ?>" />
                     <div class="emptySpace20"></div>
                     <input class="simple-input" id="phone" name="phone" type="tel" value="" placeholder="<?=Yii::t('app', 'phone') ?>" />
                     <div class="emptySpace20"></div>
-                    <input class="simple-input" id="subject" name="subject" type="text" value="" placeholder="<?=Yii::t('app', 'subject') ?>" />
+                    <label class="<?=$errors['subject'][0] ? 'label-danger' : '' ?>" style="color: white"><?=$errors['subject'][0]?></label>
+                    <input class="simple-input <?=$errors['subject'][0] ? 'invalid' : '' ?>" id="subject" name="subject" type="text" value="" placeholder="<?=Yii::t('app', 'subject') ?>" />
                     <div class="emptySpace20"></div>
-                    <textarea class="simple-input" id="message" name="message" placeholder="<?=Yii::t('app', 'message') ?>"></textarea>
+                    <label class="<?=$errors['message'][0] ? 'label-danger' : '' ?>" style="color: white"><?=$errors['message'][0]?></label>
+                    <textarea class="simple-input <?=$errors['message'][0] ? 'invalid' : '' ?>" id="message" name="message" placeholder="<?=Yii::t('app', 'message') ?>"></textarea>
                     <div class="emptySpace50 emptySpace-xs30"></div>
                     <button type="submit" class="button"><?=Yii::t('app', 'submit') ?></button>
                 </form>
                 <div class="emptySpace-xs30"></div>
                 <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')) { ?>
                     <div id="success">
-                        <p>Your text message sent successfully!</p>
+                        <p class="text-success" style="font-size: 16px"><?=Yii::t('app', 'contact_submit_success') ?></p>
                     </div>
                 <?php } else if (Yii::$app->session->hasFlash('contactFormNotSubmitted')) { ?>
                     <div id="error">
-                        <p>Sorry! Message not sent. Something went wrong!!</p>
+                        <p class="text-danger" style="font-size: 16px"><?=Yii::t('app', 'contact_submit_error') ?></p>
                     </div>
                 <?php } ?>
             </div>

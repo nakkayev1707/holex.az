@@ -66,15 +66,18 @@ class SiteController extends BaseController
     public function actionContact()
     {
         $contactModel = new ContactForm();
-//        var_dump(Yii::$app->request->post());
-//        var_dump($contactModel->load(Yii::$app->request->post()));die;
-        if ($contactModel->load(Yii::$app->request->post()) && $contactModel->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-            return $this->refresh();
-        } else if (Yii::$app->request->isPost) {
-            Yii::$app->session->setFlash('contactFormNotSubmitted');
+        $errors = [];
+        if ($contactModel->load(Yii::$app->request->post(), '')) {
+            if ($contactModel->validate() && $contactModel->contact(Yii::$app->params['adminEmail'])) {
+                Yii::$app->session->setFlash('contactFormSubmitted');
+                return $this->refresh();
+            } else {
+                $errors = $contactModel->errors;
+                Yii::$app->session->setFlash('contactFormNotSubmitted');
+            }
         }
         return $this->render('contact', [
+            'errors' => $errors,
             'model' => $contactModel,
         ]);
     }

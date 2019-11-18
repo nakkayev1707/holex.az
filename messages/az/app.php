@@ -34,6 +34,13 @@ return [
     'coming_soon_text' => 'Coming Soon Text',
     // contact //
     'contact_head_text' => 'Lorem ipsum',
+    'contact_form_name' => 'Ad, Soyad',
+    'contact_form_phone' => 'Telefon nömrə',
+    'contact_form_email' => 'Email',
+    'contact_form_subject' => 'Başlıq',
+    'contact_form_message' => 'Mətn',
+    'contact_submit_success' => 'Mesajınız uğurla göndərildi!',
+    'contact_submit_error' => 'Mesajınız göndərilmədi!',
     'name' => 'Ad, Soyad',
     'email' => 'Email',
     'phone' => 'Telefon nömrə',

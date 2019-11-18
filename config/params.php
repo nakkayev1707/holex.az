@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'adminEmail' => 'admin@example.com',
-    'senderEmail' => 'noreply@example.com',
-    'senderName' => 'Example.com mailer',
+    'adminEmail' => 'info@myholex.az',
+    'senderEmail' => 'noreply@myholex.az',
+    'senderName' => 'MYHOLEX.AZ',
     'uploadsUrl' => '/uploads',
     'siteUrl' => 'http://holex.loc',
     'og_title' => ['property' => 'og:title', 'content' => 'title'],

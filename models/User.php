@@ -33,4 +33,19 @@ class User
         return false;
     }
 
+    public function saveUser($userData){
+        $params = [
+            ':fio' => $userData['fio'],
+            ':email' => $userData['email'],
+            ':phone' => $userData['phone'],
+            ':ip_address' => $userData['ip_address'],
+            ':request_date' => $userData['request_date'],
+            ':title' => $userData['title'],
+            ':text' => $userData['text']
+        ];
+        $sql = "INSERT INTO " .$this->table. " VALUES (NULL, :fio, :email, :phone, :ip_address, '0', :request_date, :title, :text)";
+        return Yii::$app->db->createCommand($sql, $params)->execute();
+    }
+
+
 }
