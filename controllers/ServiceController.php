@@ -71,7 +71,6 @@ class ServiceController extends BaseController
         $contactModel = new ContactForm();
         $serviceModel = new Service();
         $errors = [];
-        $serviceList = [];
         try {
             $serviceList = $serviceModel->getServices();
         } catch (Exception $e) {

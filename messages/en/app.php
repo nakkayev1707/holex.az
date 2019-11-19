@@ -12,6 +12,7 @@ return [
     'not_found_error' => 'Oops! That page can’t be found',
     'call_us' => 'Call us now',
     'all_rights_reserved' => 'All rights reserved',
+    'copyright' => 'Copyright',
     // menu //
     'menu_home' => 'Home',
     'menu_services' => 'Services',

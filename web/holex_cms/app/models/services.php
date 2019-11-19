@@ -129,7 +129,7 @@ class services
                     @unlink(UPLOADS_DIR.'services/'.$service['image']);
                 }
             } else {
-                $response['errors'][] = CMS::$upload_err[$_FILES['img']['error']];
+                $response['errors'] = "file_upload_err";
             }
         }
 

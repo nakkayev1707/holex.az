@@ -45,8 +45,6 @@ class SiteController extends BaseController
         // models //
         $aphorismModel = new Publication('aphorism');
         $newsModel = new Publication('news');
-        $serviceModel = new Service();
-
         // data //
         $aphorisms = [];
         $news = [];

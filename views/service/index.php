@@ -43,7 +43,7 @@ $this->title = Yii::t('app', 'menu_services');
                     ?>
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="tumbWrapper">
-                            <a href="<?= Yii::$app->params['siteUrl'] . "/" . Yii::$app->language ?>/service/view/<?= $service['id'] ?>" class="imgWrapper imgTumb bgShadow light">
+                            <a href="<?= Yii::$app->params['siteUrl'] . "/" . Yii::$app->language ?>/service/<?= $service['id'] ?>" class="imgWrapper imgTumb bgShadow light">
                                 <img src="<?=$imagePath?>" alt="">
                             </a>
                             <h6 class="h6 as"><a href="<?= Yii::$app->params['siteUrl'] . "/" . Yii::$app->language ?>/service/<?= $service['id'] ?>"><?=$service['title']?></a></h6>

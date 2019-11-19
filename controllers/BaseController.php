@@ -3,11 +3,10 @@
 
 namespace app\controllers;
 
-
 use app\models\Service;
-use app\models\User;
-use yii\web\Controller;
 use Yii;
+use yii\web\BadRequestHttpException;
+use yii\web\Controller;
 
 class BaseController extends Controller
 {
@@ -29,9 +28,13 @@ class BaseController extends Controller
             return $this->redirect('site/underconstruction');
         }
         $serviceModel = new Service();
-        $lastFourServiceType = $serviceModel->getServiceTypes(4);
-        Yii::$app->view->params['lastFourServiceType'] = $lastFourServiceType;
-        return parent::beforeAction($action);
+        $services = $serviceModel->getServices();
+        $this->view->params['services'] = $services;
+        try {
+            return parent::beforeAction($action);
+        } catch (BadRequestHttpException $e) {
+            die("Something went wrong. Bad request!");
+        }
     }
 
 }

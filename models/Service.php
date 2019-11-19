@@ -50,7 +50,7 @@ class Service
         return $services;
     }
 
-    public function getOne(){
+    public function getOne($id){
         $sqlQuery ="
             SELECT s.*, title.text AS title, full.text as full
                 FROM $this->serviceTable s
