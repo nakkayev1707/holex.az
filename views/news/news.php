@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Url;
+$this->title = Yii::t('app', 'menu_news');
 
 ?>
 <!-- 	Top banner-START 	-->

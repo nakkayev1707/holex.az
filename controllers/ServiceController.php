@@ -4,6 +4,7 @@
 namespace app\controllers;
 
 
+use app\models\ContactForm;
 use app\models\Publication;
 use app\models\Service;
 use Yii;
@@ -62,6 +63,33 @@ class ServiceController extends BaseController
         return $this->render('view', [
             'view' => $view,
             'services' => $serviceList
+        ]);
+    }
+
+    public function actionContact()
+    {
+        $contactModel = new ContactForm();
+        $serviceModel = new Service();
+        $errors = [];
+        $serviceList = [];
+        try {
+            $serviceList = $serviceModel->getServices();
+        } catch (Exception $e) {
+            throw new NotFoundHttpException();
+        }
+        if ($contactModel->load(Yii::$app->request->post(), '')) {
+            if ($contactModel->validate() && $contactModel->contact(Yii::$app->params['adminEmail'])) {
+                Yii::$app->session->setFlash('contactFormSubmitted');
+                return $this->refresh();
+            } else {
+                $errors = $contactModel->errors;
+                Yii::$app->session->setFlash('contactFormNotSubmitted');
+            }
+        }
+        return $this->render('index', [
+            'errors' => $errors,
+            'model' => $contactModel,
+            'services' => $serviceList,
         ]);
     }
 }

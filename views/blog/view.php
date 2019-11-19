@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Url;
-
+$this->title = Yii::t('app', 'menu_blog');
 ?>
 <!-- 	Top banner-START 	-->
 <div class="contentPadding bg bgShadow" style="background-image: url(img/banner-img2.jpg)">

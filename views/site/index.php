@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'MY HOLEX';
+$this->title = 'myholex.az';
 
 use yii\helpers\Url; ?>
 <!-- 	Main banner swiper-START 	-->
@@ -92,12 +92,12 @@ use yii\helpers\Url; ?>
 <!--  	Offer Servicres-END 	-->
 
 <!-- 	Persone banner-START 	-->
-<div class="personeBg">
-    <div class="bg" style="background-image: url(img/persone-bg.jpg)">
+<div class="personeBg" style="background: rgba(95, 91, 92, 0.8)!important;">
+    <div class="bg" style="background-image: url()">
         <div class="container">
             <div class="row verAlignResponsive">
                 <div class="imgWrapper personeImg">
-                    <img src="<?=Yii::$app->params['siteUrl']. '' ?>" alt="">
+                    <img src="<?=Yii::$app->params['siteUrl']. '/img/about/about_photo.jpg' ?>" alt="" style="width: 67.2%">
                 </div>
                 <div class="col-sm-6 col-sm-offset-6">
                     <div class="personeWrapper large">
@@ -112,8 +112,8 @@ use yii\helpers\Url; ?>
                                 <i class="flaticon3-telephone-auricular-with-cable"></i>
                             </div>
                             <div class="personePhoneContent">
-                                <a href="tel:10933425123">+1 093 34 25 123</a>
-                                <span>Call Now!</span>
+                                <a href="tel:994507979600">+994 50 797 96 00</a>
+                                <span><?=Yii::t('app', 'call_us')?></span>
                             </div>
                         </div>
                     </div>

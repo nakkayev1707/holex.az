@@ -13,18 +13,24 @@ class BaseController extends Controller
 {
     public function beforeAction($action)
     {
-        $userModel = new User();
-        $userIp = Yii::$app->request->getUserIP();
-        if (!$userModel->ipIsBlocked($userIp)) {
-            if (Yii::$app->language == 'ru') {
-                return $this->redirect('site/underconstruction');
-            }
-            $serviceModel = new Service();
-            $lastFourServiceType = $serviceModel->getServiceTypes(4);
-            Yii::$app->view->params['lastFourServiceType'] = $lastFourServiceType;
-        } else {
-            return $this->redirect('site/error');
+//        $userModel = new User();
+//        $userIp = Yii::$app->request->getUserIP();
+//        if (!$userModel->ipIsBlocked($userIp)) {
+//            if (Yii::$app->language == 'ru') {
+//                return $this->redirect('site/underconstruction');
+//            }
+//            $serviceModel = new Service();
+//            $lastFourServiceType = $serviceModel->getServiceTypes(4);
+//            Yii::$app->view->params['lastFourServiceType'] = $lastFourServiceType;
+//        } else {
+//            return $this->redirect('site/error');
+//        }
+        if (Yii::$app->language == 'ru') {
+            return $this->redirect('site/underconstruction');
         }
+        $serviceModel = new Service();
+        $lastFourServiceType = $serviceModel->getServiceTypes(4);
+        Yii::$app->view->params['lastFourServiceType'] = $lastFourServiceType;
         return parent::beforeAction($action);
     }
 

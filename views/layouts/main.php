@@ -58,8 +58,8 @@ $params = Yii::$app->params;
                     <div class="headerMoreInfo">
                         <div class="phoneBlock">
                             <i class="flatIcon Fphone2 flaticon-technology"></i>
-                            <p>Call Us now</p>
-                            <h5 class="h5 as"><a href="tel:">1800 456 7890</a></h5>
+                            <p><?=Yii::t('app', 'call_us') ?></p>
+                            <h5 class="h5 as"><a href="tel:994507979600">+994 50 797 96 00</a></h5>
                         </div>
                         <a href="<?= Url::toRoute('site/contact') ?>"
                            class="button btnSize1"><?= Yii::t('app', 'get_appointment') ?></a>
@@ -191,7 +191,7 @@ $params = Yii::$app->params;
                         <div class="simple-article style2">
                             <ul>
                                 <li><a href="<?=Url::toRoute('site/about') ?>"><?=Yii::t('app', 'menu_about') ?></a></li>
-                                <li><a href="<?=Url::toRoute('site/appointment') ?>>"><?=Yii::t('app', 'menu_appointment') ?></a></li>
+                                <li><a href="<?=Url::toRoute('site/contact') ?>"><?=Yii::t('app', 'get_appointment') ?></a></li>
                             </ul>
                         </div>
                         <div class="emptySpace-md30"></div>
@@ -220,19 +220,19 @@ $params = Yii::$app->params;
                 <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
                     <!-- 	Block4-END 	-->
                     <div class="footerBlock normall">
-                        <div class="locationBlock">
-                            <img src="img/location-icon.png" alt="">
-                            <div class="locationContent">
-                                <span>54B, Tailstoi Town 5238 MT, lowa city, IA 522364</span>
-                            </div>
-                        </div>
+<!--                        <div class="locationBlock">-->
+<!--                            <img src="img/location-icon.png" alt="">-->
+<!--                            <div class="locationContent">-->
+<!--                                <span>54B, Tailstoi Town 5238 MT, lowa city, IA 522364</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="footerContants">
                             <i class="fa fa-phone"></i>
-                            <a href="tel:018655248503">+ 01865 524 8503</a>
+                            <a href="tel:994507979600">+994 50 797 96 00</a>
                         </div>
                         <div class="footerContants">
                             <i class="fa fa-envelope-o"></i>
-                            <a href="mailto:info@psychologyclinic.com">info@myholex.az</a>
+                            <a href="mailto:info@myholex.az">info@myholex.az</a>
                         </div>
                     </div>
                     <!-- 	Block4-END 	-->

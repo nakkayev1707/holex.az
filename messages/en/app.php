@@ -10,6 +10,8 @@ return [
     'search' => 'Search',
     'general_questions' => 'General questions',
     'not_found_error' => 'Oops! That page can’t be found',
+    'call_us' => 'Call us now',
+    'all_rights_reserved' => 'All rights reserved',
     // menu //
     'menu_home' => 'Home',
     'menu_services' => 'Services',
@@ -49,4 +51,7 @@ return [
     'subject' => 'Subject',
     'message' => 'Message',
     'submit' => 'Submit',
+    // services //
+    'our_services' => 'Our services',
+    'consultation' => 'Consultation'
 ];

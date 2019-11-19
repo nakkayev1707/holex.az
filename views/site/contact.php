@@ -28,7 +28,7 @@ use yii\helpers\Url; ?>
                     <input class="simple-input <?=$errors['subject'][0] ? 'invalid' : '' ?>" id="subject" name="subject" type="text" value="" placeholder="<?=Yii::t('app', 'subject') ?>" />
                     <div class="emptySpace20"></div>
                     <label class="<?=$errors['message'][0] ? 'label-danger' : '' ?>" style="color: white"><?=$errors['message'][0]?></label>
-                    <textarea class="simple-input <?=$errors['message'][0] ? 'invalid' : '' ?>" id="message" name="message" placeholder="<?=Yii::t('app', 'message') ?>"></textarea>
+                    <textarea class="simple-input <?=$errors['message'][0] ? 'invalid' : '' ?>" maxlength="4000" id="message" name="message" placeholder="<?=Yii::t('app', 'message') ?>"></textarea>
                     <div class="emptySpace50 emptySpace-xs30"></div>
                     <button type="submit" class="button"><?=Yii::t('app', 'submit') ?></button>
                 </form>

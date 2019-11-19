@@ -11,6 +11,8 @@ return [
     'search' => 'Axtar',
     'general_questions' => 'Ümumi suallar',
     'not_found_error' => 'Axtardiğınız səhifə tapılmadı',
+    'call_us' => 'Bizə zəng edin',
+    'all_rights_reserved' => 'Bütün hüquqlar qorunur',
     // menu //
     'menu_home' => 'Əsas səhifə',
     'menu_services' => 'Servislər',
@@ -50,5 +52,8 @@ return [
     'subject' => 'Başlıq',
     'message' => 'Mətn',
     'submit' => 'Göndər',
+    // services //
+    'our_services' => 'Servislərimiz',
+    'consultation' => 'Konsultasiya',
 
 ];
