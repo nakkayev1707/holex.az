@@ -7,18 +7,19 @@ $this->title = 'myholex.az';
 use yii\helpers\Url; ?>
 <!-- 	Main banner swiper-START 	-->
 <div class="swiperMainWrapper mainSwiperbanner">
-    <!-- 	Swiper slider buttons-START 	-->
-    <div class="swipert-black-button swiper-button-prev"></div>
-    <div class="swipert-black-button swiper-button-next"></div>
-    <!-- 	Swiper slider buttons-END 	-->
-    <div class="swiper-container" data-auto-height="1" data-effect="fadde" data-speed="600" data-autoplay="5000" data-loop="1">
-        <div class="swiper-wrapper">
-            <?php if (isset($aphorisms)) {
-                foreach ($aphorisms as $aphorism) {
-                    $imagePath = Yii::$app->params['siteUrl'].Yii::$app->params['uploadsUrl']."/publications/".$aphorism['image'];
+    <?php if (isset($aphorisms) && !empty($aphorisms)) { ?>
+        <!-- 	Swiper slider buttons-START 	-->
+        <div class="swipert-black-button swiper-button-prev"></div>
+        <div class="swipert-black-button swiper-button-next"></div>
+        <!-- 	Swiper slider buttons-END 	-->
+        <div class="swiper-container" data-auto-height="1" data-effect="fadde" data-speed="600" data-autoplay="5000"
+             data-loop="1">
+            <div class="swiper-wrapper">
+                <?php foreach ($aphorisms as $aphorism) {
+                    $imagePath = Yii::$app->params['siteUrl'] . Yii::$app->params['uploadsUrl'] . "/publications/" . $aphorism['image'];
                     ?>
                     <div class="swiper-slide mainBanner bgShadow">
-                        <div class="sliderBg" style="background-image: url('<?=$imagePath ?>')"></div>
+                        <div class="sliderBg" style="background-image: url('<?= $imagePath ?>')"></div>
                         <div class="container">
                             <div class="row">
                                 <div class="col-xs-12 col-md-10 col-md-offset-1">
@@ -27,22 +28,23 @@ use yii\helpers\Url; ?>
                                             <h3 class="h1 light as">
                                                 <?= $aphorism['title'] ?>
                                             </h3>
-                                            <p><?= $aphorism['full']?></p>
+                                            <p><?= $aphorism['full'] ?></p>
                                         </div>
                                         <div class="bannerBtnWrapper">
-                                            <a href="<?= Url::toRoute('service/') ?>" class="button btnSize1"><?= Yii::t('app', 'view_all_services')?></a>
+                                            <a href="<?= Url::toRoute('service/') ?>"
+                                               class="button btnSize1"><?= Yii::t('app', 'view_all_services') ?></a>
                                             <a href="<?= Url::toRoute('site/contact') ?>"
-                                               class="button btnStyle3 btnSize1"><?=Yii::t('app', 'get_appointment') ?></a>
+                                               class="button btnStyle3 btnSize1"><?= Yii::t('app', 'get_appointment') ?></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <?php }
-            } ?>
+                <?php } ?>
+            </div>
         </div>
-    </div>
+    <?php } ?>
 </div>
 <!-- 	Main banner swiper-END 	-->
 
@@ -145,12 +147,6 @@ use yii\helpers\Url; ?>
                             </div>
                             <div class="emptySpace35"></div>
                         </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <div class="imgWrapper">
-                                <img src="img/about-us-img2.jpg" alt="">
-                            </div>
-                            <div class="emptySpace35"></div>
-                        </div>
                     </div>
                     <p>In Addition to our commitment towards advantages are :</p>
                     <div class="simple-article normall">
@@ -161,18 +157,30 @@ use yii\helpers\Url; ?>
                         <div class="col-xs-12 col-sm-6">
                             <div class="simple-article normall">
                                 <ul>
-                                    <li>Stress Disorders</li>
-                                    <li>Amotivation Disorders</li>
-                                    <li>Sexual Disorders</li>
+                                    <?php if (isset($sixService) && !empty($sixService)) {
+                                        $firstThreeService = array_chunk($sixService, 3, false)[0];
+                                        if (!empty($firstThreeService)) {
+                                            foreach ($firstThreeService as $service) {
+                                                ?>
+                                                <li><?= $service['title'] ?></li>
+                                            <?php }
+                                        }
+                                    } ?>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="simple-article normall">
                                 <ul>
-                                    <li>Impulsivity Disorders</li>
-                                    <li>Smoking Disorders</li>
-                                    <li>Suicidal Disorders</li>
+                                    <?php if (isset($sixService) && !empty($sixService)) {
+                                        $secondThreeService = array_chunk($sixService, 3, false)[1];
+                                        if (!empty($secondThreeService)) {
+                                            foreach ($secondThreeService as $service) {
+                                                ?>
+                                                <li><?= $service['title'] ?></li>
+                                            <?php }
+                                        }
+                                    } ?>
                                 </ul>
                             </div>
                         </div>

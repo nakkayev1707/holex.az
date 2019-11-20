@@ -1,15 +1,17 @@
 <?php
 
-/* @var $this \yii\web\View */
+/* @var $this View */
 
 /* @var $content string */
 
 use app\assets\AppAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\web\View;
 
 AppAsset::register($this);
 $params = Yii::$app->params;
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -19,7 +21,18 @@ $params = Yii::$app->params;
     <meta name="format-detection" content="telephone=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-    <?php $this->registerCsrfMetaTags() ?>
+    <?= Html::csrfMetaTags() ?>
+    <?php
+    $this->registerMetaTag($params['og_title'], 'og_title');
+    $this->registerMetaTag($params['og_description'], 'og_description');
+    $this->registerMetaTag($params['og_url'], 'og_url');
+    $this->registerMetaTag($params['og_image'], 'og_image');
+    $this->registerMetaTag($params['og_type'], 'og_type');
+    $this->registerMetaTag($params['og_sitename'], 'og_sitename');
+    $this->registerMetaTag($params['og_video'], 'og_video');
+    ?>
+    <meta property="og:image:width" content="1200px"/>
+    <meta property="og:image:height" content="650px"/>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7COpen+Sans:300,400,600,700%7CRaleway:400,700,800"
           rel="stylesheet">
     <link rel="shortcut icon" href="../../web/favicon.ico"/>
@@ -97,9 +110,7 @@ $params = Yii::$app->params;
                                             <i class="fa fa-angle-down"></i>
                                             <ul>
                                                 <li><a href="<?= Url::toRoute('service/') ?>"><?= Yii::t('app', 'menu_all_services') ?></a></li>
-                                                <li><a href="<?= Url::toRoute('service/gestalt') ?>"><?= Yii::t('app', 'menu_gestalt_service') ?></a></li>
-                                                <li><a href="<?= Url::toRoute('service/rpt') ?>"><?= Yii::t('app', 'menu_rpt_service') ?></a></li>
-                                                <li><a href="<?= Url::toRoute('service/retreats') ?>"><?= Yii::t('app', 'menu_retreats_service') ?></a></li>
+
                                             </ul>
                                         </li>
                                         <li class="<?=$route == 'news/index' || $route == 'news/view' ? 'active': '' ?>"><a href="<?= Url::toRoute('/news') ?>"><?= Yii::t('app', 'menu_news') ?></a></li>

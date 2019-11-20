@@ -19,7 +19,7 @@ class Service
         return $types;
     }
 
-    public function getServices(){
+    public function getServices($amount = 0){
         $where = [];
         $joins = [];
         $params = [];
@@ -44,8 +44,9 @@ class Service
 
         $params[":lang"] = Yii::$app->language;
         $params[":table"] = $this->serviceTable;
+        $amount <= 0 ? $limit = "" : $limit = " LIMIT " . (int)$amount;
 
-        $sqlGetList = "SELECT $columns FROM " . $this->serviceTable . " s $joins $where";
+        $sqlGetList = "SELECT $columns FROM " . $this->serviceTable . " s $joins $where $limit";
         $services = Yii::$app->db->createCommand($sqlGetList, $params)->queryAll();
         return $services;
     }

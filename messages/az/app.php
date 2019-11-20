@@ -57,5 +57,10 @@ return [
     // services //
     'our_services' => 'Servislərimiz',
     'consultation' => 'Konsultasiya',
+    // about //
+    'about_info_title' => '',
+    'about_info_subtitle' => '',
+    'about_info_paragraph1' => '',
+    'about_info_paragraph2' => '',
 
 ];

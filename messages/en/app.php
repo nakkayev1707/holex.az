@@ -55,5 +55,10 @@ return [
     'submit' => 'Submit',
     // services //
     'our_services' => 'Our services',
-    'consultation' => 'Consultation'
+    'consultation' => 'Consultation',
+    // about //
+    'about_info_title' => '',
+    'about_info_subtitle' => '',
+    'about_info_paragraph1' => '',
+    'about_info_paragraph2' => '',
 ];

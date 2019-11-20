@@ -29,7 +29,8 @@ class BaseController extends Controller
         }
         $serviceModel = new Service();
         $services = $serviceModel->getServices();
-        $this->view->params['services'] = $services;
+        $this->view->params['settings'] = $services;
+//        var_dump($this->view->params['settings']);die;
         try {
             return parent::beforeAction($action);
         } catch (BadRequestHttpException $e) {

@@ -46,15 +46,17 @@ class SiteController extends BaseController
         $aphorismModel = new Publication('aphorism');
         $newsModel = new Publication('news');
         $contactModel = new ContactForm();
+        $serviceModel = new Service();
         // data //
-        $aphorisms = [];
-        $news = [];
         $errors = [];
         try {
             $aphorisms = $aphorismModel->getPublications(4, '', 'DESC');
             $news = $newsModel->getPublications(3, '', 'DESC');
+            $sixService = $serviceModel->getServices(6);
         } catch (Exception $e) {
-            $this->render('index');
+            $aphorisms = [];
+            $news = [];
+            $sixService = [];
         }
 
         // contact form handle
@@ -74,12 +76,14 @@ class SiteController extends BaseController
             'aphorisms' => $aphorisms,
             'news' => $news,
             'model' => $contactModel,
+            'sixService' => $sixService,
             'errors' => $errors
         ]);
     }
 
 
-    public function actionMedia(){
+    public function actionMedia()
+    {
         $mediaModel = new Publication('media');
         try {
             $mediaList = $mediaModel->getPublications(0, '', '');
