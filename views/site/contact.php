@@ -3,6 +3,24 @@
 $this->title = Yii::t('app', 'menu_contact_me');
 
 use yii\helpers\Url; ?>
+<!-- 	Top banner-START 	-->
+<div class="contentPadding bg bgShadow" style="background-image: url()">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="servicesTitle">
+                    <div class="cell-view">
+                        <h1 class="h1 light as"><?=Yii::t('app', 'menu_contact_me')?></h1>
+                        <div class="breadCrumbs small">
+                            <a  href="<?=Url::to('site/')?>"><?=Yii::t('app', 'menu_home')?></a> <i class="fa fa-angle-right"></i> <span><?=Yii::t('app', 'menu_contact_me') ?></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 	Top banner-END 	-->
 <div class="contentPadding">
     <div class="container">
         <div class="row">
@@ -71,7 +89,7 @@ use yii\helpers\Url; ?>
                         <div class="imgWrapper">
                             <i class="fa fa-phone"></i>
                         </div>
-                        <a href="tel:994123456789">+ 994 12 345 67 89</a>
+                        <a href="tel:994507979600">+ 994 50 797 96 00</a>
                     </div>
                     <!-- 	Contacts3-END 	-->
                 </div>

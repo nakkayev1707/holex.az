@@ -89,6 +89,7 @@ $config = [
                 '/error' => 'site/error',
                 '/blog' => '/blog',
                 '/news' => '/news',
+                '/media' => 'site/media',
                 '/underconstruction' => 'site/underconstruction',
                 '/service/' => '/service/',
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',

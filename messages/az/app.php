@@ -14,6 +14,7 @@ return [
     'call_us' => 'Bizə zəng edin',
     'all_rights_reserved' => 'Bütün hüquqlar qorunur',
     'copyright' => 'Copyright',
+    'footer_text' => ' ',
     // menu //
     'menu_home' => 'Əsas səhifə',
     'menu_services' => 'Servislər',

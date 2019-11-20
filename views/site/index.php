@@ -263,7 +263,7 @@ use yii\helpers\Url; ?>
                     <h3 class="h3 as"><?= Yii::t('app', 'latest_news') ?></h3>
                 </div>
             </div>
-            <?php if (isset($news)) {
+            <?php if (isset($news) && !empty($news)) {
                 foreach ($news as $n) {
                     $imagePath = Yii::$app->params['siteUrl'] . Yii::$app->params['uploadsUrl'] . "/publications/" . $n['image'];
                     ?>
@@ -282,7 +282,7 @@ use yii\helpers\Url; ?>
                         <div class="emptySpace-xs30"></div>
                     </div>
                 <?php }
-            } ?>
+            } else  ?>
         </div>
     </div>
 </div>
@@ -316,46 +316,42 @@ use yii\helpers\Url; ?>
                 <div class="emptySpace-xs30"></div>
             </div>
             <div class="col-sm-6 col-sm-offset-2">
-                <form class="requestForm">
+                <form class="requestForm" action="<?=Url::toRoute('site/')?>" method="post">
+                    <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>"/>
                     <div class="contentTitle">
-                        <h3 class="h3 as">Request a Free <span>Consultation</span></h3>
+                        <h3 class="h3 as"><span><?=Yii::t('app', 'consultation') ?></span></h3>
                     </div>
                     <div class="emptySpace15"></div>
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
-                            <input class="simple-input" type="text" value="" placeholder="Full Name" />
+                            <input class="simple-input <?=$errors['name'][0] ? 'invalid' : '' ?>" name="name" type="text" value=""  placeholder="<?=Yii::t('app', 'name') ?>" />
                             <div class="emptySpace15"></div>
                         </div>
                         <div class="col-xs-12 col-md-6">
-                            <input class="simple-input" type="email" value="" placeholder="Email" />
+                            <input class="simple-input <?=$errors['email'][0] ? 'invalid' : '' ?>" name="email" type="email" value="" placeholder="<?=Yii::t('app', 'email') ?>" />
                             <div class="emptySpace15"></div>
                         </div>
-                        <div class="col-xs-12 col-md-6">
-                            <input class="simple-input" type="text" value="" placeholder="Phone" />
+                        <div class="col-xs-12 col-md-12">
+                            <input class="simple-input <?=$errors['subject'][0] ? 'invalid' : '' ?>" name="subject" type="text" value="" placeholder="<?=Yii::t('app', 'subject') ?>" />
                             <div class="emptySpace15"></div>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <!-- 	SumoSelect-START 	-->
-                            <div class="sumoWrapper">
-                                <select name="form" class="SelectBox">
-                                    <option selected disabled>I want to discuss</option>
-                                    <option>discuss1</option>
-                                    <option>discuss2</option>
-                                    <option>discuss3</option>
-                                    <option>discuss4</option>
-                                </select>
-                            </div>
-                            <!-- 	SumoSelect-END 	-->
-                            <div class="emptySpace-sm15"></div>
                         </div>
                         <div class="col-xs-12">
-                            <textarea class="simple-input" placeholder="Special Request"></textarea>
+                            <textarea class="simple-input <?=$errors['message'][0] ? 'invalid' : '' ?>" name="message" maxlength="3000" placeholder="<?=Yii::t('app', 'message') ?>"></textarea>
                         </div>
                     </div>
                     <div class="emptySpace30"></div>
                     <div class="btnWrapper">
-                        <button type="submit" class="button">Submit Now</button>
+                        <button type="submit" class="button"><?=Yii::t('app', 'submit')?></button>
                     </div>
+                    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')) { ?>
+                        <div id="success">
+                            <p class="text-success" style="font-size: 16px"><?=Yii::t('app', 'contact_submit_success') ?></p>
+                        </div>
+                    <?php } else if (Yii::$app->session->hasFlash('contactFormNotSubmitted')) { ?>
+                        <div id="error">
+                            <p class="text-danger" style="font-size: 16px"><?=Yii::t('app', 'contact_submit_error') ?></p>
+                        </div>
+                    <?php } ?>
                 </form>
             </div>
         </div>

@@ -91,9 +91,9 @@ $params = Yii::$app->params;
                                 <nav>
                                     <ul>
                                         <?php $route = Yii::$app->controller->route;?>
-<!--                                        <li class="--><?//=$route == 'site/index' ? 'active': '' ?><!--"><a href="--><?//= Url::toRoute('/') ?><!--">--><?//= Yii::t('app', 'menu_home') ?><!--</a></li>-->
+                                        <li class="<?=$route == 'site/index' ? 'active': '' ?>"><a href="<?= Url::toRoute('/') ?>"><?= Yii::t('app', 'menu_home') ?></a></li>
                                         <li class="<?=$route == 'site/about' ? 'active': '' ?>"><a href="<?= Url::toRoute('/about') ?>"><?= Yii::t('app', 'menu_about') ?></a></li>
-                                        <li class="<?=$route == 'service/index' ? 'active': '' ?>"><a href="#"><?= Yii::t('app', 'menu_services') ?></a>
+                                        <li class="<?=$route == 'service/index' ? 'active': '' ?>"><a href="<?=Url::toRoute('service/') ?>"><?= Yii::t('app', 'menu_services') ?></a>
                                             <i class="fa fa-angle-down"></i>
                                             <ul>
                                                 <li><a href="<?= Url::toRoute('service/') ?>"><?= Yii::t('app', 'menu_all_services') ?></a></li>
@@ -170,7 +170,7 @@ $params = Yii::$app->params;
                         </a>
                         <!-- 	Logo-END 	-->
                         <div class="simple-article">
-                            <p><?= Yii::t('app', 'footer_text') ?></p>
+                            <p><?=Yii::t('app', 'footer_text') ?></p>
                         </div>
                         <!-- 	Social-START 	-->
                         <div class="socialWrapper light">

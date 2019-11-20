@@ -13,6 +13,7 @@ return [
     'call_us' => 'Call us now',
     'all_rights_reserved' => 'All rights reserved',
     'copyright' => 'Copyright',
+    'footer_text' => ' ',
     // menu //
     'menu_home' => 'Home',
     'menu_services' => 'Services',

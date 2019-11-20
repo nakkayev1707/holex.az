@@ -5,7 +5,7 @@ $this->title = Yii::t('app', 'menu_blog');
 
 ?>
 <!-- 	Top banner-START 	-->
-<div class="contentPadding bg bgShadow" style="background-image: url(img/banner-img2.jpg)">
+<div class="contentPadding bg bgShadow" style="background-image: url()">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">

@@ -48,7 +48,7 @@ $this->title = Yii::t('app', 'menu_services');
                             </a>
                             <h6 class="h6 as"><a href="<?= Yii::$app->params['siteUrl'] . "/" . Yii::$app->language ?>/service/<?= $service['id'] ?>"><?=$service['title']?></a></h6>
                             <div class="tumbContent small">
-                                <p><?=$service['full']?></p>
+                                <p><?=substr($service['full'], 0, 150) . "..."?></p>
                             </div>
                         </div>
                         <div class="emptySpace90 emptySpace-md30"></div>
