@@ -15,6 +15,9 @@ return [
     'all_rights_reserved' => 'Bütün hüquqlar qorunur',
     'copyright' => 'Copyright',
     'footer_text' => ' ',
+    'eco_bags' => 'Eco Bags',
+    'eco_bags_title' => ' ',
+    'we_offer_services' => 'Bizim t',
     // menu //
     'menu_home' => 'Əsas səhifə',
     'menu_services' => 'Servislər',

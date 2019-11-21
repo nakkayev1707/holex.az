@@ -79,7 +79,8 @@ class services
             }
         }
         // saving images
-        if (!empty($_FILES['img']['name'])) {
+
+        if (!empty($_FILES['img'])) {
             if (empty($_FILES['img']['error'])) {
                 $service['image'] = utils::upload($_FILES['img']['name'], $_FILES['img']['tmp_name'], UPLOADS_DIR.'services/', images::$allowed_ext);
                 if (empty($service['image'])) {
@@ -118,7 +119,6 @@ class services
         $service = $this->getServiceById($id);
         $upd = [];
         $translates = [];
-
         if (!empty($_FILES['img']['name'])) {
             if (empty($_FILES['img']['error'])) {
                 $uploaded = utils::upload($_FILES['img']['name'], $_FILES['img']['tmp_name'], UPLOADS_DIR.'services/', images::$allowed_ext);
@@ -126,13 +126,12 @@ class services
                     $response['errors'][] = 'upl_invalid_image_extension_err';
                 } else {
                     $upd['image'] = $uploaded;
-                    @unlink(UPLOADS_DIR.'services/'.$service['image']);
+                    unlink(UPLOADS_DIR.'services/'.$service['image']);
                 }
             } else {
                 $response['errors'] = "file_upload_err";
             }
         }
-
 
         // processing translates
         foreach (CMS::$site_langs as $lng) {
@@ -181,7 +180,7 @@ class services
         ]);
         if ($serviceDeleted && $service['id']) {
             if (tr::del($this->table, (int)$id)) {
-                @unlink(UPLOADS_DIR.'services/'.$service['image']);
+                unlink(UPLOADS_DIR.'services/'.$service['image']);
                 return true;
             }
         }

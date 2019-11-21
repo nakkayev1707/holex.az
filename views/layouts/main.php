@@ -72,7 +72,7 @@ $params = Yii::$app->params;
                         <div class="phoneBlock">
                             <i class="flatIcon Fphone2 flaticon-technology"></i>
                             <p><?=Yii::t('app', 'call_us') ?></p>
-                            <h5 class="h5 as"><a href="tel:994507979600">+994 50 797 96 00</a></h5>
+                            <h5 class="h5 as"><a href="tel:994507979600"><?=Yii::$app->params['companyPhone']?></a></h5>
                         </div>
                         <a href="<?= Url::toRoute('site/contact') ?>"
                            class="button btnSize1"><?= Yii::t('app', 'get_appointment') ?></a>
@@ -83,7 +83,7 @@ $params = Yii::$app->params;
                         <div class="headerTopInfo">
                             <div class="headerTopInfoContaner">
                                 <!-- 	Logo-START 	-->
-                                <a href="<?= Url::toRoute('site/index') ?>" class="logo">
+                                <a href="<?= Url::toRoute('site/') ?>" class="logo">
                                     <img src="<?=$params['siteUrl']?>/img/logo.png" alt="">
                                 </a>
                                 <!-- 	Logo-END 	-->
@@ -98,7 +98,6 @@ $params = Yii::$app->params;
                                 <!-- 	Responsive menu-END 	-->
                             </div>
                         </div>
-
                         <div class="responsiveWrapper">
                             <div class="navScroll">
                                 <nav>
@@ -106,15 +105,22 @@ $params = Yii::$app->params;
                                         <?php $route = Yii::$app->controller->route;?>
                                         <li class="<?=$route == 'site/index' ? 'active': '' ?>"><a href="<?= Url::toRoute('/') ?>"><?= Yii::t('app', 'menu_home') ?></a></li>
                                         <li class="<?=$route == 'site/about' ? 'active': '' ?>"><a href="<?= Url::toRoute('/about') ?>"><?= Yii::t('app', 'menu_about') ?></a></li>
-                                        <li class="<?=$route == 'service/index' ? 'active': '' ?>"><a href="<?=Url::toRoute('service/') ?>"><?= Yii::t('app', 'menu_services') ?></a>
+                                        <li class="<?=$route == 'service/index' || $route == 'service/view' ? 'active': '' ?>"><a href="<?=Url::toRoute('service/') ?>"><?= Yii::t('app', 'menu_services') ?></a>
                                             <i class="fa fa-angle-down"></i>
                                             <ul>
                                                 <li><a href="<?= Url::toRoute('service/') ?>"><?= Yii::t('app', 'menu_all_services') ?></a></li>
-
+                                                <?php
+                                                $services = $this->params['services'];
+                                                if (isset($services) && !empty($services)) {
+                                                    foreach ($services as $service) {
+                                                        ?>
+                                                        <li><a href="<?=Yii::$app->params['siteUrl'] . "/" . Yii::$app->language ?>/service/<?= $service['id']?>"><?=$service['title']?></a></li>
+                                                    <?php }
+                                                } ?>
                                             </ul>
                                         </li>
                                         <li class="<?=$route == 'news/index' || $route == 'news/view' ? 'active': '' ?>"><a href="<?= Url::toRoute('/news') ?>"><?= Yii::t('app', 'menu_news') ?></a></li>
-                                        <li class="<?=$route == 'media/index' || $route == 'blog/media' ? 'active': '' ?>"><a href="<?= Url::toRoute('/media') ?>"><?= Yii::t('app', 'menu_media') ?></a></li>
+                                        <li class="<?=$route == 'site/media' ? 'active': '' ?>"><a href="<?= Url::toRoute('/media') ?>"><?= Yii::t('app', 'menu_media') ?></a></li>
                                         <li class="<?=$route == 'blog/index' || $route == 'blog/view' ? 'active': '' ?>"><a href="<?= Url::toRoute('/blog') ?>"><?= Yii::t('app', 'menu_blog') ?></a></li>
                                         <li class="<?=$route == 'site/contact' ? 'active': '' ?>"><a href="<?= Url::toRoute('/contact') ?>"><?= Yii::t('app', 'menu_contact_me') ?></a></li>
                                         <li><a href="#"><?= Yii::$app->language ?></a>
@@ -239,11 +245,11 @@ $params = Yii::$app->params;
 <!--                        </div>-->
                         <div class="footerContants">
                             <i class="fa fa-phone"></i>
-                            <a href="tel:994507979600">+994 50 797 96 00</a>
+                            <a href="tel:994507979600"><?=Yii::$app->params['companyPhone']?></a>
                         </div>
                         <div class="footerContants">
                             <i class="fa fa-envelope-o"></i>
-                            <a href="mailto:info@myholex.az">info@myholex.az</a>
+                            <a href="mailto:<?=Yii::$app->params['companyEmail']?>"><?=Yii::$app->params['companyEmail']?></a>
                         </div>
                     </div>
                     <!-- 	Block4-END 	-->

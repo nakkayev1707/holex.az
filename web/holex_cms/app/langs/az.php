@@ -334,6 +334,7 @@ return [
     'publication_type' => 'Növ',
     'publication_is_hidden' => 'Saytda görülməsi',
     'publication_date' => 'Tarix',
+    'publication_about_info' => 'Kompaniya haqqında məlumat',
     'filter_publication_type' => 'Nəşr növü',
     'filter_publication_visibility' => 'Saytda görülməsi',
     'filter_publication_date' => 'Tarix',

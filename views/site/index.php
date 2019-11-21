@@ -54,15 +54,15 @@ use yii\helpers\Url; ?>
         <div class="row">
             <div class="col-xs-12">
                 <div class="contentTitle normall">
-                    <h2 class="h2 as">We Offer Services In <span>Our Clinic</span></h2>
-                    <p>Lorem Ipsum is simply text of the Lorem Ipsum is  simply my text of the printing and Ipsum is simply text of the Ipsum is simply text of thetypesetting Ipsum is simply text of the stry simply dummy text of the printing and typesetting industry.</p>
+                    <h2 class="h2 as"><span><?=Yii::t('app', 'our_services') ?></span></h2>
+                    <p></p>
                 </div>
                 <div class="emptySpace50 emptySpace-xs30"></div>
             </div>
         </div>
         <div class="row clearFix">
-            <?php if (isset($services)) {
-                foreach ($services as $service) {
+            <?php if (isset($sixService)) {
+                foreach ($sixService as $service) {
                     $imagePath = Yii::$app->params['siteUrl'].Yii::$app->params['uploadsUrl']."/services/".$service['image'];
                     ?>
                     <div class="col-xs-12 col-sm-6 col-md-3">
@@ -72,7 +72,7 @@ use yii\helpers\Url; ?>
                             </a>
                             <h6 class="h6 as"><a href="<?= Yii::$app->params['siteUrl'] ?>/service/<?=$service['id']?>"><?=$service['title'] ?></a></h6>
                             <div class="tumbContent small">
-                                <p><?=$service['full']?></p>
+                                <p><?=substr($service['full'], 0, 200)?></p>
                             </div>
                         </div>
                         <div class="emptySpace-sm30"></div>
@@ -103,10 +103,10 @@ use yii\helpers\Url; ?>
                 </div>
                 <div class="col-sm-6 col-sm-offset-6">
                     <div class="personeWrapper large">
-                        <h2 class="h2 light as">Hello, I’m Doctor Roberts</h2>
-                        <p>Expert Clinical Psychologist in Manhattan</p>
+                        <h2 class="h2 light as"><?=Yii::t('app', 'about_info_title')?></h2>
+                        <p><?=Yii::t('app', 'about_info_subtitle') ?></p>
                         <div class="simple-article normall extraLight">
-                            <p>Lorem Ipsum is simply text of the Lorem Ipsum is  simply my text of the printing and Ipsum is simply text of the Ipsum is simply text of thetypesetting Ipsum is simply text of the stry simply dummy text of the printing and typesetting industry.  Lorem Ipsum is simply text of the Lorem Ipsum is  simply my text of </p>
+                            <p><?=Yii::t('app', 'about_info_paragraph1')?></p>
                         </div>
                         <div class="emptySpace25"></div>
                         <div class="personePhone">
@@ -114,7 +114,7 @@ use yii\helpers\Url; ?>
                                 <i class="flaticon3-telephone-auricular-with-cable"></i>
                             </div>
                             <div class="personePhoneContent">
-                                <a href="tel:994507979600">+994 50 797 96 00</a>
+                                <a href="tel:994507979600"><?=Yii::$app->params['companyPhone']?></a>
                                 <span><?=Yii::t('app', 'call_us')?></span>
                             </div>
                         </div>
@@ -143,14 +143,14 @@ use yii\helpers\Url; ?>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6">
                             <div class="imgWrapper">
-                                <img src="img/about-us-img.jpg" alt="">
+                                <img src="<?=Yii::$app->params['siteUrl'].Yii::$app->params['uploadsUrl']."/publications/". $aboutInfo[0]['image']; ?>" alt="">
                             </div>
                             <div class="emptySpace35"></div>
                         </div>
                     </div>
-                    <p>In Addition to our commitment towards advantages are :</p>
+                    <p><?=$aboutInfo[0]['title']?></p>
                     <div class="simple-article normall">
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo invent ore veritatis et perspiciatis unde omnis iste natus error sit voluptatem</p>
+                        <p><?=substr($aboutInfo[0]['full'], 0, 1000)?></p>
                     </div>
                     <div class="emptySpace30"></div>
                     <div class="row">
@@ -295,6 +295,53 @@ use yii\helpers\Url; ?>
     </div>
 </div>
 <!-- 	Last news-END 	-->
+
+<!-- 	Our team-START 	-->
+<div class="contentPadding grey">
+    <div class="container">
+        <div class="row">
+            <!-- 	persone1-START 	-->
+            <div class="col-xs-12">
+                <div class="titleShortocode">
+                    <h3 class="h3 as"><?=Yii::t('app', 'eco_bags') ?></h3>
+                    <div class="emptySpace30"></div>
+                    <div class="simple-article normall">
+                        <p><?=Yii::t('app', 'eco_bags_title') ?></p>
+                    </div>
+                </div>
+                <div class="emptySpace-lg30"></div>
+            </div>
+            <!-- 	persone1-END 	-->
+
+            <div class="swiperMainWrapper ourTeamSlider">
+                <div class="swipert-black-button swiper-button-prev"></div>
+                <div class="swipert-black-button swiper-button-next"></div>
+                <div class="swiper-container" data-breakpoints="1" data-xs-slides="1" data-sm-slides="2" data-md-slides="4" data-slides-per-view="4" data-space="30">
+                    <div class="swiper-wrapper">
+                        <?php if (isset($ecoBags) && !empty($ecoBags)) {
+                            foreach ($ecoBags as $bag) {
+                                $imagePath = Yii::$app->params['siteUrl'] . Yii::$app->params['uploadsUrl'] . "/publications/" . $bag['image'];
+                                ?>
+                                <div class="swiper-slide">
+                                    <div class="tumbWrapper persone">
+                                        <a href="<?=Url::toRoute('site/contact') ?>" class="imgWrapper imgTumb ">
+                                            <img src="<?=$imagePath?>" alt="">
+                                        </a>
+                                        <div class="blockContent">
+                                            <a href="<?=Url::toRoute('site/contact') ?>"><?=$bag['title']?></a>
+                                            <p><?=substr($bag['full'], 0, 200)?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php }
+                        } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 	Our team-END 	-->
 
 <!-- 	Request-START 	-->
 <div class="contentPadding grey colorBlack">

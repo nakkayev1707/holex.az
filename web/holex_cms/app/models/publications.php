@@ -52,6 +52,11 @@ class publications
             'type' => 'gift_card',
             'translate_key' => 'publication_gift_card'
         ],
+        [
+            'id' => 8,
+            'type' => 'about_info',
+            'translate_key' => 'publication_about_info'
+        ]
     ];
 
     public function getPublicationsList()

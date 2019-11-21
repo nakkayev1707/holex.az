@@ -19,7 +19,7 @@ class Service
         return $types;
     }
 
-    public function getServices($amount = 0){
+    public function getServices($amount = 0, $order = ''){
         $where = [];
         $joins = [];
         $params = [];
@@ -45,8 +45,12 @@ class Service
         $params[":lang"] = Yii::$app->language;
         $params[":table"] = $this->serviceTable;
         $amount <= 0 ? $limit = "" : $limit = " LIMIT " . (int)$amount;
-
-        $sqlGetList = "SELECT $columns FROM " . $this->serviceTable . " s $joins $where $limit";
+        if ($order == 'DESC' || $order == 'ASC') {
+            $order = " ORDER BY s.id " . $order;
+        } else {
+            $order = "";
+        }
+        $sqlGetList = "SELECT $columns FROM " . $this->serviceTable . " s $joins $where $order $limit";
         $services = Yii::$app->db->createCommand($sqlGetList, $params)->queryAll();
         return $services;
     }

@@ -80,7 +80,7 @@ use yii\helpers\Url; ?>
                         <div class="imgWrapper">
                             <i class="fa fa-envelope-o"></i>
                         </div>
-                        <a href="mailto:info@myholex.az">info@myholex.az</a>
+                        <a href="mailto:<?=Yii::$app->params['companyEmail']?>"><?=Yii::$app->params['companyEmail']?></a>
                     </div>
                     <!-- 	Contacts2-END 	-->
 
@@ -89,7 +89,7 @@ use yii\helpers\Url; ?>
                         <div class="imgWrapper">
                             <i class="fa fa-phone"></i>
                         </div>
-                        <a href="tel:994507979600">+ 994 50 797 96 00</a>
+                        <a href="tel:994507979600"><?=Yii::$app->params['companyPhone']?></a>
                     </div>
                     <!-- 	Contacts3-END 	-->
                 </div>

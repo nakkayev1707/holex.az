@@ -14,6 +14,8 @@ return [
     'all_rights_reserved' => 'All rights reserved',
     'copyright' => 'Copyright',
     'footer_text' => ' ',
+    'eco_bags' => 'Eco Bags',
+    'eco_bags_title' => ' ',
     // menu //
     'menu_home' => 'Home',
     'menu_services' => 'Services',

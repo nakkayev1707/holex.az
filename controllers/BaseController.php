@@ -28,9 +28,8 @@ class BaseController extends Controller
             return $this->redirect('site/underconstruction');
         }
         $serviceModel = new Service();
-        $services = $serviceModel->getServices();
-        $this->view->params['settings'] = $services;
-//        var_dump($this->view->params['settings']);die;
+        $services = $serviceModel->getServices(5, 'DESC');
+        Yii::$app->view->params['services'] = $services;
         try {
             return parent::beforeAction($action);
         } catch (BadRequestHttpException $e) {

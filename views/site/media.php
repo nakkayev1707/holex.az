@@ -31,7 +31,7 @@ $this->title = Yii::t('app', 'menu_media')
                     ?>
                     <div class="my-col-33">
                         <a href="<?=$imagePath?>" class="imgWrapper imgTumb lightbox">
-                            <p class="simple-article light large"><?=$m['title']?></p>
+                            <p class="simple-article light large"><?=substr($m['title'], 0, 100)?></p>
                             <img src="<?=$imagePath?>" alt="">
                         </a>
                         <div class="emptySpace10"></div>

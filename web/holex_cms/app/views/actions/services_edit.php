@@ -79,7 +79,7 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
                                     <div class="form-group">
                                         <label><?=CMS::t('image');?> (<?=CMS::t('multi_image_select_warn')?>)</label>
                                         <?=view::browse([
-                                            'name' => 'img[]',
+                                            'name' => 'img',
                                             'accept' => 'image/*',
                                             'multiple' => true,
                                         ]);?>

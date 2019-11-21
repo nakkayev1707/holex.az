@@ -2,7 +2,6 @@
 
 /* @var $this yii\web\View */
 
-use yii\helpers\Html;
 use yii\helpers\Url;
 
 $this->title = Yii::t('app', 'menu_about');
@@ -33,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
             <div class="col-sm-6">
                 <div class="aboutOur">
-                    <h2 class="h2 as"><?=$about['title']?></h2>
-                    <?= $about['full']?>
+                    <h2 class="h2 as"><?=$aboutInfo[0]['title']?></h2>
+                    <?= $aboutInfo[0]['full']?>
                 </div>
                 <div class="emptySpace-xs30"></div>
             </div>
@@ -42,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="imgWrapper">
-                            <img src="<?=Yii::$app->params['siteUrl'].Yii::$app->params['uploadsUrl']."/about/".$about['image']; ?>" alt="">
+                            <img src="<?=Yii::$app->params['siteUrl'].Yii::$app->params['uploadsUrl']."/publications/". $aboutInfo[0]['image']; ?>" alt="">
                         </div>
                     </div>
                 </div>

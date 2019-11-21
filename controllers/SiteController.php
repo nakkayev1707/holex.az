@@ -44,19 +44,25 @@ class SiteController extends BaseController
     {
         // models //
         $aphorismModel = new Publication('aphorism');
+        $aboutModel = new Publication('about_info');
         $newsModel = new Publication('news');
+        $ecoBagsModel = new Publication('eco_bag');
         $contactModel = new ContactForm();
         $serviceModel = new Service();
         // data //
         $errors = [];
         try {
             $aphorisms = $aphorismModel->getPublications(4, '', 'DESC');
+            $aboutInfo = $aboutModel->getPublications(1, '', 'DESC');
             $news = $newsModel->getPublications(3, '', 'DESC');
             $sixService = $serviceModel->getServices(6);
+            $ecoBags = $ecoBagsModel->getPublications();
         } catch (Exception $e) {
             $aphorisms = [];
             $news = [];
             $sixService = [];
+            $aboutInfo = [];
+            $ecoBags = [];
         }
 
         // contact form handle
@@ -74,9 +80,11 @@ class SiteController extends BaseController
 
         return $this->render('index', [
             'aphorisms' => $aphorisms,
+            'aboutInfo' => $aboutInfo,
             'news' => $news,
             'model' => $contactModel,
             'sixService' => $sixService,
+            'ecoBags' => $ecoBags,
             'errors' => $errors
         ]);
     }
@@ -116,7 +124,15 @@ class SiteController extends BaseController
 
     public function actionAbout()
     {
-        return $this->render('about');
+        $aboutModel = new Publication('about_info');
+        try {
+            $aboutInformation = $aboutModel->getPublications(1, '', 'DESC');
+        } catch (Exception $e) {
+            $aboutInformation = [];
+        }
+        return $this->render('about', [
+            'aboutInfo' => $aboutInformation
+        ]);
     }
 
     public function actionError()
