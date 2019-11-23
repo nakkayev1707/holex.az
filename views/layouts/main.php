@@ -183,7 +183,7 @@ $params = Yii::$app->params;
                     <div class="footerBlock small">
                         <!-- 	Logo-START 	-->
                         <a href="<?= Url::toRoute('site/index') ?>" class="logo">
-                            <img src="img/footer-logo.png" alt="">
+                            <img src="<?=Yii::$app->params['siteUrl'] . "/img/logo.png" ?>" alt="">
                         </a>
                         <!-- 	Logo-END 	-->
                         <div class="simple-article">
@@ -223,10 +223,10 @@ $params = Yii::$app->params;
                         </div>
                         <div class="simple-article style2">
                             <ul>
-                                <li><a href="<?=Url::toRoute('service/index') ?>"><?=Yii::t('app', 'menu_all_services') ?></a></li>
-                                <?php if (!empty($lastFourServiceType)) {
-                                    foreach ($lastFourServiceType as $serviceType) { ?>
-                                        <li><a href="<?= Url::toRoute('service/?id=').$serviceType['id']?>"><?= $serviceType['title']?></a></li>
+                                <li><a href="<?=Url::toRoute('service/') ?>"><?=Yii::t('app', 'menu_all_services') ?></a></li>
+                                <?php if (!empty($services)) {
+                                    foreach ($services as $service) { ?>
+                                        <li><a href="<?=Yii::$app->params['siteUrl'] . "/" . Yii::$app->language ?>/service/<?= $service['id']?>"><?= $service['title']?></a></li>
                                     <?php }
                                 } ?>
                             </ul>

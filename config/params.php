@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'adminEmail' => 'info@myholex.az',
-    'senderEmail' => 'noreply@myholex.az',
+    'adminEmail' => 'info@myholex.com',
+    'senderEmail' => 'noreply@myholex.com',
     'senderName' => 'MYHOLEX.AZ',
     'companyPhone' => '+994 50 797 96 00',
-    'companyEmail' => 'info@myholex.az',
+    'companyEmail' => 'info@myholex.com',
     'uploadsUrl' => '/uploads',
     'siteUrl' => 'http://holex.loc',
     'og_title' => ['property' => 'og:title', 'content' => 'title'],

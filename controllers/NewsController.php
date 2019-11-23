@@ -32,11 +32,11 @@ class NewsController extends BaseController
 
     public function actionView($id)
     {
-        $blogModel = new Publication('news');
-        $view = $blogModel->getOne($id);
-        $lastFiveBlog = [];
+        $newsModel = new Publication('news');
+        $view = $newsModel->getOne($id);
+        $lastFiveNews = [];
         try {
-            $lastFiveNews = $blogModel->getPublications(4, '', 'DESC');
+            $lastFiveNews = $newsModel->getPublications(4, '', 'DESC');
         } catch (Exception $e) {}
         if (!$view) {
             throw new NotFoundHttpException();

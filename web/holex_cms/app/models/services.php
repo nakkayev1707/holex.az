@@ -141,7 +141,7 @@ class services
                 }
             }
         }
-        $upd['type'] = $_POST['type'];
+        $upd['type_id'] = (int)$_POST['type'];
 
         CMS::$db->mod($this->table . '#' . (int)$id, $upd);
         // saving translates

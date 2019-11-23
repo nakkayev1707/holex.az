@@ -91,7 +91,41 @@ use yii\helpers\Url; ?>
         </div>
     </div>
 </div>
-<!--  	Offer Servicres-END 	-->
+<!--  	Offer Services-END 	-->
+
+<!-- 	Corporate-Offers-START 	-->
+<div class="contentPadding" style="padding-top: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="contentTitle normall">
+                    <h3 class="h3 as"><?= Yii::t('app', 'business_offers') ?></h3>
+                </div>
+            </div>
+            <?php if (isset($offers) && !empty($offers)) {
+                foreach ($offers as $offer) {
+                    $imagePath = Yii::$app->params['siteUrl'] . Yii::$app->params['uploadsUrl'] . "/publications/" . $offer['image'];
+                    ?>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="tumbWrapper style2">
+                            <div class="imgWrapper">
+                                <img src="<?=$imagePath?>" alt="">
+                                <div class="timeBlock"><?=date('Y-m-d', strtotime($offer['created_at'])) ?></div>
+                            </div>
+                            <h6 class="h6 as"><a href="<?= Yii::$app->params['siteUrl'] ?>/offer/<?=$offer['id']?>"><?= $offer['title']?></a></h6>
+                            <div class="tumbContent small">
+                                <p><?= substr($offer['full'], 0, 150) . (strlen($offer['full']) > 150 ? "..." : "")?></p>
+                            </div>
+                            <a class="readMore" href="<?= Yii::$app->params['siteUrl'] ?>/offer/<?=$offer['id']?>"><?=Yii::t('app', 'read_more')?></a>
+                        </div>
+                        <div class="emptySpace-xs30"></div>
+                    </div>
+                <?php }
+            } else  ?>
+        </div>
+    </div>
+</div>
+<!-- Corporate offers-END 	-->
 
 <!-- 	Persone banner-START 	-->
 <div class="personeBg" style="background: rgba(95, 91, 92, 0.8)!important;">
@@ -262,41 +296,6 @@ use yii\helpers\Url; ?>
 <!--</div>-->
 <!-- 	Banner-END-->
 
-<!-- 	Last news-START 	-->
-<div class="contentPadding">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="contentTitle normall">
-                    <h3 class="h3 as"><?= Yii::t('app', 'latest_news') ?></h3>
-                </div>
-            </div>
-            <?php if (isset($news) && !empty($news)) {
-                foreach ($news as $n) {
-                    $imagePath = Yii::$app->params['siteUrl'] . Yii::$app->params['uploadsUrl'] . "/publications/" . $n['image'];
-                    ?>
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="tumbWrapper style2">
-                            <div class="imgWrapper">
-                                <img src="<?=$imagePath?>" alt="">
-                                <div class="timeBlock"><?=date('Y-m-d', strtotime($n['created_at'])) ?></div>
-                            </div>
-                            <h6 class="h6 as"><a href="<?= Yii::$app->params['siteUrl'] ?>/news/<?=$n['id']?>"><?= $n['title']?></a></h6>
-                            <div class="tumbContent small">
-                                <p><?= substr($n['full'], 0, 150) . "..."?></p>
-                            </div>
-                            <a class="readMore" href="<?= Yii::$app->params['siteUrl'] ?>/news/<?=$n['id']?>"><?=Yii::t('app', 'read_more')?></a>
-                        </div>
-                        <div class="emptySpace-xs30"></div>
-                    </div>
-                <?php }
-            } else  ?>
-        </div>
-    </div>
-</div>
-<!-- 	Last news-END 	-->
-
-<!-- 	Our team-START 	-->
 <div class="contentPadding grey">
     <div class="container">
         <div class="row">
@@ -343,9 +342,43 @@ use yii\helpers\Url; ?>
 </div>
 <!-- 	Our team-END 	-->
 
+<!-- 	Last news-START 	-->
+<div class="contentPadding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="contentTitle normall">
+                    <h3 class="h3 as"><?= Yii::t('app', 'latest_news') ?></h3>
+                </div>
+            </div>
+            <?php if (isset($news) && !empty($news)) {
+                foreach ($news as $n) {
+                    $imagePath = Yii::$app->params['siteUrl'] . Yii::$app->params['uploadsUrl'] . "/publications/" . $n['image'];
+                    ?>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="tumbWrapper style2">
+                            <div class="imgWrapper">
+                                <img src="<?=$imagePath?>" alt="">
+                                <div class="timeBlock"><?=date('Y-m-d', strtotime($n['created_at'])) ?></div>
+                            </div>
+                            <h6 class="h6 as"><a href="<?= Yii::$app->params['siteUrl'] ?>/news/<?=$n['id']?>"><?= $n['title']?></a></h6>
+                            <div class="tumbContent small">
+                                <p><?= substr($n['full'], 0, 150) . (strlen($n['full']) > 150 ? "..." : "")?></p>
+                            </div>
+                            <a class="readMore" href="<?= Yii::$app->params['siteUrl'] ?>/news/<?=$n['id']?>"><?=Yii::t('app', 'read_more')?></a>
+                        </div>
+                        <div class="emptySpace-xs30"></div>
+                    </div>
+                <?php }
+            } else  ?>
+        </div>
+    </div>
+</div>
+<!-- 	Last news-END 	-->
+
 <!-- 	Request-START 	-->
 <div class="contentPadding grey colorBlack">
-    <div class="contactBg bgShadow style2" style="background-image: url(img/bg-layer.jpg)"></div>
+    <div class="contactBg bgShadow style2" style="background-image: url()"></div>
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
@@ -353,20 +386,6 @@ use yii\helpers\Url; ?>
                     <div class="simple-article light large">
                         <p>The Counseling Clinic gives proficient directing and psychotherapy administrations for people and families in Ny City.</p>
                     </div>
-                </div>
-                <div class="emptySpace30"></div>
-                <div class="contactContent normall">
-                    <span>The Counseling Clinic</span>
-                    <p>2416 Towncrest Drive, Iowa City, IA 52245</p>
-                    <a href="tel:3193546238">Phone: 319-354-6238</a>
-                </div>
-                <div class="emptySpace30"></div>
-                <div class="contactContent normall">
-                    <span>Monday to Friday :</span> <p>8:00 AM – 9:00 PM</p>
-                    <div class="emptySpace5"></div>
-                    <span>Saturday :</span> <p>10:00 AM – 6:00 PM</p>
-                    <div class="emptySpace5"></div>
-                    <span>Sunday :</span> <p>Closed</p>
                 </div>
                 <div class="emptySpace-xs30"></div>
             </div>

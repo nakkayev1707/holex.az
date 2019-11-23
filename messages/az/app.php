@@ -63,7 +63,9 @@ return [
     // about //
     'about_info_title' => '',
     'about_info_subtitle' => '',
-    'about_info_paragraph1' => '',
-    'about_info_paragraph2' => '',
-
+    'about_info_paragraph1' => 'Əslində uşaqlıqdan bir axtarışda idim. Bu həyatın 1987-ci ildə anadan olub, bu tarixdə dünyasını dəyişib qəbir daşı yazısından daha artıq bir mənası olduğuna inanırdım .Axtarışlarım məni kitablara ,müxtəlif mənbələrə yönəltdi.Tanınmış SECRET kitabını oxumaqla başlamış səyahət daha dərin yaradılış anlayışına gəldi.',
+    'about_info_paragraph2' => 'Hər birimizin bir bütövün parçası olduğumuzu və bu həyata gəlişimizin səbəbini dərk etməmlə həyatım da dəyişdi. Bu on illik səyahət mənə onu öyrətdi ki,hər insanın (ruhun) öz inkişaf yolu var və bu yol hər kəsdə fərqlidir.Əslində ruhun inkişafında kəsə yol yoxdur. Bəlkə də var…
+     Mənim HOLEX-i yaratmaqla məqsədim Sizə bu yolu tapmaqda vasitəçi olmaqdır.Düşünürəm on illik axtarışım (buna xoşbəxtlik axtarışı da deyirlər) və özünü tapma cəhdləri boş vaxt sərfi olmadı.',
+    // business offers //
+    'business_offers' => 'Biznes təklifləri',
 ];

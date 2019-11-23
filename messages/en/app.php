@@ -61,6 +61,8 @@ return [
     // about //
     'about_info_title' => '',
     'about_info_subtitle' => '',
-    'about_info_paragraph1' => '',
-    'about_info_paragraph2' => '',
+    'about_info_paragraph1' => ' ',
+    'about_info_paragraph2' => ' ',
+    // business offers //
+    'business_offers' => 'Business offers',
 ];
