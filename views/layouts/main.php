@@ -194,8 +194,8 @@ $params = Yii::$app->params;
                             <a href="https://www.instagram.com/myholex/?igshid=1871ml9ixf4dp" target="_blank"><i class="fa fa-instagram"></i></a>
                             <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
                             <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-skype"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-pinterest-square"></i></a>
+<!--                            <a href="#" target="_blank"><i class="fa fa-skype"></i></a>-->
+<!--                            <a href="#" target="_blank"><i class="fa fa-pinterest-square"></i></a>-->
                         </div>
                         <!-- 	Social-END 	-->
                         <div class="emptySpace-md30"></div>

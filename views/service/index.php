@@ -6,7 +6,7 @@ $this->title = Yii::t('app', 'menu_services');
 
 ?>
 <!-- 	Top banner-START 	-->
-<div class="contentPadding bg bgShadow" style="">
+<div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/service/header_img.jpg'?>)">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -48,7 +48,7 @@ $this->title = Yii::t('app', 'menu_services');
                             </a>
                             <h6 class="h6 as"><a href="<?= Yii::$app->params['siteUrl'] . "/" . Yii::$app->language ?>/service/<?= $service['id'] ?>"><?=$service['title']?></a></h6>
                             <div class="tumbContent small">
-                                <p><?=substr($service['full'], 0, 150) . "..."?></p>
+                                <p><?=substr($service['full'], 0, 150) . (strlen($service['full']) > 150 ? "..." : "")?></p>
                             </div>
                         </div>
                         <div class="emptySpace90 emptySpace-md30"></div>
@@ -62,7 +62,7 @@ $this->title = Yii::t('app', 'menu_services');
 
 <!-- 	Request-START 	-->
 <div class="contentPadding grey colorBlack">
-    <div class="contactBg bgShadow" style="background-image: url(img/bg-layer2.jpg)"></div>
+    <div class="contactBg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/service/bg1.jpg' ?>)"></div>
     <div class="container">
         <div class="row ">
             <div class="col-sm-6 col-sm-offset-6">

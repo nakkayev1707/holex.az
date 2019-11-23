@@ -16,6 +16,8 @@ return [
     'footer_text' => ' ',
     'eco_bags' => 'Eco Bags',
     'eco_bags_title' => ' ',
+    'need_advice' => 'Need an advice?',
+    'pl_contact_us' => 'Contact us',
     // menu //
     'menu_home' => 'Home',
     'menu_services' => 'Services',
@@ -59,10 +61,10 @@ return [
     'our_services' => 'Our services',
     'consultation' => 'Consultation',
     // about //
-    'about_info_title' => '',
-    'about_info_subtitle' => '',
-    'about_info_paragraph1' => ' ',
-    'about_info_paragraph2' => ' ',
+    'about_info_title' => 'A few words about me',
+    'about_info_subtitle' => ' ',
+    'about_info_paragraph1' => '&nbsp;&nbsp;&nbsp;In fact, I was in searching since my childhood. It was born in 1987, and I believed that history had a greater meaning than death. It was born in 1987, and I believed that history had a greater meaning than death. My search has led me to books and various sources. The journey that began with reading the well-known SECRET book has come to a deeper understanding of creation.',
+    'about_info_paragraph2' => '&nbsp;&nbsp;&nbsp;My life changed as I realized that we were all part of each other and that we were coming to this place. This ten-year journey has taught me that every person has his or her own way of development, and this path is different for everyone. Maybe there is… </br>&nbsp;&nbsp;&nbsp;My purpose in creating HOLEX is to help you find that path. I think my ten-year search (which is also called happiness) and my attempts to find myself were not wasted time.',
     // business offers //
     'business_offers' => 'Business offers',
 ];

@@ -9,7 +9,7 @@ use yii\helpers\Url;
 
 $this->title = $name;
 ?>
-<div class="pageError bgShadow strong bg" style=>
+<div class="pageError bgShadow strong bg">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">

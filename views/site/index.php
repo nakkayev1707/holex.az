@@ -133,7 +133,7 @@ use yii\helpers\Url; ?>
         <div class="container">
             <div class="row verAlignResponsive">
                 <div class="imgWrapper personeImg">
-                    <img src="<?=Yii::$app->params['siteUrl']. '/img/about/about_photo.jpg' ?>" alt="" style="width: 67.2%">
+                    <img src="<?=Yii::$app->params['siteUrl']. '/img/about/about_photo.jpg' ?>" alt="" style="width: 74.3%">
                 </div>
                 <div class="col-sm-6 col-sm-offset-6">
                     <div class="personeWrapper large">
@@ -299,7 +299,6 @@ use yii\helpers\Url; ?>
 <div class="contentPadding grey">
     <div class="container">
         <div class="row">
-            <!-- 	persone1-START 	-->
             <div class="col-xs-12">
                 <div class="titleShortocode">
                     <h3 class="h3 as"><?=Yii::t('app', 'eco_bags') ?></h3>
@@ -310,7 +309,6 @@ use yii\helpers\Url; ?>
                 </div>
                 <div class="emptySpace-lg30"></div>
             </div>
-            <!-- 	persone1-END 	-->
 
             <div class="swiperMainWrapper ourTeamSlider">
                 <div class="swipert-black-button swiper-button-prev"></div>
@@ -378,13 +376,13 @@ use yii\helpers\Url; ?>
 
 <!-- 	Request-START 	-->
 <div class="contentPadding grey colorBlack">
-    <div class="contactBg bgShadow style2" style="background-image: url()"></div>
+    <div class="contactBg bgShadow style2" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/bg.jpg'?>)"></div>
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
                 <div class="contactContent">
                     <div class="simple-article light large">
-                        <p>The Counseling Clinic gives proficient directing and psychotherapy administrations for people and families in Ny City.</p>
+<!--                        <p>The Counseling Clinic gives proficient directing and psychotherapy administrations for people and families in Ny City.</p>-->
                     </div>
                 </div>
                 <div class="emptySpace-xs30"></div>

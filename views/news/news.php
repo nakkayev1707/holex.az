@@ -5,9 +5,7 @@ $this->title = Yii::t('app', 'menu_news');
 
 ?>
 <!-- 	Top banner-START 	-->
-<div class="contentPadding bg bgShadow" style="background-image: url(
-
-)">
+<div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/service/header_img.jpg'?>)">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -73,7 +71,7 @@ $this->title = Yii::t('app', 'menu_news');
                                 <div class="blogContent">
                                     <h5 class="h5 as"><a href="<?= Yii::$app->params['siteUrl'] . "/" . Yii::$app->language ?>/news/<?= $news['id'] ?>"><?=$news['title']?></a></h5>
                                     <div class="simple-article normall">
-                                        <p><?=substr($news['full'], 0, 300) . "..." ?></p>
+                                        <p><?=substr($news['full'], 0, 300) . (strlen($news['full']) > 200 ? "..." : "")?></p>
                                     </div>
                                 </div>
                                 <a href="<?= Yii::$app->params['siteUrl'] . "/" . Yii::$app->language ?>/news/<?= $news['id'] ?>"
