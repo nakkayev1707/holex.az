@@ -48,6 +48,7 @@ class SiteController extends BaseController
         $newsModel = new Publication('news');
         $ecoBagsModel = new Publication('eco_bag');
         $corporateOffersModel = new Publication('corporate_offer');
+        $giftCardModel = new Publication('gift_card');
         $contactModel = new ContactForm();
         $serviceModel = new Service();
         // data //
@@ -57,6 +58,7 @@ class SiteController extends BaseController
             $aboutInfo = $aboutModel->getPublications(1, '', 'DESC');
             $news = $newsModel->getPublications(3, '', 'DESC');
             $corporateOffers = $corporateOffersModel->getPublications(10, '', 'DESC');
+            $giftCards = $giftCardModel->getPublications(10, '', 'DESC');
             $sixService = $serviceModel->getServices(6);
             $ecoBags = $ecoBagsModel->getPublications();
         } catch (Exception $e) {
@@ -66,6 +68,7 @@ class SiteController extends BaseController
             $aboutInfo = [];
             $ecoBags = [];
             $corporateOffers = [];
+            $giftCards = [];
         }
 
         // contact form handle
@@ -89,6 +92,7 @@ class SiteController extends BaseController
             'sixService' => $sixService,
             'ecoBags' => $ecoBags,
             'offers' => $corporateOffers,
+            'giftCards' => $giftCards,
             'errors' => $errors
         ]);
     }

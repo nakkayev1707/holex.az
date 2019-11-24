@@ -340,6 +340,43 @@ use yii\helpers\Url; ?>
 </div>
 <!-- 	Our team-END 	-->
 
+<div class="content grey">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="chooseWrapper">
+                    <h3 class="h3 as"><?=Yii::t('app', 'gift_card')?></h3>
+                </div>
+                <div class="emptySpace-sm30"></div>
+            </div>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="">
+                        <?php if (isset($giftCards) && !empty($giftCards)) {
+                            foreach ($giftCards as $card) {
+//                                $imagePath = Yii::$app->params['siteUrl'] . Yii::$app->params['uploadsUrl'] . "/publications/" . $card['image'];
+                                ?>
+                                <div class="col-sm-6">
+                                    <div class="cell-view">
+                                        <div class="block">
+                                            <div class="blockContent normall">
+                                                <h6 class="h6 as"><a href=""><?= substr($card['title'], 0, 100) ?></a>
+                                                </h6>
+                                                <p><?= substr($card['full'], 0, 300) ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php }
+                        } ?>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- 	Last news-START 	-->
 <div class="contentPadding">
     <div class="container">

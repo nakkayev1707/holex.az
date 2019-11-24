@@ -18,6 +18,7 @@ return [
     'eco_bags_title' => ' ',
     'need_advice' => 'Need an advice?',
     'pl_contact_us' => 'Contact us',
+    'gift_card' => 'Gift card',
     // menu //
     'menu_home' => 'Home',
     'menu_services' => 'Services',
@@ -30,6 +31,7 @@ return [
     'menu_media' => 'Media',
     'menu_about' => 'About us',
     'menu_contact_me' => 'Contact us',
+    'menu_offer' => 'Business offer',
     // publications //
     'read_more' => 'Read more',
     'latest_news' => 'Latest news/events',

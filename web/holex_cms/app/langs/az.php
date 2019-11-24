@@ -322,7 +322,7 @@ return [
     'publications_list_details' => '{count} nəşr tapılıb',
     'publication_add' => 'Nəşr əlavə et',
     'publication_image_descr' => '{types} formatlı faylların yüklənməsinə icazə verilir.',
-    'publications_images_not_found' => 'Bu xəbərə aid heç bir şəkil tapılmadı.',
+    'publications_images_not_found' => 'Bu nəşrə aid heç bir şəkil tapılmadı.',
     'publication_news' => 'Xəbər',
     'publication_blog' => 'Blog',
     'publication_media' => 'Media',
