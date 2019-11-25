@@ -44,8 +44,12 @@ return [
     'publication_not_found' => 'Heç bir nəşr tapılmadı',
     // coming soon //
     'go_home' => 'Əsas səhifəyə qayıtmaq',
-    'coming_soon' => 'Coming Soon',
+    'coming_soon' => 'Tezliklə',
     'coming_soon_text' => 'Coming Soon Text',
+    'days' => 'Gün',
+    'hours' => 'Saat',
+    'minutes' => 'Dəqiqə',
+    'seconds' => 'Sanniyə',
     // contact //
     'contact_head_text' => 'Lorem ipsum',
     'contact_form_name' => 'Ad, Soyad',

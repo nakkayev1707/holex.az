@@ -164,7 +164,7 @@ use yii\helpers\Url; ?>
 <div class="contentPadding">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <div class="aboutUs">
                     <div class="row">
                         <div class="col-xs-12">
@@ -222,56 +222,56 @@ use yii\helpers\Url; ?>
                 </div>
                 <div class="emptySpace-xs30"></div>
             </div>
-            <div class="col-sm-6">
-                <div class="titleShortocode">
-                    <h3 class="h3 as"><?=Yii::t('app', 'general_questions') ?></h3>
-                </div>
-                <div class="emptySpace40 emptySpace-xs30"></div>
+<!--            <div class="col-sm-6">-->
+<!--                <div class="titleShortocode">-->
+<!--                    <h3 class="h3 as">--><?//=Yii::t('app', 'general_questions') ?><!--</h3>-->
+<!--                </div>-->
+<!--                <div class="emptySpace40 emptySpace-xs30"></div>-->
                 <!-- 	Accordeon-START 	-->
-                <div class="accordeon normall">
-                    <div class="accordeon-title active">
-                        <div class="accrodeonButton"><span></span><span></span></div>
-                        How do I sign up for counseling?
-                    </div>
-                    <div class="accordeon-toggle" style="display: block;">
-                        <div class="simple-article">
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo invent ore veritatis et perspiciatis unde omnis iste natus error sit voluptatem</p>
-                        </div>
-                    </div>
-                    <div class="emptySpace20"></div>
-                    <div class="accordeon-title">
-                        <div class="accrodeonButton"><span></span><span></span></div>
-                        How can therapy help?
-                    </div>
-                    <div class="accordeon-toggle">
-                        <div class="simple-article">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit augue lacus, id auctor elit placerat id. Nulla ultricies augue at felis elementum, sodales rhoncus metus sagittis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit augue lacus, id auctor elit</p>
-                        </div>
-                    </div>
-                    <div class="emptySpace20"></div>
-                    <div class="accordeon-title">
-                        <div class="accrodeonButton"><span></span><span></span></div>
-                        How much do the counseling sessions cost?
-                    </div>
-                    <div class="accordeon-toggle">
-                        <div class="simple-article">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit augue lacus, id auctor elit placerat id. Nulla ultricies augue at felis elementum, sodales rhoncus metus sagittis.</p>
-                        </div>
-                    </div>
-                    <div class="emptySpace20"></div>
-                    <div class="accordeon-title">
-                        <div class="accrodeonButton"><span></span><span></span></div>
-                        Does the Counseling Center offer counseling?
-                    </div>
-                    <div class="accordeon-toggle">
-                        <div class="simple-article">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit augue lacus, id auctor elit placerat id. Nulla ultricies augue at felis elementum, sodales rhoncus metus sagittis.</p>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="accordeon normall">-->
+<!--                    <div class="accordeon-title active">-->
+<!--                        <div class="accrodeonButton"><span></span><span></span></div>-->
+<!--                        How do I sign up for counseling?-->
+<!--                    </div>-->
+<!--                    <div class="accordeon-toggle" style="display: block;">-->
+<!--                        <div class="simple-article">-->
+<!--                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo invent ore veritatis et perspiciatis unde omnis iste natus error sit voluptatem</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="emptySpace20"></div>-->
+<!--                    <div class="accordeon-title">-->
+<!--                        <div class="accrodeonButton"><span></span><span></span></div>-->
+<!--                        How can therapy help?-->
+<!--                    </div>-->
+<!--                    <div class="accordeon-toggle">-->
+<!--                        <div class="simple-article">-->
+<!--                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit augue lacus, id auctor elit placerat id. Nulla ultricies augue at felis elementum, sodales rhoncus metus sagittis.</p>-->
+<!--                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit augue lacus, id auctor elit</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="emptySpace20"></div>-->
+<!--                    <div class="accordeon-title">-->
+<!--                        <div class="accrodeonButton"><span></span><span></span></div>-->
+<!--                        How much do the counseling sessions cost?-->
+<!--                    </div>-->
+<!--                    <div class="accordeon-toggle">-->
+<!--                        <div class="simple-article">-->
+<!--                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit augue lacus, id auctor elit placerat id. Nulla ultricies augue at felis elementum, sodales rhoncus metus sagittis.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="emptySpace20"></div>-->
+<!--                    <div class="accordeon-title">-->
+<!--                        <div class="accrodeonButton"><span></span><span></span></div>-->
+<!--                        Does the Counseling Center offer counseling?-->
+<!--                    </div>-->
+<!--                    <div class="accordeon-toggle">-->
+<!--                        <div class="simple-article">-->
+<!--                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit augue lacus, id auctor elit placerat id. Nulla ultricies augue at felis elementum, sodales rhoncus metus sagittis.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <!-- 	Accordeon-END 	-->
-            </div>
+<!--            </div>-->
         </div>
     </div>
 </div>
@@ -360,7 +360,7 @@ use yii\helpers\Url; ?>
                                     <div class="cell-view">
                                         <div class="block">
                                             <div class="blockContent normall">
-                                                <h6 class="h6 as"><a href=""><?= substr($card['title'], 0, 100) ?></a>
+                                                <h6 class="h6 as"><a href="" onclick=""><?= substr($card['title'], 0, 100) ?></a>
                                                 </h6>
                                                 <p><?= substr($card['full'], 0, 300) ?></p>
                                             </div>

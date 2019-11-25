@@ -44,6 +44,10 @@ return [
     'go_home' => 'Return to the main page',
     'coming_soon' => 'Coming Soon',
     'coming_soon_text' => 'Coming Soon Text',
+    'days' => 'Days',
+    'hours' => 'Hours',
+    'minutes' => 'Minutes',
+    'seconds' => 'Seconds',
     // contact page //
     'contact_head_text' => 'Lorem ipsum',
     'contact_form_name' => 'Name, Surname',
