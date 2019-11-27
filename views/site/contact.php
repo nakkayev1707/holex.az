@@ -32,7 +32,7 @@ use yii\helpers\Url; ?>
                 <div class="emptySpace50 emptySpace-xs30"></div>
             </div>
             <div class="col-sm-6 col-md-8">
-                <form action="<?=Yii::$app->request->url?>" method="POST" id=""  enctype="multipart/form-data" name="contactForm">
+                <form action="<?=Yii::$app->request->url?>" method="POST" class="contactForm"  enctype="multipart/form-data" name="contactForm">
                     <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>"/>
                     <label class="<?=$errors['name'][0] ? 'label-danger' : '' ?>" style="color: white"><?=$errors['name'][0]?></label>
                     <input class="simple-input <?=$errors['name'][0] ? 'invalid' : '' ?>" id="name" name="name" type="text" value="" placeholder="<?=Yii::t('app', 'name') ?>">

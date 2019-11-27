@@ -30,10 +30,12 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/jquery.min.js',
         'js/swiper.jquery.min.js',
+        'js/jquery.validate.min.js',
         'js/SmoothScroll.js',
         'js/jquery.sumoselect.min.js',
         'js/simple-lightbox.min.js',
         'js/global.js',
+        'js/contact.js',
 //        'http://maps.googleapis.com/maps/api/js?key=AIzaSyDfuNaiYeCUOu8uS5wCYgRflmaIETRBq-Y&sensor=false&amp;language=en',
         'js/map.js'
     ];

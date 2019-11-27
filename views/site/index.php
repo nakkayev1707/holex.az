@@ -425,7 +425,7 @@ use yii\helpers\Url; ?>
                 <div class="emptySpace-xs30"></div>
             </div>
             <div class="col-sm-6 col-sm-offset-2">
-                <form class="requestForm" action="<?=Url::toRoute('site/')?>" method="post">
+                <form class="requestForm contactForm"  action="<?=Url::toRoute('site/')?>" method="post">
                     <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>"/>
                     <div class="contentTitle">
                         <h3 class="h3 as"><span><?=Yii::t('app', 'consultation') ?></span></h3>
@@ -438,6 +438,10 @@ use yii\helpers\Url; ?>
                         </div>
                         <div class="col-xs-12 col-md-6">
                             <input class="simple-input <?=$errors['email'][0] ? 'invalid' : '' ?>" name="email" type="email" value="" placeholder="<?=Yii::t('app', 'email') ?>" />
+                            <div class="emptySpace15"></div>
+                        </div>
+                        <div class="col-xs-12 col-md-12">
+                            <input class="simple-input <?=$errors['phone'][0] ? 'invalid' : '' ?>" name="phone" type="tel" value="" placeholder="<?=Yii::t('app', 'phone') ?>" />
                             <div class="emptySpace15"></div>
                         </div>
                         <div class="col-xs-12 col-md-12">

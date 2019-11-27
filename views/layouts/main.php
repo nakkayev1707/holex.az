@@ -35,13 +35,13 @@ $params = Yii::$app->params;
     <meta property="og:image:height" content="650px"/>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7COpen+Sans:300,400,600,700%7CRaleway:400,700,800"
           rel="stylesheet">
-    <link rel="shortcut icon" href="../../web/favicon.ico"/>
-    <link rel="stylesheet" href="../../web/css/bootstrap.min.css" type="text/css"/>
-    <link rel="stylesheet" href="../../web/css/swiper.css" type="text/css"/>
-    <link rel="stylesheet" href="../../web/css/sumoselect.css">
-    <link rel="stylesheet" href="../../web/css/font-awesome.min.css" type="text/css"/>
-    <link rel="stylesheet" href="../../web/css/flaticon.css">
-    <link rel="stylesheet" href="../../web/css/style.css" type="text/css"/>
+    <link rel="shortcut icon" href="<?=Yii::$app->params['siteUrl']?>/web/favicon.ico"/>
+    <link rel="stylesheet" href="<?=Yii::$app->params['siteUrl']?>/web/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="<?=Yii::$app->params['siteUrl']?>/web/css/swiper.css" type="text/css"/>
+    <link rel="stylesheet" href=<?=Yii::$app->params['siteUrl']?>"/web/css/sumoselect.css">
+    <link rel="stylesheet" href="<?=Yii::$app->params['siteUrl']?>/web/css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="<?=Yii::$app->params['siteUrl']?>/web/css/flaticon.css">
+    <link rel="stylesheet" href="<?=Yii::$app->params['siteUrl']?>/web/css/style.css" type="text/css"/>
     <title><?= Html::encode($this->title) ?></title>
     <style>
         #loader-wrapper {
