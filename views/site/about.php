@@ -33,7 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-sm-6">
                 <div class="aboutOur">
                     <h2 class="h2 as"><?=$aboutInfo[0]['title']?></h2>
-                    <?= $aboutInfo[0]['full']?>
+                    <div class="simple-article normall">
+                        <?= $aboutInfo[0]['full']?>
+                    </div>
                 </div>
                 <div class="emptySpace-xs30"></div>
             </div>

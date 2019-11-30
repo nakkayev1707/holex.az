@@ -2,9 +2,10 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'myholex.az';
+use yii\helpers\Url;
+$this->title = Yii::t('app', 'menu_home');
 
-use yii\helpers\Url; ?>
+?>
 <!-- 	Main banner swiper-START 	-->
 <div class="swiperMainWrapper mainSwiperbanner">
     <?php if (isset($aphorisms) && !empty($aphorisms)) { ?>
@@ -72,7 +73,7 @@ use yii\helpers\Url; ?>
                             </a>
                             <h6 class="h6 as"><a href="<?= Yii::$app->params['siteUrl'] ?>/service/<?=$service['id']?>"><?=$service['title'] ?></a></h6>
                             <div class="tumbContent small">
-                                <p><?=substr($service['full'], 0, 200)?></p>
+                                <p><?=substr($service['full'], 0, 200) . (strlen($service['full']) > 200 ? "..." : "")?></p>
                             </div>
                         </div>
                         <div class="emptySpace-sm30"></div>
@@ -324,9 +325,11 @@ use yii\helpers\Url; ?>
                                         <a href="<?=Url::toRoute('site/contact') ?>" class="imgWrapper imgTumb ">
                                             <img src="<?=$imagePath?>" alt="">
                                         </a>
-                                        <div class="blockContent">
+                                        <div class="blockContent normall">
                                             <a href="<?=Url::toRoute('site/contact') ?>"><?=$bag['title']?></a>
-                                            <p><?=substr($bag['full'], 0, 200)?></p>
+                                        </div>
+                                        <div class="simple-article normall">
+                                            <p><?=substr($bag['full'], 0, 200) . (strlen($bag['full']) > 150 ? "..." : "")?></p>
                                         </div>
                                     </div>
                                 </div>
