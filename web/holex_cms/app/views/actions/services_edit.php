@@ -4,9 +4,11 @@ use profit_az\profit_cms\CMS;
 use profit_az\profit_cms\helpers\utils;
 use profit_az\profit_cms\helpers\view;
 
-if (!defined("_VALID_PHP")) {die('Direct access to this location is not allowed.');}
+if (!defined("_VALID_PHP")) {
+    die('Direct access to this location is not allowed.');
+}
 
-$only_lang = (count($langs)==1);
+$only_lang = (count($langs) == 1);
 
 ?>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" type="text/css"
@@ -15,32 +17,34 @@ $only_lang = (count($langs)==1);
 <?php
 view::appendCss(SITE . CMS_DIR . JS_DIR . 'jquery-ui-1.12.1/jquery-ui.css');
 // load CK Editor
-view::appendJs(SITE.CMS_DIR.JS_DIR.'ckeditor-4.6.2/ckeditor.js');
-view::appendJs(SITE.CMS_DIR.JS_DIR.'ckfinder/ckfinder.js');
+view::appendJs(SITE . CMS_DIR . JS_DIR . 'ckeditor-4.6.2/ckeditor.js');
+view::appendJs(SITE . CMS_DIR . JS_DIR . 'ckfinder/ckfinder.js');
 // load Select2 plugin
-view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/select2.min.js');
-view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]['ses_adm_lang'].'.js');
+view::appendJs(SITE . CMS_DIR . JS_DIR . 'select2/js/select2.min.js');
+view::appendJs(SITE . CMS_DIR . JS_DIR . 'select2/js/i18n/' . $_SESSION[CMS::$sess_hash]['ses_adm_lang'] . '.js');
 
 ?>
 
 
-<form action="?controller=publications&amp;action=delete_image" method="post" id="formDeleteItem">
-    <input type="hidden" name="CSRF_token" value="<?=$CSRF_token;?>" />
-    <input type="hidden" name="image_id" value="0" />
-    <input type="hidden" name="delete" value="0" />
+<form action="?controller=services&amp;action=delete_image" method="post" id="formDeleteItem">
+    <input type="hidden" name="CSRF_token" value="<?= $CSRF_token; ?>"/>
+    <input type="hidden" name="service_id" value="0"/>
+    <input type="hidden" name="delete" value="0"/>
 </form>
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <?=CMS::t('menu_item_service_edit');?>
+        <?= CMS::t('menu_item_service_edit'); ?>
     </h1>
 </section>
 
 <!-- Content Header (Page header) -->
 <section class="contextual-navigation">
     <nav>
-        <a href="<?=utils::safeEcho($link_back, 1);?>" class="btn btn-default"><i class="fa fa-arrow-left" aria-hidden="true"></i> <?=CMS::t('back');?></a>
+        <a href="<?= utils::safeEcho($link_back, 1); ?>" class="btn btn-default"><i class="fa fa-arrow-left"
+                                                                                    aria-hidden="true"></i> <?= CMS::t('back'); ?>
+        </a>
     </nav>
 </section>
 
@@ -52,21 +56,25 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
         if ($op['success']) {
             print view::notice($op['message'], 'success');
         } else {
-            print view::notice(empty($op['errors'])? $op['message']: $op['errors']);
+            print view::notice(empty($op['errors']) ? $op['message'] : $op['errors']);
         }
     }
     ?>
     <div class="box" style="border-top: none;">
         <form action="" method="post" enctype="multipart/form-data" class="form-std" role="form">
-            <input type="hidden" name="CSRF_token" value="<?=$CSRF_token;?>" />
+            <input type="hidden" name="CSRF_token" value="<?= $CSRF_token; ?>"/>
 
             <div class="box-body" style="padding: 0;">
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#common-tab" data-toggle="tab"><?=CMS::t('common_data');?></a></li>
+                        <li class="active"><a href="#common-tab" data-toggle="tab"><?= CMS::t('common_data'); ?></a>
+                        </li>
                         <?php
                         if (!empty($langs) && is_array($langs)) foreach ($langs as $lng) {
-                            ?><li><a href="#lang-<?=$lng['language_dir'];?>-tab" data-toggle="tab"><?=($only_lang? CMS::t('content'): $lng['language_name']);?></a></li><?php
+                            ?>
+                            <li><a href="#lang-<?= $lng['language_dir']; ?>-tab"
+                                   data-toggle="tab"><?= ($only_lang ? CMS::t('content') : $lng['language_name']); ?></a>
+                            </li><?php
                         }
                         ?>
                     </ul>
@@ -77,23 +85,27 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label><?=CMS::t('image');?> (<?=CMS::t('multi_image_select_warn')?>)</label>
-                                        <?=view::browse([
+                                        <label><?= CMS::t('image'); ?> (<?= CMS::t('multi_image_select_warn') ?>
+                                            )</label>
+                                        <?= view::browse([
                                             'name' => 'img',
                                             'accept' => 'image/*',
                                             'multiple' => true,
-                                        ]);?>
-                                        <p class="form-info-tip"><?=CMS::t('article_image_descr', [
+                                        ]); ?>
+                                        <p class="form-info-tip"><?= CMS::t('article_image_descr', [
                                                 '{types}' => implode(', ', $allowed_thumb_ext)
-                                            ]);?></p>
+                                            ]); ?></p>
                                     </div>
                                     <div class="form-group">
-                                        <label for="selectType" class="form-label"><?=CMS::t('filter_publication_type');?> *</label>
+                                        <label for="selectType"
+                                               class="form-label"><?= CMS::t('filter_publication_type'); ?> *</label>
                                         <select name="type" id="selectType" class="form-control">
                                             <?php
                                             if (!empty($serviceTypes) && is_array($serviceTypes)) {
                                                 foreach ($serviceTypes as $type) {
-                                                    ?><option <?= $service['id']==$type['id'] ? "selected='selected'" : '' ?> value="<?=$type['title'];?>"><?=$type['title']?></option><?php
+                                                    ?>
+                                                    <option <?= $service['id'] == $type['id'] ? "selected='selected'" : '' ?>
+                                                    value="<?= $type['title']; ?>"><?= $type['title'] ?></option><?php
                                                 }
                                             }
                                             ?>
@@ -103,16 +115,50 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-
+                                    <?php
+                                    if (!empty($service['image'])) {
+                                        $uploadUrl = SITE . utils::dirCanonicalPath(CMS_DIR . UPLOADS_DIR);
+                                        $previewUrl = $uploadUrl . 'services/' . $service['image']; ?>
+                                        <div class="mod_buttons">
+                                            <?php if (CMS::hasAccessTo('services/delete_image', 'write')) { ?>
+                                                <a href="#" title="<?= CMS::t('delete'); ?>" class="text-red"
+                                                   id="imageDeleteItem_<?= $service['id']; ?>"
+                                                   data-item-id="<?= $service['id']; ?>">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </a>
+                                                <script type="text/javascript">
+                                                    $('#imageDeleteItem_<?=$service['id'];?>').on('click', function () {
+                                                        bootbox.confirm({
+                                                            message: '<?=CMS::t('delete_confirmation');?>',
+                                                            callback: function (ok) {
+                                                                if (ok) {
+                                                                    var $form = $('#formDeleteItem');
+                                                                    $('[name="delete"]', $form).val('<?=$service['id'];?>');
+                                                                    $('[name="service_id"]', $form).val('<?=$service['id'];?>');
+                                                                    $form.submit();
+                                                                }
+                                                            }
+                                                        });
+                                                        return false;
+                                                    });
+                                                </script>
+                                            <?php } ?>
+                                        </div>
+                                        <a target="_blank" class="fancybox" rel="group"
+                                           data-target="fancy-box"
+                                           href="<?= $previewUrl; ?>">
+                                            <img src="<?= $previewUrl ?>" alt="image" style="width: 300px">
+                                        </a>
+                                        <?php
+                                    } ?>
                                 </div>
                             </div>
                         </div>
-
                         <?php
                         if (!empty($langs) && is_array($langs)) foreach ($langs as $lng) {
                             ?>
-                            <div id="lang-<?=$lng['language_dir'];?>-tab" class="tab-pane">
-                                <!-- <?=$lng['language_name'];?> tab -->
+                            <div id="lang-<?= $lng['language_dir']; ?>-tab" class="tab-pane">
+                                <!-- <?= $lng['language_name']; ?> tab -->
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -122,8 +168,10 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
                                                    class="form-control"/>
                                         </div>
                                         <div class="form-group">
-                                            <label><?=CMS::t('article_full');?></label>
-                                            <textarea name="full[<?=$lng['language_dir'];?>]" rows="4" cols="32" class="form-input-std" id="wysiwyg_full_<?=$lng['language_dir'];?>"><?=utils::safeEcho((isset($_POST['full'][$lng['language_dir']])? $_POST['full'][$lng['language_dir']]: @$service['translates'][$lng['language_dir']]['full']), 1);?></textarea>
+                                            <label><?= CMS::t('article_full'); ?></label>
+                                            <textarea name="full[<?= $lng['language_dir']; ?>]" rows="4" cols="32"
+                                                      class="form-input-std"
+                                                      id="wysiwyg_full_<?= $lng['language_dir']; ?>"><?= utils::safeEcho((isset($_POST['full'][$lng['language_dir']]) ? $_POST['full'][$lng['language_dir']] : @$service['translates'][$lng['language_dir']]['full']), 1); ?></textarea>
                                             <script type="text/javascript">
                                                 // <![CDATA[
                                                 CKEDITOR.replace('wysiwyg_full_<?=$lng['language_dir'];?>', {
@@ -148,9 +196,15 @@ view::appendJs(SITE.CMS_DIR.JS_DIR.'select2/js/i18n/'.$_SESSION[CMS::$sess_hash]
             <!-- /.box-body -->
             <?php if ($canWrite) { ?>
                 <div class="box-footer">
-                    <button type="submit" name="save" value="1" class="btn btn-primary"><i class="fa fa-save" aria-hidden="true"></i> <?=CMS::t('save');?></button>
-                    <button type="submit" name="apply" value="1" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> <?=CMS::t('apply');?></button>
-                    <button type="reset" name="reset" value="1" class="btn btn-default"><i class="fa fa-refresh" aria-hidden="true"></i> <?=CMS::t('reset');?></button>
+                    <button type="submit" name="save" value="1" class="btn btn-primary"><i class="fa fa-save"
+                                                                                           aria-hidden="true"></i> <?= CMS::t('save'); ?>
+                    </button>
+                    <button type="submit" name="apply" value="1" class="btn btn-success"><i class="fa fa-check"
+                                                                                            aria-hidden="true"></i> <?= CMS::t('apply'); ?>
+                    </button>
+                    <button type="reset" name="reset" value="1" class="btn btn-default"><i class="fa fa-refresh"
+                                                                                           aria-hidden="true"></i> <?= CMS::t('reset'); ?>
+                    </button>
                 </div>
             <?php } ?>
         </form>

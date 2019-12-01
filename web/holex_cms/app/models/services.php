@@ -126,7 +126,9 @@ class services
                     $response['errors'][] = 'upl_invalid_image_extension_err';
                 } else {
                     $upd['image'] = $uploaded;
-                    unlink(UPLOADS_DIR.'services/'.$service['image']);
+                    if (!empty($service['image'])) {
+                        unlink(UPLOADS_DIR.'services/'.$service['image']);
+                    }
                 }
             } else {
                 $response['errors'] = "file_upload_err";
@@ -187,6 +189,22 @@ class services
         return false;
     }
 
+    public function deleteServiceImage($serviceId){
+        $service = $this->getServiceById($serviceId);
+        if ($service && $service['image']) {
+            $sql = 'UPDATE ' . $this->table . ' SET image="" WHERE id=:service_id';
+            $updated = CMS::$db->exec($sql, [
+                ':service_id' => $serviceId
+            ]);
+            if ($updated) {
+                unlink(UPLOADS_DIR.'services/'.$service['image']);
+                return true;
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
 
     private function validate($post)
     {

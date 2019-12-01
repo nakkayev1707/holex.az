@@ -111,5 +111,21 @@ class services_controller extends controller
         return self::render('cms_user_delete', $params);
     }
 
+    public static function action_delete_image(){
+        self::$layout = 'common_layout';
+        view::$title = CMS::t('delete');
+        $params = [];
+        $params['canWrite'] = CMS::hasAccessTo('services/delete', 'write');
+        $params['link_back'] = (empty($_GET['return']) ? '?controller=services&action=list' : $_GET['return']);
+        $service = new services();
+        $deleted = false;
+        if ($params['canWrite']) {
+            $deleted = $service->deleteServiceImage(@$_POST['service_id']);
+        }
+        $params['op']['success'] = $deleted;
+        $params['op']['message'] = 'del_'.($deleted? 'suc': 'err');
+        return self::render('cms_user_delete', $params);
+    }
+
 
 }
