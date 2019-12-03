@@ -8,7 +8,7 @@ $this->title = Yii::t('app', 'menu_about');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <!-- 	Top banner-START 	-->
-<div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/service/header_img.jpg'?>)">
+<div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/about/about_header.jpg'?>)">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">

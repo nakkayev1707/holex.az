@@ -27,14 +27,14 @@ $this->title = Yii::t('app', 'menu_home');
                                     <div class="cell-view">
                                         <div class="bannerTitle">
                                             <h3 class="h1 light as">
-                                                <?= $aphorism['title'] ?>
+<!--                                                --><?//= $aphorism['title'] ?>
                                             </h3>
-                                            <p><?= $aphorism['full'] ?></p>
+<!--                                            <p>--><?//= $aphorism['full'] ?><!--</p>-->
                                         </div>
                                         <div class="bannerBtnWrapper">
-                                            <a href="<?= Url::toRoute('service/') ?>"
+                                            <a style="visibility: hidden" href="<?= Url::toRoute('service/') ?>"
                                                class="button btnSize1"><?= Yii::t('app', 'view_all_services') ?></a>
-                                            <a href="<?= Url::toRoute('site/contact') ?>"
+                                            <a style="visibility: hidden" href="<?= Url::toRoute('site/contact') ?>"
                                                class="button btnStyle3 btnSize1"><?= Yii::t('app', 'get_appointment') ?></a>
                                         </div>
                                     </div>
@@ -68,7 +68,7 @@ $this->title = Yii::t('app', 'menu_home');
                     ?>
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="tumbWrapper">
-                            <a href="<?=Yii::$app->params['siteUrl'] ?>/service/<?=$service['id']?>" class="imgWrapper imgTumb bgShadow light">
+                            <a href="<?=Yii::$app->params['siteUrl'] ?>/service/<?=$service['id']?>" class="imgWrapper imgTumb bgShadow light" style="height: 286px">
                                 <img src="<?=$imagePath?>" alt="">
                             </a>
                             <h6 class="h6 as"><a href="<?= Yii::$app->params['siteUrl'] ?>/service/<?=$service['id']?>"><?=$service['title'] ?></a></h6>
@@ -175,17 +175,18 @@ $this->title = Yii::t('app', 'menu_home');
                             <div class="emptySpace40 emptySpace-xs30"></div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6">
-                            <div class="imgWrapper">
-                                <img src="<?=Yii::$app->params['siteUrl'].Yii::$app->params['uploadsUrl']."/publications/". $aboutInfo[0]['image']; ?>" alt="">
-                            </div>
-                            <div class="emptySpace35"></div>
-                        </div>
-                    </div>
-                    <p><?=$aboutInfo[0]['title']?></p>
+<!--                    <div class="row">-->
+<!--                        <div class="col-xs-12 col-sm-6">-->
+<!--                            <div class="imgWrapper">-->
+<!--                                <img src="--><?//=Yii::$app->params['siteUrl'].Yii::$app->params['uploadsUrl']."/publications/". $aboutInfo[0]['image']; ?><!--" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="emptySpace35"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <p style="font-style: normal">--><?//=$aboutInfo[0]['title']?><!--</p>-->
                     <div class="simple-article normall">
-                        <p><?=substr($aboutInfo[0]['full'], 0, 1000)?></p>
+                        <span><?=substr($aboutInfo[0]['full'], 0, 1000) . (strlen($aboutInfo[0]['full']) > 1000 ? "..." : "")?></span>
+                        <a class="readMore" href="<?= Url::toRoute('site/about')?>"><?=Yii::t('app', 'read_more')?></a>
                     </div>
                     <div class="emptySpace30"></div>
                     <div class="row">

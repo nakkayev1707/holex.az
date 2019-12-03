@@ -17,7 +17,7 @@ $params = Yii::$app->params;
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="format-detection" content="telephone=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
@@ -38,7 +38,7 @@ $params = Yii::$app->params;
     <link rel="shortcut icon" href="<?=Yii::$app->params['siteUrl']?>/web/favicon.ico"/>
     <link rel="stylesheet" href="<?=Yii::$app->params['siteUrl']?>/web/css/bootstrap.min.css" type="text/css"/>
     <link rel="stylesheet" href="<?=Yii::$app->params['siteUrl']?>/web/css/swiper.css" type="text/css"/>
-    <link rel="stylesheet" href=<?=Yii::$app->params['siteUrl']?>"/web/css/sumoselect.css">
+    <link rel="stylesheet" href="<?=Yii::$app->params['siteUrl']?>/web/css/sumoselect.css" type="text/css">
     <link rel="stylesheet" href="<?=Yii::$app->params['siteUrl']?>/web/css/font-awesome.min.css" type="text/css"/>
     <link rel="stylesheet" href="<?=Yii::$app->params['siteUrl']?>/web/css/flaticon.css">
     <link rel="stylesheet" href="<?=Yii::$app->params['siteUrl']?>/web/css/style.css" type="text/css"/>
@@ -83,7 +83,7 @@ $params = Yii::$app->params;
                         <div class="headerTopInfo">
                             <div class="headerTopInfoContaner">
                                 <!-- 	Logo-START 	-->
-                                <a href="<?= Url::toRoute('site/') ?>" class="logo">
+                                <a href="<?= Url::toRoute('/') ?>" class="logo">
                                     <img src="<?=$params['siteUrl']?>/img/logo.png" alt="">
                                 </a>
                                 <!-- 	Logo-END 	-->
