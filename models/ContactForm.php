@@ -16,6 +16,7 @@ class ContactForm extends Model
     public $phone;
     public $subject;
     public $message;
+    public $whereHear;
 
     /**
      * @return array the validation rules.
@@ -27,7 +28,7 @@ class ContactForm extends Model
             [['_csrf', 'name', 'email', 'subject', 'message'], 'required'],
             // email has to be a valid email address
             ['email', 'email'],
-            [['phone'], 'default', 'value' => null]
+            [['phone', 'whereHear'], 'default', 'value' => null]
         ];
     }
 
@@ -58,7 +59,8 @@ class ContactForm extends Model
             'ip_address' => Yii::$app->request->getUserIP(),
             'request_date' => date('Y-m-d H:i:s'),
             'title' => $this->subject,
-            'text' => $this->message
+            'text' => $this->message,
+            'hear_from' => $this->whereHear,
         ];
         if ($user->saveUser($userData)) {
             Yii::$app->mailer->compose()

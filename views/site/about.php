@@ -8,7 +8,7 @@ $this->title = Yii::t('app', 'menu_about');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <!-- 	Top banner-START 	-->
-<div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/about/about_header.jpg'?>)">
+<div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/about/about_header.png'?>)">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="contentPadding">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <div class="aboutOur">
                     <h2 class="h2 as"><?=$aboutInfo[0]['title']?></h2>
                     <div class="simple-article normall">
@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="imgWrapper">
-                            <img src="<?=Yii::$app->params['siteUrl'].Yii::$app->params['uploadsUrl']."/publications/". $aboutInfo[0]['image']; ?>" alt="">
+<!--                            <img src="--><?//=Yii::$app->params['siteUrl'].Yii::$app->params['uploadsUrl']."/publications/". $aboutInfo[0]['image']; ?><!--" alt="">-->
                         </div>
                     </div>
                 </div>

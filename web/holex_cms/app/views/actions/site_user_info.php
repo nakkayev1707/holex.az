@@ -102,6 +102,10 @@ if (!defined('_VALID_PHP')) {
                                 </td>
                             </tr>
                             <tr>
+                                <th><?= CMS::t('hear_from'); ?></th>
+                                <td> <?= utils::safeEcho($user['hear_from'], 1); ?></td>
+                            </tr>
+                            <tr>
                                 <th><?= CMS::t('article_title'); ?></th>
                                 <td> <?= utils::safeEcho($user['title'], 1); ?></td>
                             </tr>

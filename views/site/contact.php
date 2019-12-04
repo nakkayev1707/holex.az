@@ -43,15 +43,27 @@ use yii\helpers\Url; ?>
                     <label class="<?=$errors['whereHear'][0] ? 'label-danger' : '' ?>" style="color: white"><?=$errors['whereHear'][0]?></label>
                     <select name="whereHear" class="simple-input <?=$errors['whereHear'][0] ? 'label-danger' : '' ?>">
                         <option disabled selected="selected"><?=Yii::t('app', 'where_hear')?></option>
-                        <option value="hear_from_soc_media"><?=Yii::t('app', 'hear_from_soc_media')?></option>
-                        <option value="hear_from_friends"><?=Yii::t('app', 'hear_from_friends')?></option>
-                        <option value="hear_from_others"><?=Yii::t('app', 'hear_from_others')?></option>
+                        <option value="<?=Yii::t('app', 'hear_from_soc_media')?>"><?=Yii::t('app', 'hear_from_soc_media')?></option>
+                        <option value="<?=Yii::t('app', 'hear_from_search')?>"><?=Yii::t('app', 'hear_from_search')?></option>
+                        <option value="<?=Yii::t('app', 'hear_from_friends')?>"><?=Yii::t('app', 'hear_from_friends')?></option>
+                        <option value="<?=Yii::t('app', 'hear_from_others')?>"><?=Yii::t('app', 'hear_from_others')?></option>
                     </select>
                     <div class="emptySpace20"></div>
                     <input class="simple-input" id="phone" name="phone" type="tel" value="" placeholder="<?=Yii::t('app', 'phone') ?>" />
                     <div class="emptySpace20"></div>
+<!--                    <label class="--><?//=$errors['subject'][0] ? 'label-danger' : '' ?><!--" style="color: white">--><?//=$errors['subject'][0]?><!--</label>-->
+<!--                    <input class="simple-input --><?//=$errors['subject'][0] ? 'invalid' : '' ?><!--" id="subject" name="subject" type="text" value="" placeholder="--><?//=Yii::t('app', 'subject') ?><!--" />-->
                     <label class="<?=$errors['subject'][0] ? 'label-danger' : '' ?>" style="color: white"><?=$errors['subject'][0]?></label>
-                    <input class="simple-input <?=$errors['subject'][0] ? 'invalid' : '' ?>" id="subject" name="subject" type="text" value="" placeholder="<?=Yii::t('app', 'subject') ?>" />
+                    <select name="subject" class="simple-input <?=$errors['subject'][0] ? 'label-danger' : '' ?>">
+                        <option disabled selected="selected"><?=Yii::t('app', 'subject') ?></option>
+                        <option value="<?=Yii::t('app', 'subj_gestalt_therapy')?>"><?=Yii::t('app', 'subj_gestalt_therapy')?></option>
+                        <option value="<?=Yii::t('app', 'subj_rpt')?>"><?=Yii::t('app', 'subj_rpt')?></option>
+                        <option value="<?=Yii::t('app', 'subj_life_cleaning')?>"><?=Yii::t('app', 'subj_life_cleaning')?></option>
+                        <option value="<?=Yii::t('app', 'subj_for_company')?>"><?=Yii::t('app', 'subj_for_company')?></option>
+                        <option value="<?=Yii::t('app', 'subj_gift_card')?>"><?=Yii::t('app', 'subj_gift_card')?></option>
+                        <option value="<?=Yii::t('app', 'subj_eco_bag')?>"><?=Yii::t('app', 'subj_eco_bag')?></option>
+                    </select>
+
                     <div class="emptySpace20"></div>
                     <label class="<?=$errors['message'][0] ? 'label-danger' : '' ?>" style="color: white"><?=$errors['message'][0]?></label>
                     <textarea class="simple-input <?=$errors['message'][0] ? 'invalid' : '' ?>" maxlength="4000" id="message" name="message" placeholder="<?=Yii::t('app', 'message') ?>"></textarea>

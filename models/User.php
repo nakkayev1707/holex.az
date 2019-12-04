@@ -41,9 +41,10 @@ class User
             ':ip_address' => $userData['ip_address'],
             ':request_date' => $userData['request_date'],
             ':title' => $userData['title'],
-            ':text' => $userData['text']
+            ':text' => $userData['text'],
+            ':hear_from' => $userData['hear_from']
         ];
-        $sql = "INSERT INTO " .$this->table. " VALUES (NULL, :fio, :email, :phone, :ip_address, '0', :request_date, :title, :text)";
+        $sql = "INSERT INTO " .$this->table. " VALUES (NULL, :fio, :email, :phone, :ip_address, '0', :request_date, :title, :text, :hear_from)";
         return Yii::$app->db->createCommand($sql, $params)->execute();
     }
 

@@ -340,6 +340,7 @@ return [
     'filter_publication_date' => 'Tarix',
     'filter_visible' => 'Görülən',
     'filter_hidden' => 'Gizlədilmiş',
+    'hear_from' => 'Bizim haqqında öyrənib',
     // End publications content //
 
     // Start services content //

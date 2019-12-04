@@ -28,7 +28,6 @@ $(document).ready(function () {
                     },
                     subject: {
                         required: true,
-                        minlength: 4
                     },
                     message: {
                         required: true,
