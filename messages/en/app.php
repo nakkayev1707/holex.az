@@ -63,6 +63,11 @@ return [
     'subject' => 'Subject',
     'message' => 'Message',
     'submit' => 'Submit',
+    'where_hear' => 'Where did you hear about us?',
+    'hear_from_soc_media' => 'In social media',
+    'hear_from_friends' => 'My friends recommended me',
+    'hear_from_others' => 'Other',
+
     // services //
     'our_services' => 'Our services',
     'consultation' => 'Consultation',

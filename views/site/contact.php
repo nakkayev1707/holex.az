@@ -4,7 +4,7 @@ $this->title = Yii::t('app', 'menu_contact_me');
 
 use yii\helpers\Url; ?>
 <!-- 	Top banner-START 	-->
-<div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/service/header_img.jpg'?>)">
+<div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/service/header_img.png'?>)">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -39,6 +39,14 @@ use yii\helpers\Url; ?>
                     <div class="emptySpace20"></div>
                     <label class="<?=$errors['email'][0] ? 'label-danger' : '' ?>" style="color: white"><?=$errors['email'][0]?></label>
                     <input class="simple-input <?=$errors['email'][0] ? 'invalid' : '' ?>" id="email" name="email" type="email" value="" placeholder="<?=Yii::t('app', 'email') ?>" />
+                    <div class="emptySpace20"></div>
+                    <label class="<?=$errors['whereHear'][0] ? 'label-danger' : '' ?>" style="color: white"><?=$errors['whereHear'][0]?></label>
+                    <select name="whereHear" class="simple-input <?=$errors['whereHear'][0] ? 'label-danger' : '' ?>">
+                        <option disabled selected="selected"><?=Yii::t('app', 'where_hear')?></option>
+                        <option value="hear_from_soc_media"><?=Yii::t('app', 'hear_from_soc_media')?></option>
+                        <option value="hear_from_friends"><?=Yii::t('app', 'hear_from_friends')?></option>
+                        <option value="hear_from_others"><?=Yii::t('app', 'hear_from_others')?></option>
+                    </select>
                     <div class="emptySpace20"></div>
                     <input class="simple-input" id="phone" name="phone" type="tel" value="" placeholder="<?=Yii::t('app', 'phone') ?>" />
                     <div class="emptySpace20"></div>

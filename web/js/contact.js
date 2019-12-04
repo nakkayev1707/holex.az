@@ -33,6 +33,9 @@ $(document).ready(function () {
                     message: {
                         required: true,
                         minlength: 7
+                    },
+                    whereHear: {
+                        required: true,
                     }
                 }
             });

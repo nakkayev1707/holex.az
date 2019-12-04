@@ -65,6 +65,10 @@ return [
     'subject' => 'Başlıq',
     'message' => 'Mətn',
     'submit' => 'Göndər',
+    'where_hear' => 'Bizim haqqımızda hardan öyrəmisiniz?',
+    'hear_from_soc_media' => 'Sosial media vasitəsile',
+    'hear_from_friends' => 'Dostlarım tövsiyye edib',
+    'hear_from_others' => 'Digər',
     // services //
     'our_services' => 'Xidmətlərimiz',
     'consultation' => 'Konsultasiya',
