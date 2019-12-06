@@ -10,10 +10,10 @@ use yii\helpers\Url; ?>
             <div class="col-xs-12">
                 <div class="servicesTitle">
                     <div class="cell-view">
-                        <h1 class="h1 light as"><?=Yii::t('app', 'menu_contact_me')?></h1>
-                        <div class="breadCrumbs small">
-                            <a  href="<?=Url::to('site/')?>"><?=Yii::t('app', 'menu_home')?></a> <i class="fa fa-angle-right"></i> <span><?=Yii::t('app', 'menu_contact_me') ?></span>
-                        </div>
+<!--                        <h1 class="h1 light as">--><?//=Yii::t('app', 'menu_contact_me')?><!--</h1>-->
+<!--                        <div class="breadCrumbs small">-->
+<!--                            <a  href="--><?//=Url::to('site/')?><!--">--><?//=Yii::t('app', 'menu_home')?><!--</a> <i class="fa fa-angle-right"></i> <span>--><?//=Yii::t('app', 'menu_contact_me') ?><!--</span>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>

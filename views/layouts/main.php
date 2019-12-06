@@ -192,8 +192,8 @@ $params = Yii::$app->params;
                         <!-- 	Social-START 	-->
                         <div class="socialWrapper light">
                             <a href="https://www.instagram.com/myholex/?igshid=1871ml9ixf4dp" target="_blank"><i class="fa fa-instagram"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.youtube.com/channel/UC0fKH_zEcbM_zFGMuGpKyFg?view_as=subscriber" target="_blank"><i class="fa fa-youtube"></i></a>
+                            <a href="https://www.facebook.com/MyHOLEX/?ref=py_c" target="_blank"><i class="fa fa-facebook"></i></a>
 <!--                            <a href="#" target="_blank"><i class="fa fa-skype"></i></a>-->
 <!--                            <a href="#" target="_blank"><i class="fa fa-pinterest-square"></i></a>-->
                         </div>

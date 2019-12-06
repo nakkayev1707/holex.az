@@ -24,7 +24,7 @@ return [
     // menu //
     'menu_home' => 'Əsas səhifə',
     'menu_services' => 'Xidmətlər',
-    'menu_all_services' => 'Bütun xidmətlər',
+    'menu_all_services' => 'Bütün xidmətlər',
     'menu_gestalt_service' => 'Gestalt terapiya',
     'menu_rpt_service' => 'RPT',
     'menu_retreats_service' => 'Retreats',

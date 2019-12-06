@@ -12,10 +12,10 @@ $this->title = Yii::t('app', 'menu_services');
             <div class="col-xs-12">
                 <div class="servicesTitle">
                     <div class="cell-view">
-                        <h1 class="h1 light as"><?=Yii::t('app', 'menu_services') ?></h1>
-                        <div class="breadCrumbs small">
-                            <a href="<?=Url::toRoute('site/') ?>"><?=Yii::t('app', 'menu_home') ?></a> <i class="fa fa-angle-right"></i> <span><?=Yii::t('app', 'menu_services') ?></span>
-                        </div>
+<!--                        <h1 class="h1 light as">--><?//=Yii::t('app', 'menu_services') ?><!--</h1>-->
+<!--                        <div class="breadCrumbs small">-->
+<!--                            <a href="--><?//=Url::toRoute('site/') ?><!--">--><?//=Yii::t('app', 'menu_home') ?><!--</a> <i class="fa fa-angle-right"></i> <span>--><?//=Yii::t('app', 'menu_services') ?><!--</span>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
