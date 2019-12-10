@@ -435,11 +435,6 @@ $this->title = Yii::t('app', 'menu_home');
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <div class="contactContent">
-                    <div class="simple-article light large">
-                        <!--                        <p>The Counseling Clinic gives proficient directing and psychotherapy administrations for people and families in Ny City.</p>-->
-                    </div>
-                </div>
                 <div class="emptySpace-xs30"></div>
             </div>
             <div class="col-sm-6 col-sm-offset-2">

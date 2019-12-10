@@ -188,7 +188,7 @@ select {
     border: none;
     margin: 0;
     width: 100%;
-    font-family: 'Open Sans';
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 }
 
 textarea {
@@ -1200,7 +1200,7 @@ button {
     line-height: 18px;
     color: #fff;
 	border-radius: 23px;
-	font-family: "Open Sans";
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	overflow: hidden;
 	-webkit-transform: perspective(1px) translateZ(0);
 	transform: perspective(1px) translateZ(0);
@@ -2696,7 +2696,7 @@ nav ul li ul li a {
 	color: #636363;
 	text-transform: none;
 	font-weight: 600;
-	font-family: "Open Sans";
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	letter-spacing: 0.3px;
 	position: relative;
 	-webkit-transition: all 150ms linear;
@@ -4194,7 +4194,7 @@ blockquote p {
 .pageErroreTitle .as {
 	font-size: 200px;
 	line-height: 200px;
-	font-family: "Open Sans";
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 }
 
 .pageErroreTitle {
@@ -5138,7 +5138,7 @@ a, a:link, a:visited, a:active, a:hover {
     width: 100%;
     border: 1px solid #e0e0e0;
     background: #fff;
-    font-family: "Open Sans";
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
     transition: all .15s;
     -webkit-transition: all .15s;
 }
@@ -5284,14 +5284,14 @@ a, a:link, a:visited, a:active, a:hover {
 	font-size:15px;
 	font-weight:700;
 	color:#fff;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	text-transform:uppercase;
 }
 .header2 .top-line-left{
 	font-size:14px;
 	font-weight:700;
 	color:#fff;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	text-transform:uppercase;
 }
 
@@ -5371,7 +5371,7 @@ a, a:link, a:visited, a:active, a:hover {
 }
 
 .strip h4{
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	font-size:15px;
 	font-weight:700;
 	color:#725d28;margin-bottom: 5px;
@@ -5393,7 +5393,7 @@ vertical-align: middle;
 
 .strip p{
 	color:#242424;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	font-weight:400;
 	font-size:17px;
 }
@@ -5414,7 +5414,8 @@ vertical-align: middle;
 
 #welcome2 h3{
 	font-size:20px;
-	color:#242424;	font-family: 'Open Sans', sans-serif;
+	color:#242424;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	font-weight:400;
 	text-transform:initial;line-height: 24px;
     margin-bottom: 10px;
@@ -5429,7 +5430,7 @@ vertical-align: middle;
 	    list-style-image: url(../img/homepage2/arrow.png);
 		color:#424242;
 		font-size:16px;
-		font-family: 'Open Sans', sans-serif;
+        font-family: 'Helvetica Neue', Sans-Serif, serif;
 		line-height:30px;
 }
 #welcome2 .listing{
@@ -5449,13 +5450,13 @@ vertical-align: middle;
 #dr_callnow h3{
 	color:#fff;
 	font-size:34px;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	font-weight:700;    line-height: 34px;
 	
 }
 #dr_callnow p{
 	font-size:18px;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	color:#ffffff;
 	font-weight:400;
 	font-style:italic;
@@ -5527,7 +5528,7 @@ vertical-align: middle;
 .about2 .about-us h3{
 	color:#b6b9e3;
 	font-size: 20px;
-   font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
     font-weight: 400;
 	text-transform: initial;
     line-height: 24px;
@@ -5545,7 +5546,7 @@ vertical-align: middle;
 .successful_stories h3{
 	color:#363754;
 	font-size:17px;
-	  font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
     font-weight: 700;
 	text-transform: initial;
 	margin-top:0;
@@ -5927,7 +5928,7 @@ vertical-align: middle;
 .top-line3 p{
 	font-size:15px;
 	color:#a99eb1;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	font-weight:400;
 	
 }
@@ -6011,7 +6012,8 @@ vertical-align: middle;
 }
 .welcome3 h3{
 	font-size:20px;
-	color:#242424;	font-family: 'Open Sans', sans-serif;
+	color:#242424;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	font-weight:400;
 	text-transform:initial;line-height: 24px;
     margin-bottom: 10px;
@@ -6033,7 +6035,7 @@ background:#f3f4f6;
 .service3 .readmore{
 	color:#986ca1;
 	font-weight:700;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	font-size:14px;    line-height: 36px;
 }
 
@@ -6109,7 +6111,7 @@ color:#fff;
 	    list-style-image: url(../img/homepage3/arrow.png);
 		color:#fff;
 		font-size:16px;
-		font-family: 'Open Sans', sans-serif;
+        font-family: 'Helvetica Neue', Sans-Serif, serif;
 		line-height:30px;
 }
 .about3 .listing{
@@ -6159,7 +6161,7 @@ color:#fff;
 	color:#242424;
 	font-size:18px;
 	font-weight: 400;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	text-transform:initial;
 	text-align:center;    margin-bottom: 0px;
 	font-style:italic;
@@ -6237,7 +6239,7 @@ color:#fff;
 }
 
 .blue_line h3{
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	font-size:75px;
 	color:#fff;
 	
@@ -6259,7 +6261,7 @@ color:#fff;
 }
 
 .blue_line h4{
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	font-size:25px;
 	color:#fff;
 	line-height:30px;
@@ -6270,7 +6272,9 @@ color:#fff;
 
 .need_consult p{
 	color:#656566;
-	font-size:18px;font-family: 'Open Sans', sans-serif;text-align:center;
+	font-size:18px;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
+    text-align:center;
 }
 .need_consult h3{
 	text-align:center;
@@ -6278,7 +6282,7 @@ color:#fff;
 .need_consult .mail{
 	color:#242424;
 	font-size:22px;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	font-weight:300;
 }
 
@@ -6286,7 +6290,7 @@ color:#fff;
 	color:#b07bb6;
 	font-size:30px;
 	padding-left:28px;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	font-weight:700;
 }
 
@@ -6663,7 +6667,7 @@ color:#fff;
    height: 55px;
     border-radius: 0;
     border: none;
-    font: 1em/1em "Open Sans", sans-serif;
+    font: 1em/1em 'Helvetica Neue', Sans-Serif, serif;
     padding: 0 18px;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -6825,7 +6829,7 @@ color:#fff;
 }
 
 .newsletter p{
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	font-size:15px;
 	color:#ffffff;
 	line-height:24px;
@@ -6838,7 +6842,7 @@ color:#fff;
 .newsletter .form-control {
        width: 96%;
     height: 53px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
     font-size: 15px;
     color: #898989;
     font-weight: 400;
@@ -6853,7 +6857,7 @@ color:#fff;
     width: 174px;
     height: 53px;
     background: #b07bb6;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
     font-size: 14px;
     color: #fff;
     line-height: 35px;
@@ -7080,7 +7084,7 @@ color:#fff;
 	color:#49374b;
 	text-transform:initial;
 	font-weight:400;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 	line-height:26px;
 	margin-bottom:20px;
 }
@@ -7125,7 +7129,7 @@ text-align:center;
 	color:#c3c1df;
 	font-size:18px;
 	text-align:center;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 }
 
 .need_consultation ul {
@@ -7135,14 +7139,14 @@ text-align:center;
 .need_consultation .mail {
     color: #ffffff;
     font-size: 22px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
     font-weight: 300;
 }
 .need_consultation .number {
     color: #b07bb6;
     font-size: 30px;
     padding-left: 28px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
     font-weight: 700;
 }
 .need_consultation  ul li a:hover{
@@ -7171,7 +7175,7 @@ text-align:center;
 	
 }
 .homeabout5 .simple-article p{
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 }
 .homeabout5 .simple-article ul li{
 	font-size:16px;
@@ -7237,7 +7241,8 @@ margin-bottom:60px;
 }
 
 .treatment5 p{
-	    font-weight: 300;font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-family: 'Helvetica Neue', Sans-Serif, serif;
 }
 .strip5 .flaticon1-smartphone-call:before{
 	color:#fff;

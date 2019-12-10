@@ -29,7 +29,7 @@ return [
     'menu_rpt_service' => 'RPT',
     'menu_retreats_service' => 'Retreats',
     'menu_blog' => 'Blog',
-    'menu_news' => 'Xəbərlər',
+    'menu_news' => 'Xəbərlər/Tədbirlər',
     'menu_media' => 'Media',
     'menu_about' => 'Haqqımızda',
     'menu_contact_me' => 'Bizimlə əlaqə',
