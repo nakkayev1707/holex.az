@@ -53,6 +53,16 @@ $params = Yii::$app->params;
             background: #fff;
             z-index: 100;
         }
+        
+        .main-logo {
+            height: 52px!important;
+        }
+        
+        @media all and (min-width: 768px) {
+            .main-logo {
+                height: 59px!important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -84,7 +94,7 @@ $params = Yii::$app->params;
                             <div class="headerTopInfoContaner">
                                 <!-- 	Logo-START 	-->
                                 <a href="<?= Url::toRoute('/') ?>" class="logo">
-                                    <img src="<?=$params['siteUrl']?>/img/logo.png" alt="">
+                                    <img src="<?=$params['siteUrl']?>/img/main_logo.png" alt="" class="main-logo">
                                 </a>
                                 <!-- 	Logo-END 	-->
 
@@ -183,7 +193,7 @@ $params = Yii::$app->params;
                     <div class="footerBlock small">
                         <!-- 	Logo-START 	-->
                         <a href="<?= Url::toRoute('site/index') ?>" class="logo">
-                            <img src="<?=Yii::$app->params['siteUrl'] . "/img/logo.png" ?>" alt="">
+                            <img src="<?=$params['siteUrl']?>/img/footer_logo.png" alt="" style="height: 62px">
                         </a>
                         <!-- 	Logo-END 	-->
                         <div class="simple-article">
@@ -274,6 +284,7 @@ $params = Yii::$app->params;
         </div>
     </footer>
     <!-- Footer-END -->
+    
 </div>
 
 <?php $this->endBody() ?>
