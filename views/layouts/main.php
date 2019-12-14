@@ -60,7 +60,7 @@ $params = Yii::$app->params;
         
         @media all and (min-width: 768px) {
             .main-logo {
-                height: 59px!important;
+                height: 66px!important;
             }
         }
     </style>
@@ -68,7 +68,7 @@ $params = Yii::$app->params;
 <body>
 <?php $this->beginBody() ?>
 
-<!-- 	Loader-START 	-->
+<!-- 	Loader-START -->
 <div id="loader-wrapper"></div>
 <!-- 	Loader-END 	-->
 
