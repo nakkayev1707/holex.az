@@ -78,7 +78,7 @@ print view::outputJsList();
 			<header class="main-header">
 
 				<!-- Logo -->
-				<a href="http://holex.loc/" target="_blank" class="logo">
+				<a href="<?=SITE ?>" target="_blank" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
 					<span class="logo-mini"><img src="<?=IMAGE_DIR;?>logo.png" style="height: 24px;" /></span>
 					<!-- logo for regular state and mobile devices -->

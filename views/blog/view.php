@@ -4,13 +4,13 @@ use yii\helpers\Url;
 $this->title = Yii::t('app', 'menu_blog');
 ?>
 <!-- 	Top banner-START 	-->
-<div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/publication_header.jpeg'?>)">
+<div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/publication_header.jpeg'?>); background-size: 100%; background-repeat: repeat">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="servicesTitle">
                     <div class="cell-view">
-                        <h1 class="h1 light as"><?=substr($view['title'], 0, 200) ?></h1>
+                        <h1 class="h1 light as"><?=mb_substr($view['title'], 0, 200, 'UTF-8') ?></h1>
                         <div class="breadCrumbs small">
                             <a href="<?=Url::toRoute('site/') ?>"><?=Yii::t('app', 'menu_home') ?></a> <i class="fa fa-angle-right"></i>
                             <a href="<?=Url::toRoute('blog/') ?>"><?=Yii::t('app', 'menu_blog') ?></a> <i class="fa fa-angle-right"></i>

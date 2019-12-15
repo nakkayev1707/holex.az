@@ -6,7 +6,7 @@ $this->title = Yii::t('app', 'menu_services');
 
 ?>
 <!-- 	Top banner-START 	-->
-<div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/service/header_img.png'?>)">
+<div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/service/header_img.png'?>); background-size: 100%;background-repeat: no-repeat">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -48,7 +48,7 @@ $this->title = Yii::t('app', 'menu_services');
                             </a>
                             <h6 class="h6 as"><a href="<?= Yii::$app->params['siteUrl'] . "/" . Yii::$app->language ?>/service/<?= $service['id'] ?>"><?=$service['title']?></a></h6>
                             <div class="tumbContent small">
-                                <p><?=substr($service['full'], 0, 150) . (strlen($service['full']) > 150 ? "..." : "")?></p>
+                                <p><?=mb_substr($service['full'], 0, 150, 'UTF-8') . (strlen($service['full']) > 150 ? "..." : "")?></p>
                             </div>
                         </div>
                         <div class="emptySpace90 emptySpace-md30"></div>

@@ -7,7 +7,7 @@ $this->title = Yii::t('app', 'menu_services');
 ?>
 <!-- 	Top banner-START 	-->
 <div class="contentPadding bg bgShadow"
-     style="background-image: url(<?= Yii::$app->params['siteUrl'] . '/img/service/header_img.png' ?>)">
+     style="background-image: url(<?= Yii::$app->params['siteUrl'] . '/img/service/header_img.png' ?>); background-size: 100%; background-repeat: no-repeat">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">

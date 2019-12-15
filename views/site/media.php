@@ -6,7 +6,7 @@ $this->title = Yii::t('app', 'menu_media')
 ?>
 <!-- 	Top banner-START 	-->
 <div class="contentPadding bg bgShadow"
-     style="background-image: url(<?= Yii::$app->params['siteUrl'] . '/img/publication_header.jpeg' ?>)">
+     style="background-image: url(<?= Yii::$app->params['siteUrl'] . '/img/publication_header.jpeg' ?>); background-size: 100%; background-repeat: no-repeat">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">

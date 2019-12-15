@@ -20,7 +20,7 @@ $this->title = Yii::t('app', 'menu_home');
                 <?php foreach ($aphorisms as $aphorism) {
                     $imagePath = Yii::$app->params['siteUrl'] . Yii::$app->params['uploadsUrl'] . "/publications/" . $aphorism['image'];
                     ?>
-                    <div class="swiper-slide mainBanner bgShadow">
+                    <div class="swiper-slide mainBanner">
                         <div class="sliderBg" style="background-image: url('<?= $imagePath ?>')"></div>
                         <div class="container">
                             <div class="row">
@@ -78,7 +78,7 @@ $this->title = Yii::t('app', 'menu_home');
                                         href="<?= Yii::$app->params['siteUrl'] ?>/service/<?= $service['id'] ?>"><?= $service['title'] ?></a>
                             </h6>
                             <div class="tumbContent small">
-                                <p><?= substr($service['full'], 0, 200) . (strlen($service['full']) > 200 ? "..." : "") ?></p>
+                                <p><?= mb_substr($service['full'], 0, 200, 'UTF-8') . (strlen($service['full']) > 200 ? "..." : "") ?></p>
                             </div>
                         </div>
                         <div class="emptySpace-sm30"></div>

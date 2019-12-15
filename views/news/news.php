@@ -5,7 +5,7 @@ $this->title = Yii::t('app', 'menu_news');
 
 ?>
 <!-- 	Top banner-START 	-->
-<div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/publication_header.jpeg'?>)">
+<div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/publication_header.jpeg'?>); background-size: 100%; background-repeat: repeat">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
