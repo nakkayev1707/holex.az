@@ -17,7 +17,6 @@ return [
     'og_sitename' => ['property' => 'og:site_name', 'content' => 'MYHOLEX'],
     'og_video' => ['property' => 'og:video', 'content' => 'http://holex.loc'],
     'googleAnalyticsCode' => 'UA-',
-    'api-token-salt' => '',
     'captcha_site_key' => '',
     'captcha_secret_key' => '',
 ];
