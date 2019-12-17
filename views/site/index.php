@@ -18,7 +18,8 @@ $this->title = Yii::t('app', 'menu_home');
              data-loop="1">
             <div class="swiper-wrapper">
                 <?php foreach ($aphorisms as $aphorism) {
-                    $imagePath = Yii::$app->params['siteUrl'] . Yii::$app->params['uploadsUrl'] . "/publications/" . $aphorism['image'];
+                    $langPrefix = Yii::$app->language == 'en' ? "en/" : "";
+                    $imagePath = Yii::$app->params['siteUrl'] . Yii::$app->params['uploadsUrl'] . "/publications/" . $langPrefix . $aphorism['image'];
                     ?>
                     <div class="swiper-slide mainBanner">
                         <div class="sliderBg" style="background-image: url('<?= $imagePath ?>')"></div>
@@ -375,7 +376,7 @@ $this->title = Yii::t('app', 'menu_home');
                                 <img src="<?= $imagePath ?>" alt="">
                             </div>
                             <h6 class="h6 as"><a
-                                        href="<?= Url::toRoute('site/contact')?>"><?= $card['title'] ?></a>
+                                        href="<?= Url::toRoute('site/contact') ?>"><?= $card['title'] ?></a>
                             </h6>
                             <div class="tumbContent small">
                                 <p><?= substr($card['full'], 0, 1000) . (strlen($card['full']) > 1000 ? "..." : "") ?></p>
@@ -393,9 +394,9 @@ $this->title = Yii::t('app', 'menu_home');
 
 <!-- 	Last news-START 	-->
 <?php if (isset($news) && !empty($news)) { ?>
-<div class="contentPadding">
-    <div class="container">
-        <div class="row">
+    <div class="contentPadding">
+        <div class="container">
+            <div class="row">
                 <div class="col-xs-12">
                     <div class="contentTitle normall">
                         <h3 class="h3 as"><?= Yii::t('app', 'latest_news') ?></h3>
@@ -422,9 +423,9 @@ $this->title = Yii::t('app', 'menu_home');
                         <div class="emptySpace-xs30"></div>
                     </div>
                 <?php } ?>
+            </div>
         </div>
     </div>
-</div>
 <?php } ?>
 <!-- 	Last news-END 	-->
 

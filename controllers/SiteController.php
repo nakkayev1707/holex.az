@@ -114,12 +114,15 @@ class SiteController extends BaseController
         $contactModel = new ContactForm();
         $errors = [];
         if ($contactModel->load(Yii::$app->request->post(), '')) {
-            if ($contactModel->validate() && $contactModel->contact(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('contactFormSubmitted');
-                return $this->refresh();
-            } else {
-                $errors = $contactModel->errors;
-                Yii::$app->session->setFlash('contactFormNotSubmitted');
+            $captchaIsValid = $this->verifyCaptcha(Yii::$app->request->post('g-recaptcha-response'))->success;
+            if ($captchaIsValid) {
+                if ($contactModel->validate() && $contactModel->contact(Yii::$app->params['adminEmail'])) {
+                    Yii::$app->session->setFlash('contactFormSubmitted');
+                    return $this->refresh();
+                } else {
+                    $errors = $contactModel->errors;
+                    Yii::$app->session->setFlash('contactFormNotSubmitted');
+                }
             }
         }
         return $this->render('contact', [
@@ -149,5 +152,32 @@ class SiteController extends BaseController
     public function actionUnderconstruction()
     {
         return $this->render('underconstruction');
+    }
+
+    private function verifyCaptcha ($captcha)
+    {
+        $post_data = http_build_query(
+            array(
+                'secret' => Yii::$app->params['captcha_secret_key'],
+                'response' => $captcha,
+                'remoteip' => $_SERVER['REMOTE_ADDR']
+            )
+        );
+        $opts = array('http' =>
+            array(
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $post_data
+            )
+        );
+        $context  = stream_context_create($opts);
+        $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
+
+        // delete in production //
+        if (YII_DEBUG) {
+            return true;
+        }
+        // delete in production //
+        return json_decode($response);
     }
 }

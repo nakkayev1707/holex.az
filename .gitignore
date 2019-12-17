@@ -33,3 +33,6 @@ tests/_support/_generated
 /.vagrant
 
 web/uploads
+
+config/params.php
+config/db.php
