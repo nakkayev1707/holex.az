@@ -5,6 +5,7 @@ use yii\helpers\Url;
 $this->title = Yii::t('app', 'menu_services');
 
 ?>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 <!-- 	Top banner-START 	-->
 <div class="contentPadding bg bgShadow" style="background-image: url(<?=Yii::$app->params['siteUrl'] . '/img/service/header_img.png'?>); background-size: 100%;background-repeat: no-repeat">
     <div class="container">
@@ -91,6 +92,9 @@ $this->title = Yii::t('app', 'menu_services');
                         </div>
                         <div class="col-xs-12">
                             <textarea class="simple-input <?=$errors['message'][0] ? 'invalid' : '' ?>" name="message" maxlength="3000" placeholder="<?=Yii::t('app', 'message') ?>"></textarea>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="g-recaptcha" id="rcaptcha" style="margin-top: 20px" data-sitekey="<?=Yii::$app->params['captcha_site_key']?>"></div>
                         </div>
                     </div>
                     <div class="emptySpace30"></div>

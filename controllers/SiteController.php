@@ -176,11 +176,6 @@ class SiteController extends BaseController
         $context  = stream_context_create($opts);
         $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
 
-        // delete in production //
-        if (YII_DEBUG) {
-            return true;
-        }
-        // delete in production //
         return json_decode($response);
     }
 }

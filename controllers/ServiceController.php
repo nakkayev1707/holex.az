@@ -77,6 +77,16 @@ class ServiceController extends BaseController
             throw new NotFoundHttpException();
         }
         if ($contactModel->load(Yii::$app->request->post(), '')) {
+            $captchaIsValid = $this->verifyCaptcha(Yii::$app->request->post('g-recaptcha-response'))->success;
+            if ($captchaIsValid) {
+                if ($contactModel->validate() && $contactModel->contact(Yii::$app->params['adminEmail'])) {
+                    Yii::$app->session->setFlash('contactFormSubmitted');
+                    return $this->refresh();
+                } else {
+                    $errors = $contactModel->errors;
+                    Yii::$app->session->setFlash('contactFormNotSubmitted');
+                }
+            }
             if ($contactModel->validate() && $contactModel->contact(Yii::$app->params['adminEmail'])) {
                 Yii::$app->session->setFlash('contactFormSubmitted');
                 return $this->refresh();
@@ -90,5 +100,27 @@ class ServiceController extends BaseController
             'model' => $contactModel,
             'services' => $serviceList,
         ]);
+    }
+
+    private function verifyCaptcha ($captcha)
+    {
+        $post_data = http_build_query(
+            array(
+                'secret' => Yii::$app->params['captcha_secret_key'],
+                'response' => $captcha,
+                'remoteip' => $_SERVER['REMOTE_ADDR']
+            )
+        );
+        $opts = array('http' =>
+            array(
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $post_data
+            )
+        );
+        $context  = stream_context_create($opts);
+        $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
+
+        return json_decode($response);
     }
 }
