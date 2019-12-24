@@ -72,12 +72,15 @@ class SiteController extends BaseController
         // contact form handle
         if (Yii::$app->request->isPost) {
             if ($contactModel->load(Yii::$app->request->post(), '')) {
-                if ($contactModel->validate() && $contactModel->contact(Yii::$app->params['adminEmail'])) {
-                    Yii::$app->session->setFlash('contactFormSubmitted');
-                    return $this->refresh();
-                } else {
-                    $errors = $contactModel->errors;
-                    Yii::$app->session->setFlash('contactFormNotSubmitted');
+                $captchaIsValid = $this->verifyCaptcha(Yii::$app->request->post('g-recaptcha-response'))->success;
+                if ($captchaIsValid) {
+                    if ($contactModel->validate() && $contactModel->contact(Yii::$app->params['adminEmail'])) {
+                        Yii::$app->session->setFlash('contactFormSubmitted');
+                        return $this->refresh();
+                    } else {
+                        $errors = $contactModel->errors;
+                        Yii::$app->session->setFlash('contactFormNotSubmitted');
+                    }
                 }
             }
         }

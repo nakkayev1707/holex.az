@@ -8,6 +8,8 @@ $this->title = Yii::t('app', 'menu_home');
 
 ?>
 <!-- 	Main banner swiper-START 	-->
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
 <div class="swiperMainWrapper mainSwiperbanner">
     <?php if (isset($aphorisms) && !empty($aphorisms)) { ?>
         <!-- 	Swiper slider buttons-START 	-->
@@ -470,6 +472,9 @@ $this->title = Yii::t('app', 'menu_home');
                         <div class="col-xs-12">
                             <textarea class="simple-input <?= $errors['message'][0] ? 'invalid' : '' ?>" name="message"
                                       maxlength="3000" placeholder="<?= Yii::t('app', 'message') ?>"></textarea>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="g-recaptcha" id="rcaptcha" style="margin-top: 20px" data-sitekey="<?=Yii::$app->params['captcha_site_key']?>"></div>
                         </div>
                     </div>
                     <div class="emptySpace30"></div>
