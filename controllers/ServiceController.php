@@ -87,13 +87,6 @@ class ServiceController extends BaseController
                     Yii::$app->session->setFlash('contactFormNotSubmitted');
                 }
             }
-            if ($contactModel->validate() && $contactModel->contact(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('contactFormSubmitted');
-                return $this->refresh();
-            } else {
-                $errors = $contactModel->errors;
-                Yii::$app->session->setFlash('contactFormNotSubmitted');
-            }
         }
         return $this->render('index', [
             'errors' => $errors,
