@@ -36,3 +36,4 @@ web/uploads
 
 config/params.php
 config/db.php
+/web/holex_cms/
