@@ -2,7 +2,7 @@
 
 ## Project Description
 
-holex.az is a website created for a Gestalt psychologist. The site was developed to provide information about her services, facilitate appointment bookings, and offer resources related to Gestalt psychology. The website is designed to be user-friendly, informative, and accessible to her clients and anyone interested in learning more about Gestalt therapy.
+holex.az is a website created for a professional therapist. The site provides information about her services, facilitates appointment bookings, and offers resources for personal growth and well-being. The website is designed to be user-friendly, informative, and accessible to her clients and anyone interested in learning more about her approach.
 
 ## Installation Instructions
 
