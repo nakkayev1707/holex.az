@@ -10,10 +10,10 @@ holex.az is a website created for a Gestalt psychologist. The site was developed
 
 Before you begin, ensure you have the following installed on your system:
 - [PHP](https://www.php.net/downloads) (version 7.2 or higher)
+- [Yii2](https://www.yiiframework.com/)
 - [Composer](https://getcomposer.org/download/)
 - [MySQL](https://dev.mysql.com/downloads/installer/)
 - [Apache](https://httpd.apache.org/download.cgi) web server
-- [Git](https://git-scm.com/downloads)
 
 ### Steps
 
